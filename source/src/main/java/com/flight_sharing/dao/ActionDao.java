@@ -35,7 +35,7 @@ public class ActionDao extends BasicDao {
 		return results;
 	}
 
-	public String getByID(String id) throws Exception {
+	public String getById(String id) throws Exception {
 		GetResponse response=client.prepareGet(BasicDao.index, mainType, id).get();
 		return response.getSourceAsString();
 	}
@@ -56,11 +56,11 @@ public class ActionDao extends BasicDao {
 		client.update(updateRequest).get();
 	}
 
-	public String searchByPages(QueryBuilder queryBuilder, int begin, int end) throws Exception {
+	public List<String> searchByPages(QueryBuilder queryBuilder) throws Exception {
 		List<String> results = new ArrayList<String>();
 		try {
 			SearchResponse response = client.prepareSearch(BasicDao.index).setTypes(mainType)
-					.setSearchType(SearchType.DFS_QUERY_THEN_FETCH).setQuery(queryBuilder).setFrom(begin).setSize(end)
+					.setSearchType(SearchType.DFS_QUERY_THEN_FETCH).setQuery(queryBuilder)
 					.setExplain(true).get();
 			for (SearchHit searchHit : response.getHits().getHits()) {
 				results.add(searchHit.getSourceAsString());
@@ -68,7 +68,7 @@ public class ActionDao extends BasicDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return results.toString();
+		return results;
 	}
 
 }

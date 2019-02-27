@@ -10,7 +10,7 @@ function mysubmit(){
         success:function (data) {
 	    	if(data.result=='ok'){
 	    		sessionStorage.setItem("user",usr)
-	    		location.href='http://localhost:8080/test.html';
+	    		location.href='http://localhost:8081/test.html';
 	    	}else{
 		    	alert(data.result);
 	    	}
