@@ -4,28 +4,30 @@ import java.util.List;
 
 public class Flight {
 	private String id;
+	private String piloteId;
+	private List<String> passengerId;
+	private int seat;
 	private String departure;
 	private String arrival;
 	private String date;
 	private String time;
-	private String piloteId;
-	private int seat;
-	private List<String> passengerId;
+	private String duration;
 
 	public Flight() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Flight(String id, String departure, String arrival, String date, String time, String piloteId, int seat,
-			List<String> passengerId) {
+	public Flight(String id, String piloteId, List<String> passengerId, int seat, String departure, String arrival,
+			String date, String time, String duration) {
 		this.id = id;
+		this.piloteId = piloteId;
+		this.passengerId = passengerId;
+		this.seat = seat;
 		this.departure = departure;
 		this.arrival = arrival;
 		this.date = date;
 		this.time = time;
-		this.piloteId = piloteId;
-		this.seat = seat;
-		this.passengerId = passengerId;
+		this.duration = duration;
 	}
 
 	public String getId() {
@@ -34,6 +36,30 @@ public class Flight {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getPiloteId() {
+		return piloteId;
+	}
+
+	public void setPiloteId(String piloteId) {
+		this.piloteId = piloteId;
+	}
+
+	public List<String> getPassengerId() {
+		return passengerId;
+	}
+
+	public void setPassengerId(List<String> passengerId) {
+		this.passengerId = passengerId;
+	}
+
+	public int getSeat() {
+		return seat;
+	}
+
+	public void setSeat(int seat) {
+		this.seat = seat;
 	}
 
 	public String getDeparture() {
@@ -68,28 +94,12 @@ public class Flight {
 		this.time = time;
 	}
 
-	public String getPiloteId() {
-		return piloteId;
+	public String getDuration() {
+		return duration;
 	}
 
-	public void setPiloteId(String piloteId) {
-		this.piloteId = piloteId;
+	public void setDuration(String duration) {
+		this.duration = duration;
 	}
-
-	public int getSeat() {
-		return seat;
-	}
-
-	public void setSeat(int seat) {
-		this.seat = seat;
-	}
-
-	public List<String> getPassengerId() {
-		return passengerId;
-	}
-
-	public void setPassenger(List<String> passengerId) {
-		this.passengerId = passengerId;
-	}
-
+	
 }

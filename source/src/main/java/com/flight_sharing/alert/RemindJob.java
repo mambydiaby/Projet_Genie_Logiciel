@@ -21,18 +21,16 @@ import com.flight_sharing.mail.Email;
 
 public class RemindJob implements Job {
 	public void execute(JobExecutionContext context) throws JobExecutionException {
-		System.out.println("rapell lancé");
+		System.out.println("rapel lancé");
 		List<Flight> flight = getFlight();
 		List<String> email = new ArrayList<String>();
 		for (Flight f : flight) {
 			try {
 				email=getEmail(f);
-				String[] to = {email.get(0)};
-				String[] cc = new String[email.size()-1];
-				for (int i = 1; i < email.size(); i++) {
-					cc[i-1]=email.get(i);
-				}
-				Email.send(to, cc,cc, "rappel", "vous avez un vol demain");
+				
+				String to = email.get(0);
+				email.remove(0);
+				Email.send(to, email, "rappel", "vous avez un vol demain");
 				System.out.println("rdv dans 1h");
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -59,7 +57,7 @@ public class RemindJob implements Job {
 			LocalDateTime date;
 			Duration duration = null;
 			for (Flight f : flight) {
-				date = LocalDateTime.parse(f.getDate() + " " + f.getTime(), formatter);
+				date = f.getDate();
 				duration = Duration.between(date, LocalDateTime.now());
 				long diff = Math.abs(duration.toHours());
 				if (!(date.isAfter(LocalDateTime.now()) && diff < 23 && 22 < diff)) {
