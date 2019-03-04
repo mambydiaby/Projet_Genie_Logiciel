@@ -57,7 +57,7 @@ public class RemindJob implements Job {
 			LocalDateTime date;
 			Duration duration = null;
 			for (Flight f : flight) {
-				date = f.getDate();
+				date = LocalDateTime.parse(f.getDate(), formatter);
 				duration = Duration.between(date, LocalDateTime.now());
 				long diff = Math.abs(duration.toHours());
 				if (!(date.isAfter(LocalDateTime.now()) && diff < 23 && 22 < diff)) {

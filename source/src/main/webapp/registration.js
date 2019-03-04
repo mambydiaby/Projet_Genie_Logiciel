@@ -1,22 +1,25 @@
-function mysubmit1() {
-	var usr = $('#usr').val();
-	var pwd = $('#pwd').val();
+function send() {
+	var passenger = {
+		id: $('#usr').val(),
+		pwd: $('#pwd').val(),
+		firstName: $('#fname').val(),
+		lastName: $('#lname').val(),
+		email: $('#email').val()
+	}
 	$.ajax({
-		type : "put",
-		url : '/ws/user/reg',
-		data : {
-			'id' : usr,
-			'pwd' : pwd
-		},
-		dataType : "json",
-		success : function(data) {
+		url: '/ws/user/reg',
+		type: 'put',
+		dataType: 'json',
+		contentType: 'application/json',
+		data: JSON.stringify(passenger),
+
+		success: function(data) {
 			if (data.result == 'ok') {
-				sessionStorage.setItem("user", usr)
 				location.href = 'http://localhost:8081/login.html';
 			} else {
 				alert(data.result);
 			}
-
 		}
+
 	})
 }
