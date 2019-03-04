@@ -13,8 +13,6 @@ import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
 
-import com.flight_sharing.dao.InsertData;
-
 public class JettyMain {
 
 	public static void main(String[] args) throws Exception {
@@ -24,7 +22,7 @@ public class JettyMain {
 		// Add a connector
 		ServerConnector connector = new ServerConnector(server);
 		connector.setHost("localhost");
-		connector.setPort(8080);
+		connector.setPort(8081);
 		connector.setIdleTimeout(30000);
 		server.addConnector(connector);
 
@@ -42,9 +40,9 @@ public class JettyMain {
 
 		// Add a handler for resources (/*)
 		ResourceHandler handlerPortal = new ResourceHandler();
-		handlerPortal.setResourceBase("src/main/resources");
+		handlerPortal.setResourceBase("src/main/webapp");
 		handlerPortal.setDirectoriesListed(false);
-		handlerPortal.setWelcomeFiles(new String[] { "Login.html" });
+		handlerPortal.setWelcomeFiles(new String[] { "login.html" });
 		ContextHandler handlerPortalCtx = new ContextHandler();
 		handlerPortalCtx.setContextPath("/");
 		handlerPortalCtx.setHandler(handlerPortal);
@@ -53,12 +51,8 @@ public class JettyMain {
 		ContextHandlerCollection contexts = new ContextHandlerCollection();
 		contexts.setHandlers(new Handler[] { handlerWebServices, handlerPortalCtx });
 		server.setHandler(contexts);
-		
-		//InsertData.add();
-		
+
 		// Start server
 		server.start();
-
 	}
-
 }

@@ -20,7 +20,7 @@ public interface Dao {
 	 * @return return the object corresponding to the id
 	 * @throws Exception
 	 */
-	String getByID(String id) throws Exception;
+	public String getById(String id) throws Exception;
 
 	/**
 	 * delete from ? where id=id
@@ -29,7 +29,7 @@ public interface Dao {
 	 * @return success or error message
 	 * @throws Exception
 	 */
-	String delete(String id) throws Exception;
+	public String delete(String id) throws Exception;
 
 	/**
 	 * Add an object in the database
@@ -39,7 +39,7 @@ public interface Dao {
 	 * @return success or error message
 	 * @throws Exception
 	 */
-	String add(byte[] json, String id) throws Exception;
+	public String add(byte[] json, String id) throws Exception;
 
 	/**
 	 * update set ?=? where id=id
@@ -49,7 +49,7 @@ public interface Dao {
 	 * @param valeur
 	 * @throws Exception
 	 */
-	void update(String id, String attribute, String value) throws Exception;
+	public void update(String id, String attribute, String value) throws Exception;
 
 	/**
 	 * select * from
@@ -60,5 +60,5 @@ public interface Dao {
 	 * @return
 	 * @throws Exception
 	 */
-	String searchByPages(QueryBuilder queryBuilder, int begin, int end) throws Exception;
+	public List<String> searchByPages(QueryBuilder queryBuilder) throws Exception;
 }
