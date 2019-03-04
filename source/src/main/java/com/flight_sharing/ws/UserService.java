@@ -77,26 +77,13 @@ public class UserService {
 	 */
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
-	// @Consumes("application/x-www-form-urlencoded")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("reg")
-//	public String registration(@FormParam("id") String userId, @FormParam("pwd") String userPwd,
-//			@FormParam("fname") String firstName, @FormParam("lname") String lastName,
-//			@FormParam("email") String email) {
 	public String addPassenger(Passenger p) {
-		
-		System.out.println("registration");
+
 		try {
-			// Passenger p = new Passenger(userId, userPwd, firstName, lastName, email);
 			String id = p.getId();
-			String result = passengerDao.add(ConvertObject.ObjectToByte(p), id);
-			System.out.println("addresult : " + result);
-			Thread.sleep(1000);
-			if (result.equals("OK")) {
-				System.out.println("update success");
-			} else if (result.equals("CREATED")) {
-				System.out.println("add success");
-			}
+			passengerDao.add(ConvertObject.ObjectToByte(p), id);
 			return "{\"result\":\"ok\"}";
 
 		} catch (Exception e) {
