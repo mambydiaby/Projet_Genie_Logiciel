@@ -5,33 +5,25 @@
 <title>Insert title here</title>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-	<script type="text/javascript" src="registration.js"></script>
+	<script type="text/javascript" src="js/registration.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/registration.css">
 </head>
 <body>
-	<h1>Registration</h1>
-	
-   <p>
-       <label for="pseudo">Votre pseudo :</label>
-       <input type="text" name="pseudo" id="usr" />
-       
-       <br />
-       <label for="pass">Votre mot de passe :</label>
-       <input type="password" name="pass" id="pwd" />
-       
-       <br />
-       <label for="pseudo">Votre prenom :</label>
-       <input type="text" name="prenom" id="fname" />
-       
-       <br />
-       <label for="pass">Votre nom</label>
-       <input type="text" name="nom" id="lname" />
-       
-       <br />
-       <label for="pass">Votre email</label>
-       <input type="email" name="mail" id="email" />
- 		 <br />
-       <input  type="submit" id="register" onclick="send();" value="register"/>
-   </p>
+	<div class="page-container">
+            
+    	<div>
+			<h1>Sign Up</h1>
+                <input type="text" name="usr" id="usr" class="username" placeholder="Username"><br />
+                <input type="password" name="pass" id="pwd" class="password" placeholder="Password"><br />
+				<input type="email" name="mail" id="email" class="Email" placeholder="Email"><br />
+				<input  type="text" name="fname" id="fname"  class="Address" placeholder="First name"><br />
+				<input  type="text" name="lname" id="lname"  class="Address" placeholder="Last name"><br />
+				<button type="submit" value="Add" name="submit"  id="register" onclick="send();" >Submit</button>
+            </div>
+        </div>
+		
+
+</body>
 
 </body>
 </html>

@@ -1,4 +1,4 @@
-function mysubmit1() {
+function mysubmit() {
 	var departure = $('#departure').val();
 	var date = $('#date').val();
 	$.ajax({
