@@ -14,6 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.flight_sharing.dao.ActionDao;
 import com.flight_sharing.dao.FactoryDao;
 import com.flight_sharing.entities.Passenger;
+import com.flight_sharing.entities.Pilote;
 import com.flight_sharing.json.ConvertObject;
 
 @Path("/user")
@@ -84,6 +85,33 @@ public class UserService {
 		try {
 			String id = p.getId();
 			passengerDao.add(ConvertObject.ObjectToByte(p), id);
+			return "{\"result\":\"ok\"}";
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "{\"result\":\"registration error500\"}";
+	}
+	
+	/**
+	 * webservice for pilote registration
+	 * 
+	 * @param userId
+	 * @param userPwd
+	 * @param firstName
+	 * @param lastName
+	 * @param email
+	 * @return
+	 */
+	@PUT
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("regpilote")
+	public String addPilote(Pilote p) {
+
+		try {
+			String id = p.getId();
+			piloteDao.add(ConvertObject.ObjectToByte(p), id);
 			return "{\"result\":\"ok\"}";
 
 		} catch (Exception e) {

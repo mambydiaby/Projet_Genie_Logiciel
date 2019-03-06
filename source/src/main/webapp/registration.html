@@ -1,41 +1,177 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-	<script type="text/javascript" src="js/registration.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/registration.css">
+    <meta charset="utf-8">
+    <title>Registration</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/signup.css">
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div class="page-container">
-        <!--the sign up for the passenger-->
-		<div>
-			<h1>Sign Up</h1>
-                <input type="text" name="usr" id="usr" class="username" placeholder="Username"><br />
-                <input type="password" name="pass" id="pwd" class="password" placeholder="Password"><br />
-				<input type="email" name="mail" id="email" class="Email" placeholder="Email"><br />
-				<input  type="text" name="fname" id="fname"  class="Address" placeholder="First name"><br />
-				<input  type="text" name="lname" id="lname"  class="Address" placeholder="Last name"><br />
-				<button type="submit" value="Add" name="submit"  id="register" onclick="send();" >Submit</button>
-		</div>
-		<!--the sign up for the pilote-->
-		<div>
-			<h1>Sign Up</h1>
-                <input type="text" name="usr" id="usr" class="username" placeholder="Username"><br />
-                <input type="password" name="pass" id="pwd" class="password" placeholder="Password"><br />
-				<input type="email" name="mail" id="email" class="Email" placeholder="Email"><br />
-				<input  type="text" name="fname" id="fname"  class="Address" placeholder="First name"><br />
-				<input  type="text" name="lname" id="lname"  class="Address" placeholder="Last name"><br />
-				<input type="text" name="exp" id="exp" class="exp" placeholder="Experience"><br />
-				<input type="text" name="qual" id="qual" class="qual" placeholder="Qualification"><br />
-				<button type="submit" value="Add" name="submit"  id="register" onclick="send();" >Submit</button>
-		</div>
-	</div>
-		
+<br/><br/><br/><br/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<div class="container">
+    <div class="login-signup">
+      <div class="row">
+        <div class="col-sm-6 nav-tab-holder">
+        <ul class="nav nav-tabs row" role="tablist">
+          <li role="presentation" class="active col-sm-6"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Pilote</a></li>
+          <li role="presentation" class="col-sm-6"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Passenger</a></li>
+        </ul>
+      </div>
 
-</body>
+      </div>
 
+
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">
+          <div class="row">
+
+            <div class="col-sm-6 mobile-pull">
+              <article role="login">
+                <h3 class="text-center"><i class="fa fa-lock"></i> Create Pilote Account</h3>
+				<div id="loginerror" class="alert alert-error" style="display:none" ></div>
+                <p class="signup"  >
+                  <div class="form-group">
+                  <input type="text" name="usr" id="usr1" class="form-control" placeholder="Username">
+                </div>
+                <div class="form-group">
+                  <input type="password" name="pass" id="pwd1" class="form-control" placeholder="Password">
+                </div>
+         
+                <div class="form-group">
+                 	<input type="email" name="mail" id="email1" class="form-control" placeholder="Email">
+                </div>
+                <div class="form-group">
+                  <input  type="text" name="fname" id="fname1"  class="form-control" placeholder="First name">
+                </div>
+
+        				<div class="form-group">
+                          <input  type="text" name="lname" id="lname1"  class="form-control" placeholder="Last name">
+                        </div>
+        				<div class="form-group">
+                          <input type="text" name="exp" id="exp" class="form-control" placeholder="Experience">
+                        </div>
+        				<div class="form-group">
+                  <input type="text" name="qual" id="qual" class="form-control" placeholder="Qualification">
+                </div>
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox"> Please accept the terms and conditions to proceed with your request.
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <input type="submit" name="submit"  id="registerp"  class="btn btn-success btn-block"  value="SUBMIT">
+                  </div>
+                </p>
+
+                <footer role="signup" class="text-center">
+                  <ul>
+                    <li>
+                      <a href="#">Terms of Use</a>
+                    </li>
+                    <li>
+                      <a href="#">Privacy Statement</a>
+                    </li>
+                  </ul>
+                </footer>
+
+              </article>
+            </div>
+
+            <div class="col-sm-6">
+              <article role="manufacturer"  class="text-center">
+                <header>
+                  Pilote
+                </header>
+                <h1>FREE</h1>
+                <ul class="text-left">
+                  <li><i class="fa fa-check"></i>  Unlimited  access</li>
+                  <li><i class="fa fa-check"></i>  Create flight announce</li>
+                  
+                </ul>
+                
+              </article>
+            </div>
+
+          </div>
+          <!-- end of row -->
+        </div>
+        <!-- end of home -->
+
+      <div role="tabpanel" class="tab-pane" id="profile">
+        <div class="row">
+
+          <div class="col-sm-6 mobile-pull">
+            <article role="login">
+              <h3 class="text-center"><i class="fa fa-lock"></i> Create Passenger Account</h3>
+				<div id="loginerror" class="alert alert-error" style="display:none" ></div>
+                <p class="signup"  >
+                  <div class="form-group">
+                  <input type="text" name="usr" id="usr" class="form-control" placeholder="Username">
+                </div>
+                <div class="form-group">
+                  <input type="password" name="pass" id="pwd" class="form-control" placeholder="Password">
+                </div>
+         
+                <div class="form-group">
+                 	<input type="email" name="mail" id="email" class="form-control" placeholder="Email">
+                </div>
+                <div class="form-group">
+                  <input  type="text" name="fname" id="fname"  class="form-control" placeholder="First name">
+                </div>
+
+        		<div class="form-group">
+                    <input  type="text" name="lname" id="lname"  class="form-control" placeholder="Last name">
+                </div>
+        			
+                <div class="form-group">
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox"> Please accept the terms and conditions to proceed with your request.
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input type="submit" name="submit"  id="register" onclick="send();" class="btn btn-success btn-block"  value="SUBMIT">
+                </div>
+              </form>
+              <footer role="signup" class="text-center">
+                <ul>
+                  <li>
+                    <a href="#">Terms of Use</a>
+                  </li>
+                  <li>
+                    <a href="#">Privacy Statement</a>
+                  </li>
+                </ul>
+              </footer>
+
+            </article>
+          </div>
+
+          <div class="col-sm-6">
+            <article role="manufacturer"  class="text-center">
+              <header>
+                Passenger
+              </header>
+              <h1>FREE</h1>
+              <ul class="text-left">
+                <li><i class="fa fa-check"></i>  Unlimited Site Access</li>
+                <li><i class="fa fa-check"></i>   Search for flight</li>
+                <li><i class="fa fa-check"></i>  Booking</li>
+                
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+  </div>
+  </div>
+	<script type="text/javascript" src="js/registration.js"></script>
 </body>
 </html>
