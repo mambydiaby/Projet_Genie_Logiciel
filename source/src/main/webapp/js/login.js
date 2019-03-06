@@ -32,7 +32,10 @@ function login() {
 			if (data.result == 'ok') {
 				sessionStorage.setItem("user", usr)
 				location.href = 'http://localhost:8081/test.html';
-			} else {
+			} else if(data.result == 'okp'){
+				sessionStorage.setItem("user", usr)
+				location.href = 'http://localhost:8081/testp.html';
+			}else {
 				//alert(data.result);
 				$('#loginerror').show();
 				$('#loginerror').html(data.result);

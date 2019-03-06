@@ -16,14 +16,14 @@ body{
   background: #23bab5;
   border-radius:0;
   border: 2px solid #23bab5;
-  webkit-transition: all 400ms cubic-bezier(.4,0,.2,1);
+  -webkit-transition: all 400ms cubic-bezier(.4,0,.2,1);
   transition: all 400ms cubic-bezier(.4,0,.2,1);
 }
 
 .btn-success:hover,.btn-success:focus {
   background: rgba(26, 161, 157, 0);
   border: 2px solid #1aa19d;
-  webkit-transition: all 400ms cubic-bezier(.4,0,.2,1);
+  -webkit-transition: all 400ms cubic-bezier(.4,0,.2,1);
   transition: all 400ms cubic-bezier(.4,0,.2,1);
   color: #23BAB5;
 }
