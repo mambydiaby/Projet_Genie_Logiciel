@@ -1,5 +1,5 @@
 body{
-	 background: url(https://preview.ibb.co/g6MVS9/gg.png) no-repeat center center fixed; 
+	 background: url("../img/background.jpg") no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -142,7 +142,7 @@ article[role="manufacturer"] ul li {
   font-size: 16px;
   border-bottom: 1px solid #eaeaea;
   padding: 20px 15px;
-  color:#1e2cda;
+  color:#404040;
 }
 
 article[role="manufacturer"] ul li i {
