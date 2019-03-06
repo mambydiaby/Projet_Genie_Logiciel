@@ -37,9 +37,10 @@ public class UserService {
 	@Consumes("application/x-www-form-urlencoded")
 	@Path("login")
 	public String login(@FormParam("id") String userId, @FormParam("pwd") String userPwd) {
+		ObjectMapper mapper = new ObjectMapper();
 		try {
 			if (userId == null || userPwd == null) {
-				return "{\"result\":\"error\"}";
+				return "{\"result\":\"empty fields\"}";
 			}
 
 			else {
@@ -47,10 +48,21 @@ public class UserService {
 				String user = passengerDao.getById(userId);
 
 				if (user == null) {
-					return "{\"result\":\"username incorrect!\"}";
+					user = piloteDao.getById(userId);
+					if (user == null) {
+						return "{\"result\":\"username incorrect!\"}";
+					}
+
+					Pilote p = mapper.readValue(user, Pilote.class);
+
+					if (p.getPwd().equals(userPwd)) {
+						request.getSession().setAttribute("userId", p.getId());
+						return "{\"result\":\"okp\"}";
+					} else {
+						return "{\"result\":\"password incorrect!\"}";
+					}
 				}
 
-				ObjectMapper mapper = new ObjectMapper();
 				Passenger p = mapper.readValue(user, Passenger.class);
 
 				if (p.getPwd().equals(userPwd)) {
@@ -92,7 +104,7 @@ public class UserService {
 		}
 		return "{\"result\":\"registration error500\"}";
 	}
-	
+
 	/**
 	 * webservice for pilote registration
 	 * 
