@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Flight {
 	private String id;
-	private String piloteId;
+	private String pilotId;
 	private List<String> passengerId;
 	private int seat;
 	private String departure;
@@ -17,10 +17,10 @@ public class Flight {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Flight(String id, String piloteId, List<String> passengerId, int seat, String departure, String arrival,
+	public Flight(String id, String pilotId, List<String> passengerId, int seat, String departure, String arrival,
 			String date, String time, String duration) {
 		this.id = id;
-		this.piloteId = piloteId;
+		this.pilotId = pilotId;
 		this.passengerId = passengerId;
 		this.seat = seat;
 		this.departure = departure;
@@ -38,12 +38,12 @@ public class Flight {
 		this.id = id;
 	}
 
-	public String getPiloteId() {
-		return piloteId;
+	public String getPilotId() {
+		return pilotId;
 	}
 
-	public void setPiloteId(String piloteId) {
-		this.piloteId = piloteId;
+	public void setPiloteId(String pilotId) {
+		this.pilotId = pilotId;
 	}
 
 	public List<String> getPassengerId() {

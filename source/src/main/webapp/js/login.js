@@ -35,7 +35,7 @@ function login() {
 				location.href = 'http://localhost:8081/test.html';
 			} else if (data.result == 'okp') {
 				sessionStorage.setItem("user", usr)
-				sessionStorage.setItem("type",'Pilote');
+				sessionStorage.setItem("type",'Pilot');
 				location.href = 'http://localhost:8081/testp.html';
 			} else {
 				//alert(data.result);

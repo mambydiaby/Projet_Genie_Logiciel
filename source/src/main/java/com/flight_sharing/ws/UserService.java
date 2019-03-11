@@ -154,7 +154,7 @@ public class UserService {
 
 			if (user == null)
 				user = pilotDao.getById(userId);
-			System.out.print(user);
+			//System.out.print(user);
 			return user;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -167,6 +167,7 @@ public class UserService {
 	@Consumes("application/x-www-form-urlencoded")
 	@Path("{type}/profile/{id}")
 	public String delete(@PathParam("type") String uType, @PathParam("id") String userId) {
+		System.out.print(uType);
 		try {
 			if (uType.equals("Pilote"))
 				return pilotDao.delete(userId);
