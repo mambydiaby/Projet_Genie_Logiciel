@@ -3,9 +3,11 @@ package com.flight_sharing.ws;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -24,6 +26,11 @@ public class UserService {
 
 	@Context
 	HttpServletRequest request;
+
+	private boolean getLoginState() {
+		return request.getSession().getAttribute("userId") == null
+				|| request.getSession().getAttribute("userId").toString() == "";
+	}
 
 	/**
 	 * web service for passenger login
@@ -130,6 +137,27 @@ public class UserService {
 			e.printStackTrace();
 		}
 		return "{\"result\":\"registration error500\"}";
+	}
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes("application/x-www-form-urlencoded")
+	@Path("profile/{id}")
+	public String profile(@PathParam("id") String userId) {
+
+//		if (!getLoginState())
+//			return "{\"result: \":\"Please Login !\"}";
+		try {
+			String user = passengerDao.getById(userId);
+
+			if (user == null)
+				user = piloteDao.getById(userId);
+			System.out.print(user);
+			return user;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "";
 	}
 
 }
