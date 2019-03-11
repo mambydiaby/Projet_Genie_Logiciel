@@ -161,17 +161,21 @@ public class UserService {
 		}
 		return "";
 	}
-	
+
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes("application/x-www-form-urlencoded")
 	@Path("{type}/profile/{id}")
 	public String delete(@PathParam("type") String uType, @PathParam("id") String userId) {
-		try
-		if(uType.equals("Pilote"))
-			return pilotDao.delete(userId);
-		else if(uType.equals("Passenger"))
-			return passengerDao.delete(userId);
+		try {
+			if (uType.equals("Pilote"))
+				return pilotDao.delete(userId);
+			else if (uType.equals("Passenger"))
+				return passengerDao.delete(userId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "";
 	}
-	
+
 }
