@@ -2,6 +2,7 @@ package com.flight_sharing.ws;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -16,24 +17,23 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.flight_sharing.dao.ActionDao;
 import com.flight_sharing.dao.FactoryDao;
 import com.flight_sharing.entities.Passenger;
-import com.flight_sharing.entities.Pilote;
+import com.flight_sharing.entities.Pilot;
 import com.flight_sharing.json.ConvertObject;
 
 @Path("/user")
 public class UserService {
 	ActionDao passengerDao = FactoryDao.createDAO(FactoryDao.PASSENGER);
-	ActionDao piloteDao = FactoryDao.createDAO(FactoryDao.PILOTE);
+	ActionDao pilotDao = FactoryDao.createDAO(FactoryDao.PILOTE);
 
 	@Context
 	HttpServletRequest request;
 
-	private boolean getLoginState() {
-		return request.getSession().getAttribute("userId") == null
-				|| request.getSession().getAttribute("userId").toString() == "";
+	private boolean IsLogged() {
+		return request.getSession().getAttribute("userId") != null;
 	}
 
 	/**
-	 * web service for passenger login
+	 * web service for passenger and pilot login
 	 * 
 	 * @param userId
 	 * @param userPwd
@@ -55,15 +55,16 @@ public class UserService {
 				String user = passengerDao.getById(userId);
 
 				if (user == null) {
-					user = piloteDao.getById(userId);
+					user = pilotDao.getById(userId);
 					if (user == null) {
 						return "{\"result\":\"username incorrect!\"}";
 					}
 
-					Pilote p = mapper.readValue(user, Pilote.class);
+					Pilot p = mapper.readValue(user, Pilot.class);
 
 					if (p.getPwd().equals(userPwd)) {
 						request.getSession().setAttribute("userId", p.getId());
+						request.getSession().setAttribute("type", "pilote");
 						return "{\"result\":\"okp\"}";
 					} else {
 						return "{\"result\":\"password incorrect!\"}";
@@ -74,6 +75,7 @@ public class UserService {
 
 				if (p.getPwd().equals(userPwd)) {
 					request.getSession().setAttribute("userId", p.getId());
+					request.getSession().setAttribute("type", "passenger");
 					return "{\"result\":\"ok\"}";
 				} else {
 					return "{\"result\":\"password incorrect!\"}";
@@ -126,11 +128,11 @@ public class UserService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("regpilote")
-	public String addPilote(Pilote p) {
+	public String addPilote(Pilot p) {
 
 		try {
 			String id = p.getId();
-			piloteDao.add(ConvertObject.ObjectToByte(p), id);
+			pilotDao.add(ConvertObject.ObjectToByte(p), id);
 			return "{\"result\":\"ok\"}";
 
 		} catch (Exception e) {
@@ -145,13 +147,13 @@ public class UserService {
 	@Path("profile/{id}")
 	public String profile(@PathParam("id") String userId) {
 
-//		if (!getLoginState())
-//			return "{\"result: \":\"Please Login !\"}";
+		if (!IsLogged())
+			return "{\"result: \":\"Please Login !\"}";
 		try {
 			String user = passengerDao.getById(userId);
 
 			if (user == null)
-				user = piloteDao.getById(userId);
+				user = pilotDao.getById(userId);
 			System.out.print(user);
 			return user;
 		} catch (Exception e) {
@@ -159,5 +161,17 @@ public class UserService {
 		}
 		return "";
 	}
-
+	
+	@DELETE
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes("application/x-www-form-urlencoded")
+	@Path("{type}/profile/{id}")
+	public String delete(@PathParam("type") String uType, @PathParam("id") String userId) {
+		try
+		if(uType.equals("Pilote"))
+			return pilotDao.delete(userId);
+		else if(uType.equals("Passenger"))
+			return passengerDao.delete(userId);
+	}
+	
 }

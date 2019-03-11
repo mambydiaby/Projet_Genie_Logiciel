@@ -11,8 +11,8 @@ public class ConvertObject {
 		return objectMapper.writeValueAsBytes(flight);
 	}
 
-	public static byte[] ObjectToByte(Pilote pilote) throws JsonProcessingException {
-		return objectMapper.writeValueAsBytes(pilote);
+	public static byte[] ObjectToByte(Pilot pilot) throws JsonProcessingException {
+		return objectMapper.writeValueAsBytes(pilot);
 	}
 
 	public static byte[] ObjectToByte(Passenger passenger) throws JsonProcessingException {

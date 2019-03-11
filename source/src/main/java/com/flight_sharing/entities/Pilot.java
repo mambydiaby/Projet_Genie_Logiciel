@@ -1,6 +1,6 @@
 package com.flight_sharing.entities;
 
-public class Pilote {
+public class Pilot {
 	/** pilote's username */
 	private String id;
 	/** pilote's password */
@@ -16,11 +16,11 @@ public class Pilote {
 	/** pilote's qualification*/
 	private String qualification;
 	
-	public Pilote() {
+	public Pilot() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Pilote(String id, String pwd, String firstName, String lastName, String email, String experience,
+	public Pilot(String id, String pwd, String firstName, String lastName, String email, String experience,
 			String qualification) {
 		this.id = id;
 		this.pwd = pwd;
