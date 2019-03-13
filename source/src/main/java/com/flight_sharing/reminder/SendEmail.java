@@ -18,14 +18,12 @@ import com.flight_sharing.entities.Flight;
 import com.flight_sharing.entities.Passenger;
 import com.flight_sharing.entities.Pilot;
 import com.flight_sharing.mail.Email;
-import com.flight_sharing.ws.FlightService;
 
 public class SendEmail implements Job {
 
 	public void send() throws Exception {
 		// get the fligth list
 		List<Flight> flightList = FlightList.flight;
-		System.out.println(flightList);
 
 		ActionDao pilotDao = FactoryDao.createDAO(FactoryDao.PILOT);
 		ActionDao passengerDao = FactoryDao.createDAO(FactoryDao.PASSENGER);

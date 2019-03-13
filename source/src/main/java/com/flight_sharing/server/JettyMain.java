@@ -55,10 +55,10 @@ public class JettyMain {
 		server.setHandler(contexts);
 		
 		//launch reminder
-		Reminder.start();
+		//Reminder.start();
 		
 		// Start server
-//		server.start();
+		server.start();
 
 		
 	}

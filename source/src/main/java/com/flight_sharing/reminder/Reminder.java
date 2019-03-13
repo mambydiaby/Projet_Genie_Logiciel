@@ -16,7 +16,7 @@ public class Reminder {
 		JobDetail jobA = JobBuilder.newJob(FlightList.class).withIdentity("getFlights", "group1").build();
 		//
 		Trigger trigger = TriggerBuilder.newTrigger().withIdentity("getFlightsTrigger", "group1")
-				.withSchedule(SimpleScheduleBuilder.simpleSchedule().withIntervalInHours(24).repeatForever()).build();
+				.withSchedule(SimpleScheduleBuilder.simpleSchedule().withIntervalInHours(1).repeatForever()).build();
 
 		// send email to the pilot and passenger
 		JobDetail jobB = JobBuilder.newJob(SendEmail.class).withIdentity("sendEmail", "group1").build();

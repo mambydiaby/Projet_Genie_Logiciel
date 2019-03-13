@@ -44,18 +44,16 @@ public class FlightService {
 	@Path("/search")
 	public List<String> searchDefault(@FormParam("departure") String departure, @FormParam("date") String date) {
 		List<String> result = null;
-//		System.out.println(departure + "  " + date);
 		try {
-			BoolQueryBuilder mybuilder = QueryBuilders.boolQuery();
-			if (departure != null && departure.length() > 0) {
-				mybuilder.must(QueryBuilders.wildcardQuery("departure", "*" + departure.toLowerCase() + "*"));
+			BoolQueryBuilder searchBuilder = QueryBuilders.boolQuery();
+			if (!departure.isEmpty()) {
+				searchBuilder.must(QueryBuilders.wildcardQuery("departure", "*" + departure.toLowerCase() + "*"));
 			}
-			if (date != null && date.length() > 0) {
-				mybuilder.must(QueryBuilders.wildcardQuery("date", "*" + date.toLowerCase() + "*"));
+			if (!date.isEmpty()) {
+				searchBuilder.must(QueryBuilders.rangeQuery("date").from(date).to(date+"T00:59:00"));
 			}
 
-			result= flightDao.search(mybuilder);
-			System.out.println(result);
+			result = flightDao.search(searchBuilder);
 			return result;
 		} catch (Exception e) {
 			registerException(e);
@@ -136,7 +134,7 @@ public class FlightService {
 		}
 
 	}
-	
+
 	private static void registerException(Exception e) {
 		Logger.getLogger(FlightService.class.getName()).log(Level.SEVERE, null, e);
 	}

@@ -16,7 +16,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.flight_sharing.dao.ActionDao;
 import com.flight_sharing.dao.FactoryDao;
 import com.flight_sharing.entities.Flight;
-import com.flight_sharing.ws.FlightService;
 
 public class FlightList implements Job {
 	/** list of next day flight */

@@ -3,6 +3,8 @@ package com.flight_sharing.mail;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.mail.Authenticator;
 import javax.mail.Message;
@@ -129,11 +131,14 @@ public class Email {
 			transport.close();
 			System.out.println("Sent Message Successfully....");
 		} catch (AddressException ae) {
-			ae.printStackTrace();
+			registerException(ae);
 		} catch (MessagingException me) {
-			me.printStackTrace();
+			registerException(me);
 		}
 
 	}
-
+	
+	private static void registerException(Exception e) {
+		Logger.getLogger(Email.class.getName()).log(Level.SEVERE, null, e);
+	}
 }
