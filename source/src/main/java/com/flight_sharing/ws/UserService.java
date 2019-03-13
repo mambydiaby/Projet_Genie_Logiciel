@@ -1,5 +1,8 @@
 package com.flight_sharing.ws;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -23,13 +26,17 @@ import com.flight_sharing.json.ConvertObject;
 @Path("/user")
 public class UserService {
 	ActionDao passengerDao = FactoryDao.createDAO(FactoryDao.PASSENGER);
-	ActionDao pilotDao = FactoryDao.createDAO(FactoryDao.PILOTE);
+	ActionDao pilotDao = FactoryDao.createDAO(FactoryDao.PILOT);
 
 	@Context
 	HttpServletRequest request;
 
 	private boolean IsLogged() {
 		return request.getSession().getAttribute("userId") != null;
+	}
+	
+	private static void registerException(Exception e) {
+		Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, e);
 	}
 
 	/**
@@ -82,7 +89,7 @@ public class UserService {
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			registerException(e);
 		}
 		return "{\"result\":\"login error500\"}";
 	}
@@ -109,7 +116,7 @@ public class UserService {
 			return "{\"result\":\"ok\"}";
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			registerException(e);
 		}
 		return "{\"result\":\"registration error500\"}";
 	}
@@ -136,7 +143,7 @@ public class UserService {
 			return "{\"result\":\"ok\"}";
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			registerException(e);
 		}
 		return "{\"result\":\"registration error500\"}";
 	}
@@ -157,7 +164,7 @@ public class UserService {
 			//System.out.print(user);
 			return user;
 		} catch (Exception e) {
-			e.printStackTrace();
+			registerException(e);
 		}
 		return "";
 	}
@@ -174,7 +181,7 @@ public class UserService {
 			else if (uType.equals("Passenger"))
 				return passengerDao.delete(userId);
 		} catch (Exception e) {
-			e.printStackTrace();
+			registerException(e);
 		}
 		return "";
 	}

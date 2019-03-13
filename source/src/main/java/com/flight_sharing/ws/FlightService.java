@@ -1,6 +1,8 @@
 package com.flight_sharing.ws;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
@@ -52,11 +54,11 @@ public class FlightService {
 				mybuilder.must(QueryBuilders.wildcardQuery("date", "*" + date.toLowerCase() + "*"));
 			}
 
-			result= flightDao.searchByPages(mybuilder);
+			result= flightDao.search(mybuilder);
 			System.out.println(result);
 			return result;
 		} catch (Exception e) {
-			e.printStackTrace();
+			registerException(e);
 		}
 		return result;
 	}
@@ -75,7 +77,7 @@ public class FlightService {
 		try {
 			result = flightDao.getById(id);
 		} catch (Exception e) {
-			e.printStackTrace();
+			registerException(e);
 		}
 		if (result != null) {
 			return result;
@@ -102,7 +104,7 @@ public class FlightService {
 		try {
 			result = flightDao.delete(id);
 		} catch (Exception e) {
-			e.printStackTrace();
+			registerException(e);
 		}
 
 		if (result.equals("OK")) {
@@ -125,7 +127,7 @@ public class FlightService {
 		try {
 			result = flightDao.add(ConvertObject.ObjectToByte(flight), flight.getId());
 		} catch (JsonProcessingException e) {
-			e.printStackTrace();
+			registerException(e);
 		}
 		if (result.equals("OK")) {
 			return "{\"addResult: \":\"success !\"}";
@@ -133,6 +135,10 @@ public class FlightService {
 			return "{\"addResult: \":\"error \"}";
 		}
 
+	}
+	
+	private static void registerException(Exception e) {
+		Logger.getLogger(FlightService.class.getName()).log(Level.SEVERE, null, e);
 	}
 
 }

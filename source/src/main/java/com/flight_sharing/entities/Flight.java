@@ -102,4 +102,9 @@ public class Flight {
 		this.duration = duration;
 	}
 	
+	@Override
+	public String toString() {
+		
+		return id +" "+pilotId+" "+date;
+	}
 }

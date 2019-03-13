@@ -13,6 +13,8 @@ import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
 
+import com.flight_sharing.reminder.Reminder;
+
 public class JettyMain {
 
 	public static void main(String[] args) throws Exception {
@@ -51,8 +53,13 @@ public class JettyMain {
 		ContextHandlerCollection contexts = new ContextHandlerCollection();
 		contexts.setHandlers(new Handler[] { handlerWebServices, handlerPortalCtx });
 		server.setHandler(contexts);
-
+		
+		//launch reminder
+		Reminder.start();
+		
 		// Start server
-		server.start();
+//		server.start();
+
+		
 	}
 }

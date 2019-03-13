@@ -60,5 +60,5 @@ public interface Dao {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<String> searchByPages(QueryBuilder queryBuilder) throws Exception;
+	public List<String> search(QueryBuilder queryBuilder) throws Exception;
 }

@@ -5,6 +5,8 @@ import static org.elasticsearch.index.query.QueryBuilders.matchAllQuery;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.elasticsearch.action.delete.DeleteResponse;
 import org.elasticsearch.action.get.GetResponse;
@@ -56,7 +58,7 @@ public class ActionDao extends BasicDao {
 		client.update(updateRequest).get();
 	}
 
-	public List<String> searchByPages(QueryBuilder queryBuilder) throws Exception {
+	public List<String> search(QueryBuilder queryBuilder) throws Exception {
 		List<String> results = new ArrayList<String>();
 		try {
 			SearchResponse response = client.prepareSearch(BasicDao.index).setTypes(mainType)
@@ -66,9 +68,13 @@ public class ActionDao extends BasicDao {
 				results.add(searchHit.getSourceAsString());
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			registerException(e);
 		}
 		return results;
+	}
+	
+	private static void registerException(Exception e) {
+		Logger.getLogger(ActionDao.class.getName()).log(Level.SEVERE, null, e);
 	}
 
 }
