@@ -1,9 +1,12 @@
 package com.flight_sharing.entities;
 
+import java.util.List;
+
 public class Flight {
 	private String id;
 	private String pilotId;
 	private int seat;
+	private List<String> passengerId;
 	private String departure;
 	private String arrival;
 	private String date;
@@ -15,11 +18,12 @@ public class Flight {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Flight(String id, String pilotId, int seat, String departure, String arrival, String date, String time,
-			String duration, String price) {
+	public Flight(String id, String pilotId, int seat, List<String> passengerId, String departure, String arrival,
+			String date, String time, String duration, String price) {
 		this.id = id;
 		this.pilotId = pilotId;
 		this.seat = seat;
+		this.passengerId = passengerId;
 		this.departure = departure;
 		this.arrival = arrival;
 		this.date = date;
@@ -98,6 +102,14 @@ public class Flight {
 
 	public void setPilotId(String pilotId) {
 		this.pilotId = pilotId;
+	}
+
+	public List<String> getPassengerId() {
+		return passengerId;
+	}
+
+	public void setPassengerId(List<String> passengerId) {
+		this.passengerId = passengerId;
 	}
 
 	@Override
