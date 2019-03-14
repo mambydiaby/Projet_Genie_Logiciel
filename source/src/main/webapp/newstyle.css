@@ -10,6 +10,19 @@ h1
 	color: rgb(223, 242, 235);
 }
 
+#conditions
+{
+	color:blue;
+}
+
+#inscription
+{
+	font-family:'Open Sans',sans-serif, "Arial Blanck", Impact, Verdana;
+	margin-left: 45%;
+	margin-top: 18%;
+	width:100px;
+}
+
 section
 {
 	font-family:'Open Sans',sans-serif, "Arial Blanck", Impact, Verdana;
@@ -18,7 +31,3 @@ section
 	width:100px;
 }
 
-@media all and (max-device-width: 480px)
-{
-    
-}
