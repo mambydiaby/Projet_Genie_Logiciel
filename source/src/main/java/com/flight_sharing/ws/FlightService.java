@@ -52,7 +52,7 @@ public class FlightService {
 			if (!date.isEmpty()) {
 				searchBuilder.must(QueryBuilders.rangeQuery("date").from(date).to(date+"T00:59:00"));
 			}
-
+			searchBuilder.must(QueryBuilders.rangeQuery("seat").from(1));
 			result = flightDao.search(searchBuilder);
 			return result;
 		} catch (Exception e) {

@@ -11,11 +11,11 @@ public class Pilot {
 	private String lastName;
 	/** pilote's email address */
 	private String email;
-	/** pilote's experience*/
+	/** pilote's experience */
 	private String experience;
-	/** pilote's qualification*/
+	/** pilote's qualification */
 	private String qualification;
-	
+
 	public Pilot() {
 		// TODO Auto-generated constructor stub
 	}
@@ -87,6 +87,4 @@ public class Pilot {
 		this.qualification = qualification;
 	}
 
-	
-	
 }

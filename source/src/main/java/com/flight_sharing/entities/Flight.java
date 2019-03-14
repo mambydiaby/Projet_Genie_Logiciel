@@ -1,33 +1,31 @@
 package com.flight_sharing.entities;
 
-import java.util.List;
-
 public class Flight {
 	private String id;
 	private String pilotId;
-	private List<String> passengerId;
 	private int seat;
 	private String departure;
 	private String arrival;
 	private String date;
 	private String time;
 	private String duration;
+	private String price;
 
 	public Flight() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Flight(String id, String pilotId, List<String> passengerId, int seat, String departure, String arrival,
-			String date, String time, String duration) {
+	public Flight(String id, String pilotId, int seat, String departure, String arrival, String date, String time,
+			String duration, String price) {
 		this.id = id;
 		this.pilotId = pilotId;
-		this.passengerId = passengerId;
 		this.seat = seat;
 		this.departure = departure;
 		this.arrival = arrival;
 		this.date = date;
 		this.time = time;
 		this.duration = duration;
+		this.price = price;
 	}
 
 	public String getId() {
@@ -36,22 +34,6 @@ public class Flight {
 
 	public void setId(String id) {
 		this.id = id;
-	}
-
-	public String getPilotId() {
-		return pilotId;
-	}
-
-	public void setPiloteId(String pilotId) {
-		this.pilotId = pilotId;
-	}
-
-	public List<String> getPassengerId() {
-		return passengerId;
-	}
-
-	public void setPassengerId(List<String> passengerId) {
-		this.passengerId = passengerId;
 	}
 
 	public int getSeat() {
@@ -101,10 +83,26 @@ public class Flight {
 	public void setDuration(String duration) {
 		this.duration = duration;
 	}
-	
+
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+
+	public String getPilotId() {
+		return pilotId;
+	}
+
+	public void setPilotId(String pilotId) {
+		this.pilotId = pilotId;
+	}
+
 	@Override
 	public String toString() {
-		
-		return id +" "+pilotId+" "+date;
+
+		return id + " " + pilotId + " " + date;
 	}
 }

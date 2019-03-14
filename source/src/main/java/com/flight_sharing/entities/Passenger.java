@@ -11,6 +11,7 @@ public class Passenger {
 	private String lastName;
 	/** passenger's email address */
 	private String email;
+
 	public Passenger() {
 		// TODO Auto-generated constructor stub
 	}
@@ -25,7 +26,7 @@ public class Passenger {
 
 	public String getId() {
 		return id;
-	} 
+	}
 
 	public void setId(String id) {
 		this.id = id;
