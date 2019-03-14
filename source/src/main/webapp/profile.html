@@ -3,22 +3,22 @@
 <head>
     <meta charset="utf-8">
     <title>Profile</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
-                      input.hidden {
-    position: absolute;
-    left: -9999px;
-}
+      input.hidden {
+          position: absolute;
+          left: -9999px;
+      }
 
-#profile-image1 {
-    cursor: pointer;
-  
-     width: 100px;
-    height: 100px;
-  border:2px solid #03b1ce ;}
-  .tital{ font-size:16px; font-weight:500;}
-   .bot-border{ border-bottom:1px #f8f8f8 solid;  margin:5px 0  5px 0}  
+      #profile-image1 {
+          cursor: pointer;
+        
+           width: 100px;
+          height: 100px;
+        border:2px solid #03b1ce ;}
+        .tital{ font-size:16px; font-weight:500;}
+         .bot-border{ border-bottom:1px #f8f8f8 solid;  margin:5px 0  5px 0}  
     </style>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
@@ -33,66 +33,66 @@
         
        <div class="col-md-7 ">
 
-<div class="panel panel-default">
-  <div class="panel-heading">  <h4 >Profile</h4></div>
-   <div class="panel-body">
-       
-    <div class="box box-info">
-        
-            <div class="box-body">
-                     <div class="col-sm-6">
-                     <div  align="center"> <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive"> 
+        <div class="panel panel-default">
+          <div class="panel-heading">  <h4 >Profile</h4></div>
+           <div class="panel-body">
+               
+            <div class="box box-info">
                 
-                <input id="profile-image-upload" class="hidden" type="file">
-<div style="color:#999;" >click here to change profile image</div>
-                <!--Upload Image Js And Css-->
+                    <div class="box-body">
+                             <div class="col-sm-6">
+                             <div  align="center"> <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive"> 
+                        
+                        <input id="profile-image-upload" class="hidden" type="file">
+                        <div style="color:#999;" >click here to change profile image</div>
+                                        <!--Upload Image Js And Css-->
+                   
+                      
            
-              
-   
-                
-                
-                     
-                     
-                     </div>
-              
-              <br>
-    
-              <!-- /input-group -->
-            </div>
-            <div class="col-sm-6">
-            <h4 style="color:#00b1b1;" ><div id="name"></div> </h4></span>
-              <span><p id="utype"></p></span>            
-            </div>
-            <div class="clearfix"></div>
-            <hr style="margin:5px 0 5px 0;">
+                        
+                        
+                             
+                             
+                             </div>
+                      
+                      <br>
+            
+                      <!-- /input-group -->
+                    </div>
+                    <div class="col-sm-6">
+                    <h4 style="color:#00b1b1;" ><div id="name"></div> </h4></span>
+                      <span><p id="utype"></p></span>            
+                    </div>
+                    <div class="clearfix"></div>
+                    <hr style="margin:5px 0 5px 0;">
     
               
-<div class="col-sm-5 col-xs-6 tital " >Username:</div><div class="col-sm-7 col-xs-6 " id="usr"></div>
-     <div class="clearfix"></div>
-<div class="bot-border"></div>
+                    <div class="col-sm-5 col-xs-6 tital " >Username:</div><div class="col-sm-7 col-xs-6 " id="usr"></div>
+                         <div class="clearfix"></div>
+                    <div class="bot-border"></div>
 
-<div class="col-sm-5 col-xs-6 tital " >First Name:</div><div class="col-sm-7" id="fname"></div>
-  <div class="clearfix"></div>
-<div class="bot-border"></div>
+                    <div class="col-sm-5 col-xs-6 tital " >First Name:</div><div class="col-sm-7" id="fname"></div>
+                      <div class="clearfix"></div>
+                    <div class="bot-border"></div>
 
-<div class="col-sm-5 col-xs-6 tital " >Last Name:</div><div class="col-sm-7" id="lname"></div>
-  <div class="clearfix"></div>
-<div class="bot-border"></div>
+                    <div class="col-sm-5 col-xs-6 tital " >Last Name:</div><div class="col-sm-7" id="lname"></div>
+                      <div class="clearfix"></div>
+                    <div class="bot-border"></div>
 
-<div class="col-sm-5 col-xs-6 tital " >Email:</div><div class="col-sm-7" id="email"></div>
+                    <div class="col-sm-5 col-xs-6 tital " >Email:</div><div class="col-sm-7" id="email"></div>
 
-  <div class="clearfix"></div>
-<div class="bot-border"></div>
+                      <div class="clearfix"></div>
+                    <div class="bot-border"></div>
 
-<div class="col-sm-5 col-xs-6 tital " >Experience:</div><div class="col-sm-7" id="exp"></div>
+                    <div class="col-sm-5 col-xs-6 tital " >Experience:</div><div class="col-sm-7" id="exp"></div>
 
-  <div class="clearfix"></div>
-<div class="bot-border"></div>
+                      <div class="clearfix"></div>
+                    <div class="bot-border"></div>
 
-<div class="col-sm-5 col-xs-6 tital " >Qualification:</div><div class="col-sm-7" id="qual"></div>
+                    <div class="col-sm-5 col-xs-6 tital " >Qualification:</div><div class="col-sm-7" id="qual"></div>
 
- <div class="clearfix"></div>
-<div class="bot-border"></div>
+                     <div class="clearfix"></div>
+                    <div class="bot-border"></div>
 
 
             <!-- /.box-body -->
@@ -100,21 +100,21 @@
           <!-- /.box -->
 
         </div>
-       
-            
-    </div> 
+           
+                
+        </div> 
+        </div>
+    </div>  
+           
+           
+           
+           
+           
+           
+           
+           
+           
+       </div>
     </div>
-</div>  
-       
-       
-       
-       
-       
-       
-       
-       
-       
-   </div>
-</div>
-</body>
+  </body>
 </html>
