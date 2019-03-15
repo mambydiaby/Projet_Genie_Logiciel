@@ -1,9 +1,5 @@
 package com.flight_sharing.ws;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
@@ -13,31 +9,16 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.flight_sharing.dao.ActionDao;
-import com.flight_sharing.dao.FactoryDao;
 import com.flight_sharing.entities.Passenger;
 import com.flight_sharing.entities.Pilot;
 import com.flight_sharing.json.ConvertObject;
 
 @Path("/user")
-public class UserService {
-	ActionDao passengerDao = FactoryDao.createDAO(FactoryDao.PASSENGER);
-	ActionDao pilotDao = FactoryDao.createDAO(FactoryDao.PILOT);
-
-	@Context
-	HttpServletRequest request;
-
-	private boolean IsLogged() {
-		return request.getSession().getAttribute("userId") != null;
-	}
+public class UserService extends Service {
 	
-	private static void registerException(Exception e) {
-		Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, e);
-	}
 
 	/**
 	 * web service for passenger and pilot login
@@ -71,7 +52,7 @@ public class UserService {
 
 					if (p.getPwd().equals(userPwd)) {
 						request.getSession().setAttribute("userId", p.getId());
-						request.getSession().setAttribute("type", "pilote");
+						request.getSession().setAttribute("type", "pilot");
 						return "{\"result\":\"okp\"}";
 					} else {
 						return "{\"result\":\"password incorrect!\"}";

@@ -1,10 +1,7 @@
 package com.flight_sharing.ws;
 
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
@@ -13,30 +10,17 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.flight_sharing.dao.ActionDao;
-import com.flight_sharing.dao.FactoryDao;
 import com.flight_sharing.entities.Flight;
 import com.flight_sharing.json.ConvertObject;
 
 @Path("/flight")
-public class FlightService {
-
-	ActionDao flightDao = FactoryDao.createDAO(FactoryDao.FLIGHT);
-
-	@Context
-	HttpServletRequest request;
-
-	private boolean getLoginState() {
-		return request.getSession().getAttribute("userId") == null
-				|| request.getSession().getAttribute("userId").toString() == "";
-	}
+public class FlightService extends Service {
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
@@ -50,7 +34,7 @@ public class FlightService {
 				searchBuilder.must(QueryBuilders.wildcardQuery("departure", "*" + departure.toLowerCase() + "*"));
 			}
 			if (!date.isEmpty()) {
-				searchBuilder.must(QueryBuilders.rangeQuery("date").from(date).to(date+"T00:59:00"));
+				searchBuilder.must(QueryBuilders.rangeQuery("date").from(date).to(date + "T00:59:00"));
 			}
 			searchBuilder.must(QueryBuilders.rangeQuery("seat").from(1));
 			result = flightDao.search(searchBuilder);
@@ -94,8 +78,8 @@ public class FlightService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/delete/{id}")
 	public String deleteById(@PathParam("id") String id) {
-		if (!getLoginState())
-			return "{\"result: \":\"Please Login !\"}";
+		if (!(IsLogged() && isPilot()))
+			return "{\"result: \":\"Please Login as Pilot!\"}";
 
 		String result = null;
 
@@ -118,7 +102,7 @@ public class FlightService {
 	@Path("add")
 	public String addFlight(Flight flight) throws Exception {
 
-		if (!getLoginState())
+		if (!IsLogged())
 			return "{\"result: \":\"Please Login !\"}";
 
 		String result = "";
@@ -133,10 +117,6 @@ public class FlightService {
 			return "{\"addResult: \":\"error \"}";
 		}
 
-	}
-
-	private static void registerException(Exception e) {
-		Logger.getLogger(FlightService.class.getName()).log(Level.SEVERE, null, e);
 	}
 
 }
