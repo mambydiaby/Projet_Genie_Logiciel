@@ -13,10 +13,12 @@ import javax.ws.rs.core.MediaType;
 
 import org.elasticsearch.index.query.QueryBuilders;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.flight_sharing.entities.Flight;
+import com.flight_sharing.entities.Passenger;
+import com.flight_sharing.entities.Pilot;
 import com.flight_sharing.entities.Reservation;
 import com.flight_sharing.json.ConvertObject;
+import com.flight_sharing.mail.Email;
 
 @Path("reservation")
 public class ReservationService extends Service {
@@ -29,12 +31,21 @@ public class ReservationService extends Service {
 		if (!IsLogged())
 			return "{\"result: \":\"Please Login !\"}";
 
-		String result = "";
-		try {
-			result = reservationDao.add(ConvertObject.objectToByte(r), r.getId());
-		} catch (JsonProcessingException e) {
-			registerException(e);
-		}
+		Flight flight = (Flight) ConvertObject.jsonToObject(flightDao.getById(r.getFlightId()), ConvertObject.FLIGHT);
+		if (flight == null)
+			return "{\"result: \":\"error\"}";
+		System.out.println(flight.getId() + " " + flight.getPilotId());
+		Pilot pilot = (Pilot) ConvertObject.jsonToObject(pilotDao.getById(flight.getPilotId()), ConvertObject.PILOT);
+		if (pilot == null)
+			return "{\"result: \":\"error\"}";
+
+		String body = "Hello Mr/Mrs/Ms " + pilot.getLastName() + " ,<br/><br/>You have a new  booking for "
+				+ r.getSeat() + " seats regarding the flight  <b>" + r.getFlightId()
+				+ "</b>. <br/>Please log in to accept or reject it as soon as possible.<br/><br/>Best regards.";
+		Email.send(pilot.getEmail(), "Flight booking", body);
+
+		String result = reservationDao.add(ConvertObject.objectToByte(r), r.getId());
+
 		if (result.equals("OK")) {
 			return "{\"addResult: \":\"success !\"}";
 		} else {
@@ -61,6 +72,15 @@ public class ReservationService extends Service {
 		flight.getPassengerId().add(rt.getPassengerId());
 		flightDao.add(ConvertObject.objectToByte(flight), flight.getId());
 		reservationDao.update(id, "approved", "true");
+
+		Passenger pa = (Passenger) ConvertObject.jsonToObject(passengerDao.getById(rt.getPassengerId()),
+				ConvertObject.PASSENGER);
+		String body = "Hello Mr/Mrs/Ms " + pa.getLastName() + ",<br/><br/>Your booking for the flight "
+				+ rt.getFlightId()
+				+ "  has been approved by the pilot. You will receive an email containing the essential information the "
+				+ "day before the flight.<br/><br/>Best regards.";
+		Email.send(pa.getEmail(), "Flight booking", body);
+		reservationDao.delete(id);
 		return "{\"result: \":\"ok\"}";
 	}
 
@@ -73,8 +93,16 @@ public class ReservationService extends Service {
 		if (!(IsLogged() && isPilot()))
 			return "{\"result: \":\"Please Login !\"}";
 
+		Reservation rt = (Reservation) ConvertObject.jsonToObject(reservationDao.getById(id),
+				ConvertObject.RESERVATION);
+		if (rt == null || rt.isApproved())
+			return "{\"result: \":\"error\"}";
+		Passenger pa = (Passenger) ConvertObject.jsonToObject(passengerDao.getById(rt.getPassengerId()),
+				ConvertObject.PASSENGER);
+		String body = "Hello Mr/Mrs/Ms " + pa.getLastName() + ",<br/><br/>Your booking for the flight "
+				+ rt.getFlightId() + " has been rejected by the pilot. <br/><br/>Best regards.";
+		Email.send(pa.getEmail(), "Flight booking", body);
 		reservationDao.delete(id);
-
 		return "{\"result: \":\"ok \"}";
 	}
 
