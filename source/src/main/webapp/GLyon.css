@@ -1,0 +1,29 @@
+body
+{
+	background: url("lyonf.jpg") no-repeat fixed;
+	background-size:100% 100%;
+	
+}
+
+#contenu
+{
+	border:2px;
+	background: white;
+	margin-left: 0%;
+	margin-top: 30%;
+	display: flex;
+    justify-content: space-around;
+    word-wrap: break-word;
+
+}
+
+aside
+{
+	margin-top:6%;
+}
+
+h2
+{
+	font-size:40px;
+}
+
