@@ -23,7 +23,7 @@ public class ReservationService extends Service {
 
 		String result = "";
 		try {
-			result = reservationDao.add(ConvertObject.ObjectToByte(r), r.getId());
+			result = reservationDao.add(ConvertObject.objectToByte(r), r.getId());
 		} catch (JsonProcessingException e) {
 			registerException(e);
 		}

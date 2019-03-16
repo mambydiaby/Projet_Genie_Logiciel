@@ -107,7 +107,7 @@ public class FlightService extends Service {
 
 		String result = "";
 		try {
-			result = flightDao.add(ConvertObject.ObjectToByte(flight), flight.getId());
+			result = flightDao.add(ConvertObject.objectToByte(flight), flight.getId());
 		} catch (JsonProcessingException e) {
 			registerException(e);
 		}

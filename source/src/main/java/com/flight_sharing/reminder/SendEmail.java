@@ -27,12 +27,12 @@ public class SendEmail extends Common implements Job {
 
 				if (ft.getTime().equals(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm")).toString())) {
 					String pilot = pilotDao.getById(ft.getPilotId());
-					Pilot pl = (Pilot) ConvertObject.JsonToObject(pilot, ConvertObject.PILOT);
+					Pilot pl = (Pilot) ConvertObject.jsonToObject(pilot, ConvertObject.PILOT);
 					to = pl.getEmail();
 
 					for (String pid : ft.getPassengerId()) {
 						String pajson = passengerDao.getById(pid);
-						Passenger pa = (Passenger) ConvertObject.JsonToObject(pajson, ConvertObject.PASSENGER);
+						Passenger pa = (Passenger) ConvertObject.jsonToObject(pajson, ConvertObject.PASSENGER);
 						cc.add(pa.getEmail());
 					}
 					Email.send(to, cc, "rappel", "vous avez un vol demain à " + ft.getTime());

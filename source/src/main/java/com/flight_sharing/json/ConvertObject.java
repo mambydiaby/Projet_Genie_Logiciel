@@ -22,11 +22,11 @@ public class ConvertObject {
 	public static final int AIRPLANE = 6;
 	private static ObjectMapper objectMapper = new ObjectMapper();
 
-	public static byte[] ObjectToByte(Object object) throws JsonProcessingException {
+	public static byte[] objectToByte(Object object) throws JsonProcessingException {
 		return objectMapper.writeValueAsBytes(object);
 	}
 
-	public static Object JsonToObject(String json, int id)
+	public static Object jsonToObject(String json, int id)
 			throws JsonParseException, JsonMappingException, IOException {
 		switch (id) {
 		case FLIGHT:

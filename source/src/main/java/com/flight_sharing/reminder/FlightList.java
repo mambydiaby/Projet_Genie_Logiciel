@@ -24,7 +24,7 @@ public class FlightList extends Common implements Job {
 					LocalDateTime.now().plusDays(1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString()));
 			
 			for (String string : nextDayFlights) {
-				flight.add((Flight) ConvertObject.JsonToObject(string, ConvertObject.FLIGHT));
+				flight.add((Flight) ConvertObject.jsonToObject(string, ConvertObject.FLIGHT));
 			}
 		} catch (Exception e) {
 			registerException(e);

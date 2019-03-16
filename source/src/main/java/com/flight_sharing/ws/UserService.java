@@ -11,7 +11,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.flight_sharing.entities.Passenger;
 import com.flight_sharing.entities.Pilot;
 import com.flight_sharing.json.ConvertObject;
@@ -32,7 +31,6 @@ public class UserService extends Service {
 	@Consumes("application/x-www-form-urlencoded")
 	@Path("login")
 	public String login(@FormParam("id") String userId, @FormParam("pwd") String userPwd) {
-		ObjectMapper mapper = new ObjectMapper();
 		try {
 			if (userId == null || userPwd == null) {
 				return "{\"result\":\"empty fields\"}";
@@ -48,7 +46,7 @@ public class UserService extends Service {
 						return "{\"result\":\"username incorrect!\"}";
 					}
 
-					Pilot p = mapper.readValue(user, Pilot.class);
+					Pilot p =  (Pilot) ConvertObject.jsonToObject(user, ConvertObject.PILOT);
 
 					if (p.getPwd().equals(userPwd)) {
 						request.getSession().setAttribute("userId", p.getId());
@@ -59,7 +57,7 @@ public class UserService extends Service {
 					}
 				}
 
-				Passenger p = mapper.readValue(user, Passenger.class);
+				Passenger p = (Passenger) ConvertObject.jsonToObject(user, ConvertObject.PASSENGER);
 
 				if (p.getPwd().equals(userPwd)) {
 					request.getSession().setAttribute("userId", p.getId());
@@ -93,7 +91,7 @@ public class UserService extends Service {
 
 		try {
 			String id = p.getId();
-			passengerDao.add(ConvertObject.ObjectToByte(p), id);
+			passengerDao.add(ConvertObject.objectToByte(p), id);
 			return "{\"result\":\"ok\"}";
 
 		} catch (Exception e) {
@@ -120,7 +118,7 @@ public class UserService extends Service {
 
 		try {
 			String id = p.getId();
-			pilotDao.add(ConvertObject.ObjectToByte(p), id);
+			pilotDao.add(ConvertObject.objectToByte(p), id);
 			return "{\"result\":\"ok\"}";
 
 		} catch (Exception e) {
