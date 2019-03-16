@@ -10,12 +10,12 @@ public class Reservation {
 	public Reservation() {
 	}
 
-	public Reservation(String id, String flightId, String passengerId, int seat, boolean approved) {
+	public Reservation(String id, String flightId, String passengerId, int seat) {
 		this.id = id;
 		this.flightId = flightId;
 		this.passengerId = passengerId;
 		this.seat = seat;
-		this.approved = approved;
+		this.approved = false;
 	}
 
 	public String getFlightId() {
