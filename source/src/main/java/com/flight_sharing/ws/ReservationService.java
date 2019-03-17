@@ -128,7 +128,7 @@ public class ReservationService extends Service {
 					rtList.remove(i);
 
 			}
-
+		
 		return rtList;
 	}
 }

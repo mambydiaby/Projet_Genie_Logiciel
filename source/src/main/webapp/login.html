@@ -1,44 +1,38 @@
 <!DOCTYPE html>
 <html>
-
-	<head>
-		<title> Login </title>
-		<meta charset="UTF-8">
-		<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-		<link rel="stylesheet" type="text/css" href="css/login.css">
-		<script type="text/javascript" src="js/login.js"></script>
-	</head>
-
-	<body>
-		
-		<div id="formWrapper">
-		
-			<div id="form">
-				<div style=" color :#58bff6" class="logo">
-					<h1 class="text-center head">Login</h1>
-		          	<div id="loginerror" class="alert alert-error" style="display:none" ></div>
-				</div>
-				<div class="form-item">
-					<p class="formLabel">Username</p>
-					<input type="text" name="usr" id="usr" class="form-style" autocomplete="off"/>
-				</div>
-				<div class="form-item">
-					<p class="formLabel">Password</p>
-					<input type="password" name="password" id="pwd" class="form-style" />
-					<!-- <div class="pw-view"><i class="fa fa-eye"></i></div> -->
-					<p><a href="#" ><small>Forgot Password ?</small></a></p>	
-				</div>
-				<div class="form-item">
-					<p class="pull-left"><a href="registration.html"><small>Register</small></a></p>
-					<input type="submit" class="login pull-right" id="Login" onclick="login();" value="Log In">
-					<div class="clear-fix"></div>
-				</div>
-			</div>
-		</div>
-		
-		
-	</body>
+   <head>
+      <title> Login </title>
+      <meta charset="UTF-8">
+      <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+      <link rel="stylesheet" type="text/css" href="css/login.css">
+      <script type="text/javascript" src="js/login.js"></script>
+   </head>
+   <body>
+      <div id="formWrapper">
+         <div id="form">
+            <div style=" color :#58bff6" class="logo">
+               <h1 class="text-center head">Login</h1>
+               <div id="loginerror" class="alert alert-error" style="display:none" ></div>
+            </div>
+            <div class="form-item">
+               <p class="formLabel">Username</p>
+               <input type="text" name="usr" id="usr" class="form-style" autocomplete="off"/>
+            </div>
+            <div class="form-item">
+               <p class="formLabel">Password</p>
+               <input type="password" name="password" id="pwd" class="form-style" />
+               <!-- <div class="pw-view"><i class="fa fa-eye"></i></div> -->
+               <p><a href="#" ><small>Forgot Password ?</small></a></p>
+            </div>
+            <div class="form-item">
+               <p class="pull-left"><a href="registration.html"><small>Register</small></a></p>
+               <input type="submit" class="login pull-right" id="Login" onclick="login();" value="Log In">
+               <div class="clear-fix"></div>
+            </div>
+         </div>
+      </div>
+   </body>
 </html>

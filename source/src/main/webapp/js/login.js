@@ -17,6 +17,7 @@ $(document).ready(function() {
 	});
 });
 
+
 function login() {
 	var usr = $('#usr').val();
 	var pwd = $('#pwd').val();
@@ -31,11 +32,11 @@ function login() {
 		success: function(data) {
 			if (data.result == 'ok') {
 				sessionStorage.setItem("user", usr)
-				sessionStorage.setItem("type",'Passenger');
+				sessionStorage.setItem("type", 'Passenger');
 				location.href = 'http://localhost:8081/test.html';
 			} else if (data.result == 'okp') {
 				sessionStorage.setItem("user", usr)
-				sessionStorage.setItem("type",'Pilot');
+				sessionStorage.setItem("type", 'Pilot');
 				location.href = 'http://localhost:8081/testp.html';
 			} else {
 				//alert(data.result);
