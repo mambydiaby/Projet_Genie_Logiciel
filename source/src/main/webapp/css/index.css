@@ -1,7 +1,7 @@
 #body_index {
     font-family: 'Helvetica', Sans-Serif;
     margin: 0px;
-    background-image: url('img/background_img.jpg');
+    background-image: url('../img/background_img.jpg');
     background-position: auto auto;
     background-repeat: no-repeat;
     background-size: cover;
