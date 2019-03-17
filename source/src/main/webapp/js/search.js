@@ -32,7 +32,7 @@ function mysubmit() {
 				var td4 = "<td>" + obj.price + "</td>";
 				var td5 = "<td class=\"text-center\"><a class='btn btn-info btn-xs' href=\"#\"><span class=\"glyphicon glyphicon-ok\"></span> See</a> </td></tr>"
 
-				tbl += td0 + td1 + td2 + td3 + td4 +  td5;
+				tbl += td0 + td1 + td2 + td3 + td4 + td5;
 
 			}
 			tbl += "</table>"
@@ -41,4 +41,11 @@ function mysubmit() {
 		}
 	})
 }
+
+$(function() {
+	
+	var today = moment().format("YYYY-MM-DD");
+	document.getElementById('date').setAttribute("min", today);
+	
+});
 
