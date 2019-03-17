@@ -3,6 +3,7 @@ package com.flight_sharing.ws;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -15,7 +16,6 @@ import javax.ws.rs.core.MediaType;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.flight_sharing.entities.Flight;
 import com.flight_sharing.json.ConvertObject;
 
@@ -74,7 +74,7 @@ public class FlightService extends Service {
 	 * @param id
 	 * @return
 	 */
-	@GET
+	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/delete/{id}")
 	public String deleteById(@PathParam("id") String id) {
@@ -106,11 +106,8 @@ public class FlightService extends Service {
 			return "{\"result: \":\"Please Login !\"}";
 
 		String result = "";
-		try {
-			result = flightDao.add(ConvertObject.objectToByte(flight), flight.getId());
-		} catch (JsonProcessingException e) {
-			registerException(e);
-		}
+		result = flightDao.add(ConvertObject.objectToByte(flight), flight.getId());
+
 		if (result.equals("OK")) {
 			return "{\"addResult: \":\"success !\"}";
 		} else {
