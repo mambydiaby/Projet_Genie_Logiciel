@@ -1,4 +1,4 @@
-#body_login {
+#body_index {
     font-family: 'Helvetica', Sans-Serif;
     margin: 0px;
     background-image: url('img/background_img.jpg');
@@ -9,43 +9,42 @@
 }
 
 #container {
+    text-align: center;
     margin: 50px;
     height: auto;
-}
-
-#container form {
-    padding: 50px;
-    width: 500px;
-    margin: 100px auto auto auto;
-    color: #6e644b;
-    background-color: white;
-    border-radius: 5px;
-}
-
-#container form a {
-    text-decoration: underline;
-    padding: 35px;
-}
-
-#container form a: hover {
-    cursor: pointer;
-}
-
-#container form h2 {
-    text-align: center;
-    margin: 0 0 25px 0;
     font-weight: bold;
 }
 
-#submit_login {
+#login {
+    text-align: right;
+    margin: 30px;
+}
+
+#login a {
+    font-size: 15px;
+    color: #6e644b;
+    text-decoration: underline;
+}
+
+#login a: hover {
+    cursor: pointer;
+}
+
+#container h1 {
+    color: #6e644b;
+    margin-top: 200px;
+    font-weight: bold;
+}
+
+#btn_find_flight button {
     background-color: orange;
-    width: 150px;
-    margin: auto auto;
+    width: 300px;
+    margin: 100px auto auto auto;
     border-color: white;
     font-weight: bold;
 }
 
-#submit_login:hover {
+#btn_find_flight button:hover {
     color: orange;
     background-color: white;
     border-color: orange;
