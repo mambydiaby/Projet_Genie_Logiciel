@@ -6,6 +6,8 @@
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 		<link href="css/login.css" rel="stylesheet">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+     	<script type="text/javascript" src="js/login.js"></script>
 	</head>
 
 	<body id="body_login">
@@ -13,14 +15,14 @@
             <form>
                 <h2>LOG IN</h2>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">ID / Email address :</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter id / email">
+                    <label for="username">Username :</label>
+                    <input type="email" class="form-control" id="usr" aria-describedby="emailHelp" placeholder="Enter username">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Password :</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="***************">
+                    <label for="InputPassword">Password :</label>
+                    <input type="password" class="form-control" id="pwd" placeholder="***************">
                 </div>
-                <button type="submit" id="submit_login" class="btn btn-primary">Submit</button>
+                <button type="submit" id="submit_login" class="btn btn-primary" onclick="login();">Submit</button>
                 <a href="signup.html">Or create a new account...</a>
             </form>
 		</div>
