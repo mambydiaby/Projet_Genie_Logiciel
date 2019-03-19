@@ -11,13 +11,14 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.json.JSONObject;
+
 import com.flight_sharing.entities.Passenger;
 import com.flight_sharing.entities.Pilot;
 import com.flight_sharing.json.ConvertObject;
 
 @Path("/user")
 public class UserService extends Service {
-	
 
 	/**
 	 * web service for passenger and pilot login
@@ -46,7 +47,7 @@ public class UserService extends Service {
 						return "{\"result\":\"username incorrect!\"}";
 					}
 
-					Pilot p =  (Pilot) ConvertObject.jsonToObject(user, ConvertObject.PILOT);
+					Pilot p = (Pilot) ConvertObject.jsonToObject(user, ConvertObject.PILOT);
 
 					if (p.getPwd().equals(userPwd)) {
 						request.getSession().setAttribute("userId", p.getId());
@@ -74,7 +75,7 @@ public class UserService extends Service {
 	}
 
 	/**
-	 * webservice for passenger registration
+	 * webservice for passenger registration 
 	 * 
 	 * @param userId
 	 * @param userPwd
@@ -131,17 +132,21 @@ public class UserService extends Service {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes("application/x-www-form-urlencoded")
 	@Path("profile/{id}")
-	public String profile(@PathParam("id") String userId) {
+	public String privateProfile(@PathParam("id") String userId) {
 
-		if (!IsLogged())
-			return "{\"result: \":\"Please Login !\"}";
+//		if (!IsLogged())
+//			return "{\"result: \":\"Please Login !\"}";
 		try {
 			String user = passengerDao.getById(userId);
 
 			if (user == null)
 				user = pilotDao.getById(userId);
-			//System.out.print(user);
-			return user;
+			System.out.println(user);
+			if (!user.isEmpty()) {
+				JSONObject json = new JSONObject(user);
+				json.put("pwd", "");
+				return json.toString();
+			}
 		} catch (Exception e) {
 			registerException(e);
 		}

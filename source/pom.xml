@@ -113,6 +113,12 @@
 			<version>1.8.0-beta2</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20180813</version>
+		</dependency>
 
 	</dependencies>
 	<build>
