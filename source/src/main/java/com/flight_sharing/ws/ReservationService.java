@@ -29,15 +29,15 @@ public class ReservationService extends Service {
 	@Path("/new")
 	public String add(Reservation r) throws Exception {
 		if (!IsLogged())
-			return "{\"result: \":\"Please Login !\"}";
+			return "{\"result\":\"Please Login !\"}";
 
 		Flight flight = (Flight) ConvertObject.jsonToObject(flightDao.getById(r.getFlightId()), ConvertObject.FLIGHT);
 		if (flight == null)
-			return "{\"result: \":\"error\"}";
+			return "{\"result\":\"error\"}";
 		System.out.println(flight.getId() + " " + flight.getPilotId());
 		Pilot pilot = (Pilot) ConvertObject.jsonToObject(pilotDao.getById(flight.getPilotId()), ConvertObject.PILOT);
 		if (pilot == null)
-			return "{\"result: \":\"error\"}";
+			return "{\"result\":\"error\"}";
 
 		String body = "Hello Mr/Mrs/Ms " + pilot.getLastName() + " ,<br/><br/>You have a new  booking for "
 				+ r.getSeat() + " seats regarding the flight  <b>" + r.getFlightId()
@@ -47,9 +47,9 @@ public class ReservationService extends Service {
 		String result = reservationDao.add(ConvertObject.objectToByte(r), r.getId());
 
 		if (result.equals("OK")) {
-			return "{\"addResult: \":\"success !\"}";
+			return "{\"result\":\"success !\"}";
 		} else {
-			return "{\"addResult: \":\"error \"}";
+			return "{\"result\":\"error \"}";
 		}
 	}
 
@@ -60,14 +60,14 @@ public class ReservationService extends Service {
 	public String approve(@PathParam("id") String id) throws Exception {
 
 		if (!(IsLogged() && isPilot()))
-			return "{\"result: \":\"Please Login !\"}";
+			return "{\"result\":\"Please Login !\"}";
 		Reservation rt = (Reservation) ConvertObject.jsonToObject(reservationDao.getById(id),
 				ConvertObject.RESERVATION);
 		if (rt == null || rt.isApproved())
-			return "{\"result: \":\"error\"}";
+			return "{\"result\":\"error\"}";
 		Flight flight = (Flight) ConvertObject.jsonToObject(flightDao.getById(rt.getFlightId()), ConvertObject.FLIGHT);
 		if (flight == null)
-			return "{\"result: \":\"error\"}";
+			return "{\"result\":\"error\"}";
 		flight.setSeat(flight.getSeat() - rt.getSeat());
 		flight.getPassengerId().add(rt.getPassengerId());
 		flightDao.add(ConvertObject.objectToByte(flight), flight.getId());
@@ -81,7 +81,7 @@ public class ReservationService extends Service {
 				+ "day before the flight.<br/><br/>Best regards.";
 		Email.send(pa.getEmail(), "Flight booking", body);
 		reservationDao.delete(id);
-		return "{\"result: \":\"ok\"}";
+		return "{\"result\":\"ok\"}";
 	}
 
 	@DELETE
@@ -91,19 +91,19 @@ public class ReservationService extends Service {
 	public String disapprove(@PathParam("id") String id) throws Exception {
 
 		if (!(IsLogged() && isPilot()))
-			return "{\"result: \":\"Please Login !\"}";
+			return "{\"result\":\"Please Login !\"}";
 
 		Reservation rt = (Reservation) ConvertObject.jsonToObject(reservationDao.getById(id),
 				ConvertObject.RESERVATION);
 		if (rt == null || rt.isApproved())
-			return "{\"result: \":\"error\"}";
+			return "{\"result\":\"error\"}";
 		Passenger pa = (Passenger) ConvertObject.jsonToObject(passengerDao.getById(rt.getPassengerId()),
 				ConvertObject.PASSENGER);
 		String body = "Hello Mr/Mrs/Ms " + pa.getLastName() + ",<br/><br/>Your booking for the flight "
 				+ rt.getFlightId() + " has been rejected by the pilot. <br/><br/>Best regards.";
 		Email.send(pa.getEmail(), "Flight booking", body);
 		reservationDao.delete(id);
-		return "{\"result: \":\"ok \"}";
+		return "{\"result\":\"ok \"}";
 	}
 
 	@GET

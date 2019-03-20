@@ -64,7 +64,7 @@ public class FlightService extends Service {
 		if (result != null) {
 			return result;
 		} else {
-			return "{\"result: \":\"cant find !\"}";
+			return "{\"result\":\"cant find !\"}";
 		}
 	}
 
@@ -79,7 +79,7 @@ public class FlightService extends Service {
 	@Path("/delete/{id}")
 	public String deleteById(@PathParam("id") String id) {
 		if (!(IsLogged() && isPilot()))
-			return "{\"result: \":\"Please Login as Pilot!\"}";
+			return "{\"result\":\"Please Login as Pilot!\"}";
 
 		String result = null;
 
@@ -90,9 +90,9 @@ public class FlightService extends Service {
 		}
 
 		if (result.equals("OK")) {
-			return "{\"deleteResult: \":\"success !\"}";
+			return "{\"result\":\"success !\"}";
 		} else {
-			return "{\"deleteResult: \":\"error \"}";
+			return "{\"result\":\"error \"}";
 		}
 	}
 

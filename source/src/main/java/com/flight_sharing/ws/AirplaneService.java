@@ -21,14 +21,14 @@ public class AirplaneService extends Service {
 	@Path("/add")
 	public String add(Airplane ap) throws Exception {
 		if (!IsLogged())
-			return "{\"result: \":\"Please Login !\"}";
+			return "{\"result\":\"Please Login !\"}";
 		String result = "";
 		result = airplaneDao.add(ConvertObject.objectToByte(ap), ap.getId());
 
 		if (result.equals("OK"))
-			return "{\"addResult: \":\"success !\"}";
+			return "{\"result\":\"success !\"}";
 		else
-			return "{\"addResult: \":\"error \"}";
+			return "{\"result\":\"error \"}";
 	}
 
 	@GET
@@ -44,7 +44,7 @@ public class AirplaneService extends Service {
 		if (result != null) {
 			return result;
 		} else {
-			return "{\"result: \":\"cant find !\"}";
+			return "{\"result\":\"cant find !\"}";
 		}
 	}
 
@@ -53,7 +53,7 @@ public class AirplaneService extends Service {
 	@Path("/delete/{id}")
 	public String deleteById(@PathParam("id") String id) {
 		if (!(IsLogged() && isPilot()))
-			return "{\"result: \":\"Please Login as Pilot!\"}";
+			return "{\"result\":\"Please Login as Pilot!\"}";
 		String result = null;
 
 		try {
@@ -63,9 +63,9 @@ public class AirplaneService extends Service {
 		}
 
 		if (result.equals("OK")) {
-			return "{\"deleteResult: \":\"success !\"}";
+			return "{\"result\":\"success !\"}";
 		} else {
-			return "{\"deleteResult: \":\"error \"}";
+			return "{\"result\":\"error \"}";
 		}
 	}
 
