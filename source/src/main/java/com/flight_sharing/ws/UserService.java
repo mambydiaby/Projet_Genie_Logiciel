@@ -135,7 +135,7 @@ public class UserService extends Service {
 	public String privateProfile(@PathParam("id") String userId) {
 
 		if (!IsLogged())
-			return "{\"result: \":\"Please Login !\"}";
+			return "{\"result\":\"Please Login !\"}";
 		try {
 			String user = passengerDao.getById(userId);
 
@@ -144,13 +144,13 @@ public class UserService extends Service {
 			System.out.println(user);
 			if (!user.isEmpty()) {
 				JSONObject json = new JSONObject(user);
-				json.put("pwd", "");
+				json.remove("pwd");
 				return json.toString();
 			}
 		} catch (Exception e) {
 			registerException(e);
 		}
-		return "";
+		return "{\"result\":\"error\"}";
 	}
 
 	@DELETE

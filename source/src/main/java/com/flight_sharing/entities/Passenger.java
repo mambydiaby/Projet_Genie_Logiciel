@@ -1,16 +1,7 @@
 package com.flight_sharing.entities;
 
-public class Passenger {
-	/** passenger's username */
-	private String id;
-	/** passenger's password */
-	private String pwd;
-	/** passenger's first name */
-	private String firstName;
-	/** passenger's last name */
-	private String lastName;
-	/** passenger's email address */
-	private String email;
+public class Passenger  {
+
 
 	public Passenger() {
 		// TODO Auto-generated constructor stub
