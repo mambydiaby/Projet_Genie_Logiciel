@@ -1,6 +1,6 @@
 package com.flight_sharing.entities;
 
-public class Pilot extends User {
+public class Pilot extends Passenger {
 	/** pilote's experience */
 	private String experience;
 	/** pilote's qualification */
