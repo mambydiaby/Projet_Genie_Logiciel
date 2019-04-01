@@ -22,6 +22,37 @@ import com.flight_sharing.json.ConvertObject;
 @Path("/flight")
 public class FlightService extends Service {
 
+
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes("application/x-www-form-urlencoded")
+	@Path("/search/detail")
+	public List<String> searchDetail(@FormParam("departure") String departure,@FormParam("destination") String destination, @FormParam("type") String type,@FormParam("seat") int seat,@FormParam("planeType") String planeType,@FormParam("date") String date) {
+		List<String> result = null;
+		try {
+			BoolQueryBuilder searchBuilder = QueryBuilders.boolQuery();
+			
+			if (!departure.isEmpty()) {
+				searchBuilder.must(QueryBuilders.wildcardQuery("departure", "*" + departure.toLowerCase() + "*"));
+			}
+			if (!date.isEmpty()) {
+				searchBuilder.must(QueryBuilders.rangeQuery("date").from(date).to(date + "T00:59:00"));
+			}
+			if(seat!=0)
+				searchBuilder.must(QueryBuilders.rangeQuery("seat").from(seat));
+			
+			if(!destination.isEmpty())
+				searchBuilder.must(QueryBuilders.wildcardQuery("destination", "*" + destination.toLowerCase() + "*"));
+		
+			result = flightDao.search(searchBuilder);
+			return result;
+		} catch (Exception e) {
+			registerException(e);
+		}
+		return result;
+	}
+	
+	
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes("application/x-www-form-urlencoded")

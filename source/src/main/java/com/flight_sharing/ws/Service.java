@@ -10,12 +10,12 @@ import com.flight_sharing.dao.ActionDao;
 import com.flight_sharing.dao.FactoryDao;
 
 public class Service {
-	protected ActionDao passengerDao = FactoryDao.createDAO(FactoryDao.PASSENGER);
-	protected ActionDao pilotDao = FactoryDao.createDAO(FactoryDao.PILOT);
-	protected ActionDao flightDao = FactoryDao.createDAO(FactoryDao.FLIGHT);
-	protected ActionDao reservationDao = FactoryDao.createDAO(FactoryDao.RESERVATION);
-	protected ActionDao airportDao = FactoryDao.createDAO(FactoryDao.AIRPORT);
-	protected ActionDao airplaneDao = FactoryDao.createDAO(FactoryDao.AIRPLANE);
+	public ActionDao passengerDao = FactoryDao.createDAO(FactoryDao.PASSENGER);
+	public ActionDao pilotDao = FactoryDao.createDAO(FactoryDao.PILOT);
+	public ActionDao flightDao = FactoryDao.createDAO(FactoryDao.FLIGHT);
+	public ActionDao reservationDao = FactoryDao.createDAO(FactoryDao.RESERVATION);
+	public ActionDao airportDao = FactoryDao.createDAO(FactoryDao.AIRPORT);
+	public ActionDao airplaneDao = FactoryDao.createDAO(FactoryDao.AIRPLANE);
 
 	@Context
 	protected HttpServletRequest request;
