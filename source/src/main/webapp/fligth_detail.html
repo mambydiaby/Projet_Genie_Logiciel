@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="css/flight_detail.css"/>
+        <title>Lyon</title>
+    </head>
+
+    <body>
+    	<header>
+    		<nav class="navbar navbar-light" style="background-color: #FFA500;">
+  				<a class="navbar-brand" href="">Kechache Airport</a>
+  				<p><a href="#">Login</a>/<a href="">Sign In</a></p>
+  				<form class="form-inline">
+    				<input class="form-control mr-sm-2" type="search" placeholder="Ville de départ..." aria-label="Search">
+    				<button class="btn btn-warning" type="submit">Search</button>
+  				</form>
+			</nav>
+		</header>
+
+		<div id="contenu">
+			<section>
+				<h1>Lyon</h1></br>							
+				<p>bfiuzbvuigerigue fbufiehrgfuierhgiuerbier fziuehfziuhgzeiohfzeiofz fhoizehf</p>
+				<hr width="80%" height="2px" color="grey">
+				<p>From: Marseille</p>
+				<p>Date: 12.03.2019</p>
+				<p>Duration: 1 hour</p>
+				<p>Pilot: Will Smith</p>
+				<p>Plane model: Robin DR400</p>
+			</section>
+			<aside>
+				<h2>55€</h2></br>
+				<button id="myBtn" class="btn btn-warning btn-lg">Book this flight</button>
+			</aside>
+		</div>
+		<div id="myModal" class="modal">
+			<div class="modal-dialog">
+				<div class="modal-content">	
+					<div class="modal-header">
+						<h4 class="modal-title">Book this flight</h4>
+						<span class="close">&times;</span>
+					</div>
+					<div class="modal-body">
+						<h5>Lyon</h5>
+			   		 	<section>
+				   			<p>From: Marseille</p>
+							<p>Date: 12.03.2019</p>
+							<p>Duration: 1 hour</p>					
+							<p>Pilot: Will Smith</p>
+							<p>Plane model: Robin DR400</p>
+						</section>
+						<aside>
+							<p>
+								<label for="seats">Seats</label><br />
+								<input type="number" class="form-control" id="seats" step="1" min="1" max="5">
+							</p>
+						</aside>
+					</div>
+					<div class="modal-footer">
+						<input type="submit" id="btnconfirm" class="btn btn-warning btn-lg" value="Confirm"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			// Get the modal
+			var modal = document.getElementById('myModal');
+
+			// Get the button that opens the modal
+			var btn = document.getElementById("myBtn");
+
+			// Get the <span> element that closes the modal
+			var span = document.getElementsByClassName("close")[0];
+
+		
+			// When the user clicks the button, open the modal 
+			btn.onclick = function() {
+  			modal.style.display = "block";
+			}				
+
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function() {
+ 			modal.style.display = "none";
+			}
+			//When the user clicks anywhere outside of the modal, close it
+			window.onclick = function(event) {
+  			if (event.target == modal) {
+   			modal.style.display = "none";
+  				}
+  			}
+		</script>
+	</body>		
+</html>
