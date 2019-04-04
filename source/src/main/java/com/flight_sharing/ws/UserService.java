@@ -48,7 +48,8 @@ public class UserService extends Service {
 					}
 
 					Pilot p = (Pilot) ConvertObject.jsonToObject(user, ConvertObject.PILOT);
-
+					System.out.println(p.getId()+"\n first name "+p.getFirstName()+"\nqulification"+p.getQualification()+
+							"pwd"+p.getPwd());
 					if (p.getPwd().equals(userPwd)) {
 						request.getSession().setAttribute("userId", p.getId());
 						request.getSession().setAttribute("type", "pilot");

@@ -49,9 +49,9 @@ public class FillData {
 			for(int  i=0;i<filesAirport.length;i++)
 				s.airportDao.fillData(filesAirport[i]);
 			for(int  i=0;i<filesPilot.length;i++)
-				s.airportDao.fillData(filesPilot[i]);
+				s.pilotDao.fillData(filesPilot[i]);
 			for(int  i=0;i<filesFlight.length;i++)
-				s.airportDao.fillData(filesFlight[i]);
+				s.flightDao.fillData(filesFlight[i]);
 			
 			s.airplaneDao.closeClient();
 			s.airportDao.closeClient();

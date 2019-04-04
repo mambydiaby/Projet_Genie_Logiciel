@@ -26,8 +26,8 @@ public class FlightService extends Service {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes("application/x-www-form-urlencoded")
-	@Path("/search/detail")
-	public List<String> searchDetail(@FormParam("departure") String departure,@FormParam("destination") String destination, @FormParam("type") String type,@FormParam("seat") int seat,@FormParam("planeType") String planeType,@FormParam("date") String date) {
+	@Path("/filter")
+	public List<String> searchDetail(@FormParam("departure") String departure,@FormParam("arrival") String arrival, @FormParam("seat") int seat,@FormParam("date") String date) {
 		List<String> result = null;
 		try {
 			BoolQueryBuilder searchBuilder = QueryBuilders.boolQuery();
@@ -36,15 +36,16 @@ public class FlightService extends Service {
 				searchBuilder.must(QueryBuilders.wildcardQuery("departure", "*" + departure.toLowerCase() + "*"));
 			}
 			if (!date.isEmpty()) {
-				searchBuilder.must(QueryBuilders.rangeQuery("date").from(date).to(date + "T00:59:00"));
+				searchBuilder.must(QueryBuilders.rangeQuery("date").from(date));
 			}
 			if(seat!=0)
 				searchBuilder.must(QueryBuilders.rangeQuery("seat").from(seat));
 			
-			if(!destination.isEmpty())
-				searchBuilder.must(QueryBuilders.wildcardQuery("destination", "*" + destination.toLowerCase() + "*"));
+			if(!arrival.isEmpty())
+				searchBuilder.must(QueryBuilders.wildcardQuery("arrival", "*" + arrival.toLowerCase() + "*"));
 		
 			result = flightDao.search(searchBuilder);
+			System.out.println(searchBuilder);
 			return result;
 		} catch (Exception e) {
 			registerException(e);
@@ -65,7 +66,7 @@ public class FlightService extends Service {
 				searchBuilder.must(QueryBuilders.wildcardQuery("departure", "*" + departure.toLowerCase() + "*"));
 			}
 			if (!date.isEmpty()) {
-				searchBuilder.must(QueryBuilders.rangeQuery("date").from(date).to(date + "T00:59:00"));
+				searchBuilder.must(QueryBuilders.rangeQuery("date").from(date));
 			}
 			searchBuilder.must(QueryBuilders.rangeQuery("seat").from(1));
 			result = flightDao.search(searchBuilder);

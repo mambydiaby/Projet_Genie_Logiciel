@@ -15,36 +15,9 @@
    </head>
    <body>
       <h1>booking</h1>
-      
-      <div id ="filter" class="input">
-         <label>Destination: </label>
-<select id='destination_filter'>
-<option value ="paris">Paris</option>
-<option value ="lyon">Lyon</option>
-<option value="toulouse">Toulouse</option>
-<option value="nancy">Nancy</option>
-<option value="limoges">Limoges</option>
-<option value="strasbourg">Strasbourg</option>
-</select>
-         <label>Seat: </label> 
- <select id='seat_filter'>
-<option value ="1">1</option>
-<option value ="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-<option value="6">6+</option>
-</select>
-         <label> departure:</label>
-         <input type="text" id="departure_filter" />
-         <label >date: </label>
-         <input type  ="date"  id="date_filter" />
-         <input  type="submit" id="filt" onclick="filter();" value="filter"/>
-      </div >
-      
-      
-       <div class='input' id='input_search'>
-         <label>departure: </label>
+ 
+       <div class='input'>
+         <label>airport: </label>
          <input type="text" id="departure" />
          <br />
          <label >date: </label>
@@ -52,14 +25,9 @@
          <br />
          <input  type="submit" id="search" onclick="mysubmit();" value="search"/>
       </div>
-      
       <div class="container">
-         <div id="div1" class="row col-md-7 col-md-offset-2 custyle">
+         <div id="div1" class="row col-md-6 col-md-offset-2 custyle">
          </div>
-          <div id="end">
-
-         </div>
-         </div>
-
+      </div>
    </body>
 </html>

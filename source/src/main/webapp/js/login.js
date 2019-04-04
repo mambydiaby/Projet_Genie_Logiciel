@@ -1,6 +1,7 @@
 function login() {
 	var usr = $('#usr').val();
 	var pwd = $('#pwd').val();
+	
 	$.ajax({
 		type: "post",
 		url: '/ws/user/login',
@@ -13,11 +14,11 @@ function login() {
 			if (data.result == 'ok') {
 				sessionStorage.setItem("user", usr)
 				sessionStorage.setItem("type", 'Passenger');
-				location.href = 'http://localhost:8081/test.html';
+				location.replace("http://localhost:8081/test.html");
 			} else if (data.result == 'okp') {
 				sessionStorage.setItem("user", usr)
 				sessionStorage.setItem("type", 'Pilot');
-				location.href = 'http://localhost:8081/testp.html';
+				location.replace("http://localhost:8081/testp.html");
 			} else {
 				//alert(data.result);
 				$('#loginerror').show();
@@ -26,7 +27,6 @@ function login() {
 				$('#loginerror').fadeIn();
 				$('#loginerror').show();
 			}
-
 		}
 	})
 }
