@@ -58,7 +58,6 @@ function mysubmit() {
 }
 
 $(function() {
-	
 	var today = moment().format("YYYY-MM-DD");
 	document.getElementById('date').setAttribute("min", today);
 	
@@ -67,7 +66,7 @@ $(function() {
 
 
 
-//function result of my Search
+//function result of filter
 function filter() {
 	var departure = $('#departure_filter').val();
 	var date = $('#date_filter').val();
@@ -81,14 +80,16 @@ function filter() {
 		type: "post",
 		url: '/ws/flight/filter',
 		data: {
-			'departure': departure,
+			'departure':departure,
 			'arrival':destination,
 			'seat':seat,
-			'date': date
+			'date':date
 		},
 		dataType: "json",
 		success: function(data) {
-			alert(data.length);
+			if(data.length==0){
+				alert("sorry, no corresponding flight found.");
+			}
 			var  tbl = "<table class=\"table table-striped custab\">\r\n" +
 			"               <thead>\r\n" +
 			"                  <tr>\r\n" +
@@ -101,6 +102,7 @@ function filter() {
 			"                     <th class=\"text-center\">Action</th>\r\n" +
 			"                  </tr>\r\n" +
 			"               </thead>"
+			
 			for (var i = 0; i < data.length; i++) {
 				console.log(data[i]);
 				var obj = JSON.parse(data[i]);
@@ -110,21 +112,17 @@ function filter() {
 				var td2 = "<td>" + moment(obj.date).format("MMMM Do YYYY") + "</td>";
 				var td3 = "<td>" + obj.seat + "</td>";
 				var td4 = "<td>" + obj.price + "</td>";
-				var td5 = "<td class=\"text-center\"><a class='btn btn-info btn-xs' href=\"#\"><span class=\"glyphicon glyphicon-ok\"></span> See</a> </td></tr>"
-
+				var td5 = "<td class=\"text-center\"><a class='btn btn-info btn-xs' href=\"#\"><span class=\"glyphicon glyphicon-ok\"></span> See</a> </td></tr>";
 				tbl += td0 + td1 +td1_5+ td2 + td3 + td4 + td5;
 
-			
 
 			}
 			tbl += "</table>"
 			document.getElementById("div1").innerHTML = "";
 			$("#div1").append(tbl);
-			
-
 		},
-		error: function(){
-			alert("can't find coresponding flights");
+		error: function(error){
+			alert("can't find coresponding flights "+error);
 			
 		}
 	})

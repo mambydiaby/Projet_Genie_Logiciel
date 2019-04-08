@@ -26,7 +26,7 @@ public class JettyMain {
 	public static void main(String[] args) throws Exception {
 		
 		//prefill data
-		// FillData.fill();
+		FillData.fill();
 		// Initialize the server
 		Server server = new Server();
 

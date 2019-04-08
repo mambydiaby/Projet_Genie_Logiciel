@@ -53,11 +53,7 @@ public class FillData {
 			for(int  i=0;i<filesFlight.length;i++)
 				s.flightDao.fillData(filesFlight[i]);
 			
-			s.airplaneDao.closeClient();
-			s.airportDao.closeClient();
-			s.flightDao.closeClient();
-			s.passengerDao.closeClient();
-			s.pilotDao.closeClient();
+		
 			s.reservationDao.closeClient();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

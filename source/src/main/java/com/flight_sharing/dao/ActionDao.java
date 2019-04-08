@@ -25,7 +25,7 @@ import org.elasticsearch.search.SearchHit;
 public class ActionDao extends BasicDao {
 	/** entity's type */
 	private String mainType;
-	private final TransportClient client = getClient();
+	private final TransportClient client ;
 	
 	public void fillData(File data) throws IOException {	
 		String json = new String(Files.readAllBytes(data.toPath()));
@@ -41,8 +41,10 @@ public class ActionDao extends BasicDao {
 	public void closeClient() {
 		client.close();
 	}
-	public ActionDao(String mainType) {
+	public ActionDao(String mainType,TransportClient client) {
 		this.mainType = mainType;
+		this.client=client;
+		
 	}
 
 	public List<String> getAll() throws Exception {
