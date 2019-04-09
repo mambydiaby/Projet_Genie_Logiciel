@@ -1,6 +1,7 @@
 //search result in table 
 
 //function result of my Search
+
 function mysubmit() {
 	var departure = $('#departure').val();
 	var date = $('#date').val();
@@ -18,7 +19,7 @@ function mysubmit() {
 			$('#input_search').hide();
 			$('#departure_filter').val(departure);
 			$('#date_filter').val(date);
-			var tbl = "<table class=\"table table-striped custab\">\r\n" +
+			var tbl = "<table class=\"table table-striped custab\" id=\"itable\">\r\n" +
 				"               <thead>\r\n" +
 				"                  <tr>\r\n" +
 				"                     <th>ID</th>\r\n" +
@@ -48,7 +49,6 @@ function mysubmit() {
 			tbl += "</table>"
 			document.getElementById("div1").innerHTML = "";
 			$("#div1").append(tbl);
-
 		},
 		error: function(){
 			alert("can't find coresponding flights");
@@ -90,7 +90,7 @@ function filter() {
 			if(data.length==0){
 				alert("sorry, no corresponding flight found.");
 			}
-			var  tbl = "<table class=\"table table-striped custab\">\r\n" +
+			var  tbl = "<table class=\"table table-striped custab\"  id=\"itable\">\r\n" +
 			"               <thead>\r\n" +
 			"                  <tr>\r\n" +
 			"                     <th>ID</th>\r\n" +
@@ -115,7 +115,7 @@ function filter() {
 				var td5 = "<td class=\"text-center\"><a class='btn btn-info btn-xs' href=\"#\"><span class=\"glyphicon glyphicon-ok\"></span> See</a> </td></tr>";
 				tbl += td0 + td1 +td1_5+ td2 + td3 + td4 + td5;
 
-
+				
 			}
 			tbl += "</table>"
 			document.getElementById("div1").innerHTML = "";

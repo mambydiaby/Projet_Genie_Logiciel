@@ -24,9 +24,7 @@ import com.flight_sharing.reminder.Reminder;
 public class JettyMain {
 
 	public static void main(String[] args) throws Exception {
-		
-		//prefill data
-		FillData.fill();
+
 		// Initialize the server
 		Server server = new Server();
 

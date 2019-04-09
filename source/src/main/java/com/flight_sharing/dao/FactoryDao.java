@@ -18,6 +18,7 @@ public class FactoryDao {
 	public static final int RESERVATION = 5;
 	public static final int AIRPLANE = 6;
 
+	private static TransportClient tc=getClient();
 
 	@SuppressWarnings({ "resource" })
 	public static TransportClient getClient() {
@@ -44,7 +45,6 @@ public class FactoryDao {
 	}
 
 	public static ActionDao createDAO(int id) {
-		TransportClient tc=getClient();
 		switch (id) {
 		case FLIGHT:
 			return new ActionDao("flight",tc);

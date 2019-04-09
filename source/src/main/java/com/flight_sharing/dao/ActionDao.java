@@ -27,20 +27,6 @@ public class ActionDao extends BasicDao {
 	private String mainType;
 	private final TransportClient client ;
 	
-	public void fillData(File data) throws IOException {	
-		String json = new String(Files.readAllBytes(data.toPath()));
-        IndexResponse response = client.prepareIndex(index, mainType).setSource(json, XContentType.JSON).get();
-        String _index = response.getIndex();
-        String _type = response.getType();
-        String _id = response.getId();
-        long _version = response.getVersion();
-        System.out.println(_index+_type+_id+_version);
-      
-	}
-
-	public void closeClient() {
-		client.close();
-	}
 	public ActionDao(String mainType,TransportClient client) {
 		this.mainType = mainType;
 		this.client=client;
@@ -83,7 +69,7 @@ public class ActionDao extends BasicDao {
 		try {
 			SearchResponse response = client.prepareSearch(BasicDao.index).setTypes(mainType)
 					.setSearchType(SearchType.DFS_QUERY_THEN_FETCH).setQuery(queryBuilder)
-					.setExplain(true).get();
+					.setExplain(true).setSize(100).setFrom(0).get();
 			for (SearchHit searchHit : response.getHits().getHits()) {
 				results.add(searchHit.getSourceAsString());
 			}
