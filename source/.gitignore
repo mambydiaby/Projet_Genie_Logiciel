@@ -1,3 +1,5 @@
 /target/
 /src/main/java/com/flight_sharing/dao/InsertData.java
+/src/main/test
+.classpath
 
