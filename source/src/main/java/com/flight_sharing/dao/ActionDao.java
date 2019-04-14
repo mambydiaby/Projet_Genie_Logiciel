@@ -79,6 +79,21 @@ public class ActionDao extends BasicDao {
 		return results;
 	}
 	
+	public List<String> search(QueryBuilder queryBuilder,int from,int size) throws Exception {
+		List<String> results = new ArrayList<String>();
+		try {
+			SearchResponse response = client.prepareSearch(BasicDao.index).setTypes(mainType)
+					.setSearchType(SearchType.DFS_QUERY_THEN_FETCH).setQuery(queryBuilder)
+					.setExplain(true).setSize(size).setFrom(from).get();
+			for (SearchHit searchHit : response.getHits().getHits()) {
+				results.add(searchHit.getSourceAsString());
+			}
+		} catch (Exception e) {
+			registerException(e);
+		}
+		return results;
+	}
+	
 	private static void registerException(Exception e) {
 		Logger.getLogger(ActionDao.class.getName()).log(Level.SEVERE, null, e);
 	}

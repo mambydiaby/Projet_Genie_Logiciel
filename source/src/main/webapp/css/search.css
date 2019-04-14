@@ -1,12 +1,13 @@
 body {
     font-family: 'Helvetica', Sans-Serif;
     margin: 0px;
-    background-image: url('../img/54257940_256602285283452_5773594724921245696_n.jpg');
+    background-image: url('../img/haha.jpg');
     background-position: auto auto;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
 }
+
 input{
          border: 1px solid #ccc;
          padding: 5px;
@@ -31,5 +32,10 @@ input:hover{
  #filter{
        display:none;
  }
- 
+#itable1_wrapper{ display: flex;
+flex-direction:column }
+#itable1_idfo{order:-2}
+#itable1_length{ order: 1; }
+#itable1_paginate{order:1;}
+
 

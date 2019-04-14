@@ -74,7 +74,7 @@ public class FillData {
 	public static void addFlight() throws JsonProcessingException, Exception {
 		ActionDao flightDao = FactoryDao.createDAO(FactoryDao.FLIGHT);
 
-		Flight[] flight =new Flight[11];
+		Flight[] flight =new Flight[16];
 		flight[0]= new Flight("GW902","009",9,null,"Paris","Lyon","2019-03-31","23:30","3h","96");
 		flight[1]= new Flight("WE666","009",2,null,"Lyon", "Paris", "2019-05-08","20:30","3h", "200"); 	
 		flight[2]= new Flight("PWO996","032",12,null,"Toulouse","Lyon", "2019-12-22", "13:30","4h","166"); 		
@@ -85,7 +85,12 @@ public class FillData {
 		flight[7]= new Flight("GW552","032",9, null, "Toulouse", "Lyon", "2019-03-31", "13:30", "3h", "166");
 		flight[8]= new Flight("GW913","032",9,null,"Lyon","Lyon","2019-03-31","23:30","3h","166");
 		flight[9]= new Flight("GW002","009",9,null,"Paris","Paris","2019-03-31","23:30","3h","126");
-		flight[10]=new Flight("GW112","003",11,null,"Nancy","Nancy","2019-09-01","23:30","3h","196");	
+		flight[10]=new Flight("GGWP123","009",11,null,"Paris","Nancy","2019-09-01","23:30","3h","93");	
+		flight[11]=new Flight("GPP142","009",2,null,"Nancy","Paris","2019-10-01","23:30","3h","88");	
+		flight[12]=new Flight("GPOE12","009",31,null,"Nancy","Limoges","2020-09-01","23:30","3h","99");	
+		flight[13]=new Flight("QNM213","009",41,null,"Paris","Lyon","2019-11-01","23:30","3h","199");	
+		flight[14]=new Flight("NMSL213","003",51,null,"Paris","Limoges","2019-12-01","23:30","3h","106");	
+		flight[15]=new Flight("NMSl21","003",16,null,"Paris","Nancy","2022-01-01","23:30","3h","126");	
 		for(Flight f:flight) {
 			flightDao.add(ConvertObject.objectToByte(f), f.getId());
 		}

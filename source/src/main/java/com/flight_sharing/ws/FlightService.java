@@ -43,17 +43,14 @@ public class FlightService extends Service {
 			
 			if(!arrival.isEmpty())
 				searchBuilder.must(QueryBuilders.wildcardQuery("arrival", "*" + arrival.toLowerCase() + "*"));
-		
 			result = flightDao.search(searchBuilder);
-			System.out.println(searchBuilder);
 			return result;
 		} catch (Exception e) {
 			registerException(e);
 		}
 		return result;
 	}
-	
-	
+
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes("application/x-www-form-urlencoded")
@@ -76,6 +73,8 @@ public class FlightService extends Service {
 		}
 		return result;
 	}
+
+	
 
 	/**
 	 * web service to get more detailed information about the flight

@@ -7,11 +7,15 @@
 <link
 	href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
 	rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+  
 <link href="css/search.css" rel="stylesheet">
 
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script
 	src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
 <script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 <script type="text/javascript"
@@ -29,7 +33,9 @@
 			<option value="nancy">Nancy</option>
 			<option value="limoges">Limoges</option>
 			<option value="strasbourg">Strasbourg</option>
+			<option value="">  </option>
 		</select> <label>Seat: </label> <select id='seat_filter'>
+			<option value="">  </option>
 			<option value="1">1</option>
 			<option value="2">2</option>
 			<option value="3">3</option>
@@ -37,6 +43,7 @@
 			<option value="5">5</option>
 			<option value="6">6+</option>
 		</select> 
+
 		<label> departure:</label> <input type="text" id="departure_filter" />
 		<label>date: </label> <input type="date" id="date_filter" /> <input
 			type="submit" id="filt" onclick="filter();" value="filter" />

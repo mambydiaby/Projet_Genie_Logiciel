@@ -10,16 +10,16 @@ function mysubmit() {
 		url: '/ws/flight/search',
 		data: {
 			'departure': departure,
-			'date': date
+			'date': date,
+	
 		},
 		dataType: "json",
 		success: function(data) {
-
 			$('#filter').css("display","block");
 			$('#input_search').hide();
 			$('#departure_filter').val(departure);
 			$('#date_filter').val(date);
-			var tbl = "<table class=\"table table-striped custab\" id=\"itable\">\r\n" +
+			var tbl = "<table id=\"itable1\" class=\"table table-striped custab\" >\r\n" +
 				"               <thead>\r\n" +
 				"                  <tr>\r\n" +
 				"                     <th>ID</th>\r\n" +
@@ -30,8 +30,8 @@ function mysubmit() {
 				"                     <th>Price</th>\r\n" +
 				"                     <th class=\"text-center\">Action</th>\r\n" +
 				"                  </tr>\r\n" +
-				"               </thead>"
-
+				"               </thead><tbody>"
+		
 			for (var i = 0; i < data.length; i++) {
 				console.log(data[i]);
 				var obj = JSON.parse(data[i]);
@@ -46,23 +46,24 @@ function mysubmit() {
 				tbl += td0 + td1 +td1_5+ td2 + td3 + td4 + td5;
 
 			}
-			tbl += "</table>"
+			tbl += "</tbody></table>"
 			document.getElementById("div1").innerHTML = "";
 			$("#div1").append(tbl);
+			$("#itable1").DataTable({searching: false});
+			
 		},
 		error: function(){
 			alert("can't find coresponding flights");
-			
 		}
 	})
 }
+
 
 $(function() {
 	var today = moment().format("YYYY-MM-DD");
 	document.getElementById('date').setAttribute("min", today);
 	
 });
-
 
 
 
@@ -90,7 +91,7 @@ function filter() {
 			if(data.length==0){
 				alert("sorry, no corresponding flight found.");
 			}
-			var  tbl = "<table class=\"table table-striped custab\"  id=\"itable\">\r\n" +
+			var  tbl = "<table  id=\"itable\" class=\"table table-striped custab\" >\r\n" +
 			"               <thead>\r\n" +
 			"                  <tr>\r\n" +
 			"                     <th>ID</th>\r\n" +
@@ -120,6 +121,7 @@ function filter() {
 			tbl += "</table>"
 			document.getElementById("div1").innerHTML = "";
 			$("#div1").append(tbl);
+			$("#itable").DataTable( {searching: false});
 		},
 		error: function(error){
 			alert("can't find coresponding flights "+error);
@@ -127,4 +129,7 @@ function filter() {
 		}
 	})
 }
+
+
+
 
