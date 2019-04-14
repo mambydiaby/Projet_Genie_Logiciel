@@ -1,3 +1,4 @@
+
 function login() {
 	var usr = $('#usr').val();
 	var pwd = $('#pwd').val();
