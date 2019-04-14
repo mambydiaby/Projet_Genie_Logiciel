@@ -1,3 +1,14 @@
+
+h1{
+    font: 700 100px "Comic Sans MS";
+    color: white;
+    text-shadow: 0 0 20px #fdec84,
+            10px -10px 30px #ffae35,
+            20px -20px 40px #ec760c;
+  	 text-align:center;
+  	 padding : 10px;
+}
+
 body {
     font-family: 'Helvetica', Sans-Serif;
     margin: 0px;
@@ -18,7 +29,7 @@ input{
 
 input:hover{
          box-shadow: 3px 3px 0px transparent;
-           cursor: pointer;
+          cursor: pointer;
          transition: 0.5s;
  }
 
@@ -33,9 +44,16 @@ input:hover{
        display:none;
  }
 #itable1_wrapper{ display: flex;
-flex-direction:column }
+flex-direction:column;
+ }
 #itable1_idfo{order:-2}
 #itable1_length{ order: 1; }
 #itable1_paginate{order:1;}
+
+#div1{
+	 width: 80%;
+    margin-left: 11%;
+}
+   
 
 
