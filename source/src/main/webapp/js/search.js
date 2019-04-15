@@ -1,3 +1,8 @@
+function storing(obj){
+	localStorage.setItem('flight_info',obj);
+	
+}
+
 //search result in table 
 
 //function result of my Search
@@ -41,7 +46,7 @@ function mysubmit() {
 				var td2 = "<td>" + moment(obj.date).format("MMMM Do YYYY") + "</td>";
 				var td3 = "<td>" + obj.seat + "</td>";
 				var td4 = "<td>" + obj.price + "</td>";
-				var td5 = "<td class=\"text-center\"><a class='btn btn-info btn-xs' href=\"#\"><span class=\"glyphicon glyphicon-ok\"></span> See</a> </td></tr>"
+				var td5 = "<td class=\"text-center\"><a onclick=\"storing('"+obj.id+"');\" target=\"_blank\" class='btn btn-info btn-xs' href=\"../flight_detail.html\" ><span class=\"glyphicon glyphicon-ok\"></span> See</a> </td></tr>"
 
 				tbl += td0 + td1 +td1_5+ td2 + td3 + td4 + td5;
 
@@ -50,7 +55,6 @@ function mysubmit() {
 			document.getElementById("div1").innerHTML = "";
 			$("#div1").append(tbl);
 			$("#itable1").DataTable({searching: false});
-			
 		},
 		error: function(){
 			alert("can't find coresponding flights");

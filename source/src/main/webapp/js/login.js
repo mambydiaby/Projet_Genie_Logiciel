@@ -1,7 +1,6 @@
 function login() {
 	var usr = $('#usr').val();
 	var pwd = $('#pwd').val();
-	console.log("usr"+usr+"\n");
 	$.ajax({
 		type: "post",
 		url: '/ws/user/login',
