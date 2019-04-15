@@ -23,11 +23,11 @@ public class FillData {
 	public static void addPilot() throws JsonProcessingException, Exception {
 		ActionDao pilotDao = FactoryDao.createDAO(FactoryDao.PILOT);
 		Pilot[] pilot=new Pilot[5];
-		pilot[0]=new Pilot("FLower","0","ling","jiarong","lingjiarong@gmail.com","3 ans","bon");
-		pilot[1]=new Pilot("Flighter","0","curry","stephen","le@gmail.com","22 ans","bon");
-		pilot[2]=new Pilot("003","0","jeremy","arki","jarkid@gmail.com","1 ans","bon");
-		pilot[3]=new Pilot("009","0","eminem","shar","shar.kid@gmail.com","2 ans","bon");
-		pilot[4]=new Pilot("032","0","venom","lucy","lucy.oldman@gmail.com","13 ans","bon");
+		pilot[0]=new Pilot("FLower","0","ling","JIARONG","lingjiarong@gmail.com","3 ans","bon");
+		pilot[1]=new Pilot("Flighter","0","curry","STEPHEN","le@gmail.com","22 ans","bon");
+		pilot[2]=new Pilot("003","0","jeremy","ARKI","jarkid@gmail.com","1 ans","bon");
+		pilot[3]=new Pilot("009","0","eminem","SHAR","shar.kid@gmail.com","2 ans","bon");
+		pilot[4]=new Pilot("032","0","venom","LUCY","lucy.oldman@gmail.com","13 ans","bon");
 		
 
 		for (Pilot pilot1 : pilot) {
@@ -75,21 +75,21 @@ public class FillData {
 		ActionDao flightDao = FactoryDao.createDAO(FactoryDao.FLIGHT);
 
 		Flight[] flight =new Flight[16];
-		flight[0]= new Flight("GW902","009",9,null,"Paris","Lyon","2019-03-31","23:30","3h","96");
+		flight[0]= new Flight("GW902","009",9,null,"Paris","Lyon","2019-08-22","23:30","3h","96");
 		flight[1]= new Flight("WE666","009",2,null,"Lyon", "Paris", "2019-05-08","20:30","3h", "200"); 	
 		flight[2]= new Flight("PWO996","032",12,null,"Toulouse","Lyon", "2019-12-22", "13:30","4h","166"); 		
 		flight[3]= new Flight("GP902", "032",19, null, "Nancy", "Lyon", "2020-03-31", "23:30", "3h", "166"); 		
 		flight[4]= new Flight("GW999", "032", 29, null, "Paris", "Limoges", "2019-05-01", "23:30", "2.5h", "160"); 	
-		flight[5]= new Flight("GW908", "032", 5, null, "Limoges", "Lyon", "2029-03-31", "21:30", "3h", "196"); 		
-		flight[6]= new Flight("GO932", "003",19, null,"Strasbourg", "Lyon", "2019-03-31", "23:30", "3h", "196"); 		
-		flight[7]= new Flight("GW552","032",9, null, "Toulouse", "Lyon", "2019-03-31", "13:30", "3h", "166");
-		flight[8]= new Flight("GW913","032",9,null,"Lyon","Lyon","2019-03-31","23:30","3h","166");
-		flight[9]= new Flight("GW002","009",9,null,"Paris","Paris","2019-03-31","23:30","3h","126");
+		flight[5]= new Flight("GW908", "032", 5, null, "Limoges", "Lyon", "2029-07-01", "21:30", "3h", "196"); 		
+		flight[6]= new Flight("GO932", "003",19, null,"Strasbourg", "Lyon", "2019-06-02", "23:30", "3h", "196"); 		
+		flight[7]= new Flight("GW552","032",9, null, "Toulouse", "Lyon", "2019-06-21", "13:30", "3h", "166");
+		flight[8]= new Flight("GW913","032",9,null,"Lyon","Lyon","2019-06-21","23:30","3h","166");
+		flight[9]= new Flight("GW002","009",9,null,"Paris","Paris","2019-12-31","23:30","3h","126");
 		flight[10]=new Flight("GGWP123","009",11,null,"Paris","Nancy","2019-09-01","23:30","3h","93");	
 		flight[11]=new Flight("GPP142","009",2,null,"Nancy","Paris","2019-10-01","23:30","3h","88");	
 		flight[12]=new Flight("GPOE12","009",31,null,"Nancy","Limoges","2020-09-01","23:30","3h","99");	
-		flight[13]=new Flight("QNM213","009",41,null,"Paris","Lyon","2019-11-01","23:30","3h","199");	
-		flight[14]=new Flight("NMSL213","003",51,null,"Paris","Limoges","2019-12-01","23:30","3h","106");	
+		flight[13]=new Flight("QNM213","009",41,null,"Paris","Lyon","2020-11-01","23:30","3h","199");	
+		flight[14]=new Flight("NMSL213","003",51,null,"Paris","Limoges","2020-12-01","23:30","3h","106");	
 		flight[15]=new Flight("NMSl21","003",16,null,"Paris","Nancy","2022-01-01","23:30","3h","126");	
 		for(Flight f:flight) {
 			flightDao.add(ConvertObject.objectToByte(f), f.getId());
