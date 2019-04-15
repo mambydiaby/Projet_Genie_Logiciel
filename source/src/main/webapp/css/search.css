@@ -49,7 +49,12 @@ flex-direction:column;
 #itable1_idfo{order:-2}
 #itable1_length{ order: 1; }
 #itable1_paginate{order:1;}
-
+#itable_wrapper{ display: flex;
+flex-direction:column;
+ }
+#itable_idfo{order:-2}
+#itable_length{ order: 1; }
+#itable_paginate{order:1;}
 #div1{
 	 width: 80%;
     margin-left: 11%;
