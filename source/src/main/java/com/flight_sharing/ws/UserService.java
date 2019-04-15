@@ -156,13 +156,12 @@ public class UserService extends Service {
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes("application/x-www-form-urlencoded")
-	@Path("{type}/profile/{id}")
-	public String delete(@PathParam("type") String uType, @PathParam("id") String userId) {
-		System.out.print(uType);
+	@Path("/profile/{id}")
+	public String delete(@PathParam("id") String userId) {
 		try {
-			if (uType.equals("Pilote"))
+			if (isPilot())
 				return pilotDao.delete(userId);
-			else if (uType.equals("Passenger"))
+			else if (isPassenger())
 				return passengerDao.delete(userId);
 		} catch (Exception e) {
 			registerException(e);
