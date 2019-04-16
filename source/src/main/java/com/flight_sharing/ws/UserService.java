@@ -75,7 +75,7 @@ public class UserService extends Service {
 	}
 
 	/**
-	 * webservice for passenger registration 
+	 * webservice for passenger registration
 	 * 
 	 * @param userId
 	 * @param userPwd
@@ -133,15 +133,15 @@ public class UserService extends Service {
 	@Consumes("application/x-www-form-urlencoded")
 	@Path("profile/{id}")
 	public String privateProfile(@PathParam("id") String userId) {
-
+		
 		if (!IsLogged())
 			return "{\"result\":\"Please Login !\"}";
 		try {
-			String user = passengerDao.getById(userId);
-
-			if (user == null)
+			String user = null;
+			if (isPassenger())
+				user = passengerDao.getById(userId);
+			else if (isPilot())
 				user = pilotDao.getById(userId);
-			System.out.println(user);
 			if (!user.isEmpty()) {
 				JSONObject json = new JSONObject(user);
 				json.remove("pwd");

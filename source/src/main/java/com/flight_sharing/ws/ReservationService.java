@@ -46,7 +46,7 @@ public class ReservationService extends Service {
 
 		String result = reservationDao.add(ConvertObject.objectToByte(r), r.getId());
 
-		if (result.equals("OK")) {
+		if (result.equals("CREATED")) {
 			return "{\"result\":\"success !\"}";
 		} else {
 			return "{\"result\":\"error \"}";

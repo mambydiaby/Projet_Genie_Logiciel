@@ -25,7 +25,7 @@ public class AirplaneService extends Service {
 		String result = "";
 		result = airplaneDao.add(ConvertObject.objectToByte(ap), ap.getId());
 
-		if (result.equals("OK"))
+		if (result.equals("CREATED"))
 			return "{\"result\":\"success !\"}";
 		else
 			return "{\"result\":\"error \"}";
