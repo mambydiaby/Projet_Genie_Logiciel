@@ -6,6 +6,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -23,14 +24,13 @@ import com.flight_sharing.mail.Email;
 @Path("reservation")
 public class ReservationService extends Service {
 
-	@POST
+	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/new")
 	public String add(Reservation r) throws Exception {
 		if (!IsLogged())
 			return "{\"result\":\"Please Login !\"}";
-
 		Flight flight = (Flight) ConvertObject.jsonToObject(flightDao.getById(r.getFlightId()), ConvertObject.FLIGHT);
 		if (flight == null)
 			return "{\"result\":\"error\"}";
@@ -46,7 +46,7 @@ public class ReservationService extends Service {
 
 		String result = reservationDao.add(ConvertObject.objectToByte(r), r.getId());
 
-		if (result.equals("OK")) {
+		if (result.equals("OK")||result.equals("CREATED")) {
 			return "{\"result\":\"success !\"}";
 		} else {
 			return "{\"result\":\"error \"}";

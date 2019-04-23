@@ -30,7 +30,7 @@ public class UserService extends Service {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes("application/x-www-form-urlencoded")
-	@Path("login")
+	@Path("/login")
 	public String login(@FormParam("id") String userId, @FormParam("pwd") String userPwd) {
 		try {
 			if (userId == null || userPwd == null) {

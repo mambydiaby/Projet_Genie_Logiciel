@@ -15,7 +15,7 @@ $('#register').click(function() {
 
 		success: function(data) {
 			if (data.result == 'ok') {
-				location.href = 'http://localhost:8081/login.html';
+				location.replace("http://localhost:8081/wait2approve.html");
 			} else {
 				//alert(data.result);
 				$('#loginerror').show();

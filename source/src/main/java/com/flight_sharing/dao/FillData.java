@@ -37,9 +37,6 @@ public class FillData {
 	public static void addAirport() throws JsonProcessingException, Exception {
 		ActionDao airportDao = FactoryDao.createDAO(FactoryDao.AIRPORT);
 		Airport[] airport=new Airport[6];
-	
-		
-		
 		airport[0]=new Airport("LFBL","Limoges","Limoges - Bellegarde Airport");
 		airport[1]=new Airport("LFLY","Lyon","Lyon - Bron Airport");
 		airport[2]=new Airport("LFSN","Nancy","Nancy - Essey Airport");
@@ -51,14 +48,10 @@ public class FillData {
 		}
 		
 	}
+	
 	public static void addAirplane() throws JsonProcessingException, Exception {
-		ActionDao airplaneDao = FactoryDao.createDAO(FactoryDao.AIRPLANE);
-		
-		
-		
+		ActionDao airplaneDao = FactoryDao.createDAO(FactoryDao.AIRPLANE);	
 		Airplane[] airplane=new Airplane[4];
-	
-	
 		airplane[0]=new Airplane("Airbus_A220","The Airbus A220, previously known as Bombardier CSeries (or C Series), is a family of narrow-body, twin-engine, medium-range jet airliners marketed by Airbus but designed and originally built by the Canadian manufacturer Bombardier Aerospace. Following Airbus involvement the aircraft are built by CSeries Aircraft Limited Partnership (CSALP)."); 
 		airplane[1]=new Airplane("Airbus_A330","The Airbus A330 is a medium- to long-range wide-body twin-engine jet airliner made by Airbus. Versions of the A330 have a range of 5,000 to 13,430 kilometres (2,700 to 7,250 nmi; 3,110 to 8,350 mi) and can accommodate up to 335 passengers in a two-class layout or carry 70 tonnes (154,000 lb) of cargo. ");
 		airplane[2]=new Airplane("Airbus_A380",
@@ -66,14 +59,11 @@ public class FillData {
 		airplane[3]=new Airplane("Airbus_city","The Airbus CityAirbus is a multinational project by Airbus Helicopters to produce an electrically-powered VTOL aircraft demonstrator. It is intended for the air taxi role, to avoid ground traffic congestion.[");
 		for(Airplane a:airplane) {
 			airplaneDao.add(ConvertObject.objectToByte(a),a.getId());
-		}
-		
-		
+		}	
 	}
 	
 	public static void addFlight() throws JsonProcessingException, Exception {
 		ActionDao flightDao = FactoryDao.createDAO(FactoryDao.FLIGHT);
-
 		Flight[] flight =new Flight[16];
 		flight[0]= new Flight("GW902","009",9,null,"Paris","Lyon","2019-08-22","23:30","3h","96");
 		flight[1]= new Flight("WE666","009",2,null,"Lyon", "Paris", "2019-05-08","20:30","3h", "200"); 	
@@ -94,8 +84,18 @@ public class FillData {
 		for(Flight f:flight) {
 			flightDao.add(ConvertObject.objectToByte(f), f.getId());
 		}
-			
-		
+	}
+	
+	public static void addReservation() throws JsonProcessingException, Exception {
+		ActionDao reservationDao = FactoryDao.createDAO(FactoryDao.RESERVATION);	
+		Reservation[] r=new Reservation[4];
+		r[0]=new Reservation("R1234","GW913","jhuy7x",3);
+		r[1]=new Reservation("R1235","GW913","all",2);
+		r[2]=new Reservation("R1245","GW552","all",1);
+		r[3]=new Reservation("R1345","GW552","jhuy7x",4);
+		for(Reservation a:r) {
+			reservationDao.add(ConvertObject.objectToByte(a),a.getId());
+		}	
 	}
 
 	public static void main(String[] args) throws JsonProcessingException, Exception {
@@ -104,5 +104,6 @@ public class FillData {
 		addAirport();
 		addFlight();
 		addPilot();
+		addReservation();
 	}
 }

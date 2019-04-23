@@ -22,7 +22,7 @@
         <header>
             <nav class="navbar navbar-light" style="background-color: #FFA500;">
                 <a class="navbar-brand" href="">Kechache Airport</a>
-                <p><a href="#">Login</a>/<a href="">Sign In</a></p>
+                <p id= "login_ref"><a href="#">Login</a>/<a href="">Sign In</a></p>
                 <form class="form-inline">
                     <input class="form-control mr-sm-2" type="search" placeholder="Ville de départ..." aria-label="Search">
                     <button class="btn btn-warning" type="submit">Search</button>
@@ -69,7 +69,7 @@
                         </aside>
                     </div>
                     <div class="modal-footer">
-                        <input type="submit" id="btnconfirm" class="btn btn-warning btn-lg" value="Confirm"/>
+                        <input type="submit" id="btnconfirm" class="btn btn-warning btn-lg" onclick=" bookFlight();" value="Confirm"/>
                     </div>
                 </div>
             </div>

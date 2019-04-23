@@ -1,6 +1,5 @@
 function storing(obj){
-	localStorage.setItem('flight_info',obj);
-	
+	sessionStorage.setItem('flight_info',obj);
 }
 
 //search result in table 

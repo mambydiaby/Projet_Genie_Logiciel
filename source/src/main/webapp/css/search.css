@@ -3,8 +3,8 @@ h1{
     font: 700 100px "Comic Sans MS";
     color: white;
     text-shadow: 0 0 20px #fdec84,
-            10px -10px 30px #ffae35,
-            20px -20px 40px #ec760c;
+            10px -10px 30px #ffae35;
+          
   	 text-align:center;
   	 padding : 10px;
 }
