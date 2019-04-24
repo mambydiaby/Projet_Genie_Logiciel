@@ -76,6 +76,28 @@ public class FlightService extends Service {
 
 	
 
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes("application/x-www-form-urlencoded")
+	@Path("/myflights")
+	public List<String> searchMyFlights(@FormParam("id") String id) {
+		List<String> result = null;
+		try {
+			BoolQueryBuilder searchBuilder = QueryBuilders.boolQuery();
+			if (!id.isEmpty()) {
+				searchBuilder.must(QueryBuilders.termQuery("pilotId",id));
+			}
+			searchBuilder.must(QueryBuilders.rangeQuery("seat").from(1));
+			result = flightDao.search(searchBuilder);
+			return result;
+		} catch (Exception e) {
+			registerException(e);
+		}
+		return result;
+	}
+
+	
+
 	/**
 	 * web service to get more detailed information about the flight
 	 * 

@@ -37,7 +37,7 @@ function login() {
 						location.href = '../flight_detail.html';
 					}
 					else{
-						location.href = '../test.html';
+						location.href = '../testp.html';
 					}
 				}
 				//location.replace("http://localhost:8081/testp.html");
@@ -52,7 +52,7 @@ function login() {
 		},
 		error:function(error){
 			alert("error");
-			alert(error);
+		
 		}
 	})
 }

@@ -43,7 +43,7 @@
       <script type="text/javascript">
          $.ajax({
          type: "get",
-         url: '/ws/reservation/toapprove/'+sessionStorage.getItem("user"),
+         url: '/ws/reservation/myreservations/'+sessionStorage.getItem("user"),
          success: function(data) {
          //alert(data);
          	var tbl="<table id=\"itable\" class=\"table table-striped custab\">\r\n" + 

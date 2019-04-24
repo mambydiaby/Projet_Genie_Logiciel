@@ -10,10 +10,20 @@
 	</head>
 	<body>
 	
-		<h1>Congratuations! Your booking has been registered , pls wait for response from pilot </h1>
-		<a href="profile.html">my profile</a>
+		<h1>Congratulations! Your booking has been registered , pls wait for response from pilot </h1>
+		<a id='herfer' href="test.html">my profile</a>
 		<a href="search.html"> search more flights</a>
 		<div id="contenu"><br><br></div>
 		
 	</body>
+	<script>
+		$(document).ready(function(){
+		var type=sessionStorage.getItem("type");
+		if(type=='Pilot'){
+			$('#herfer').attr("href", "testp.html");
+		}
+		});
+			
+
+	</script>
 </html>

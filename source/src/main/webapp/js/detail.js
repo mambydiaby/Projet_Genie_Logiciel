@@ -24,8 +24,7 @@ $(document).ready(function() {
 		error: function(){
 			alert("can't find coresponding flights");
 		}
-	})
-	  
+	}) 
 });
 
 function updatePilot(data){

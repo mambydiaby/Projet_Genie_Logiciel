@@ -2,9 +2,42 @@
 <html>
 	<head>
 		<title>profile</title>
+		 <link rel="stylesheet" href="css/flight_detail.css"/> 
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 	</head>
 	<body>
-		<h1>Welcome Passenger</h1>
-		<a href="profile.html">my profile</a>
+	
+		<h1 id='welcome'>Welcome </h1>
+		<a href="profile.html">My profile</a>
+		<br/>
+		<br/>
+		
+		<a href="changement.html">My Reservations</a>
+		<br/>
+		<br/>
+		<a href="search.html">Search flights</a>
+		
+		
+	<script>
+	$(document).ready(function() {
+		var user=sessionStorage.getItem("user");
+		$.get('/ws/user/profile/'+user, function(result){
+			var name=result.firstName;
+		    $("#welcome").html("Welcome "+name);
+		  });
+		});	 
+	</script>
 	</body>
+	<style>
+	body
+	{
+	background: url("../img/haha.jpg") no-repeat fixed;
+	background-size:100% 100%;
+	}
+	a{
+	font-size:20px;
+	padding:30px 30px;
+	}
+	</style>
 </html>

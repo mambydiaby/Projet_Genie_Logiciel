@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -12,6 +13,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 
 import com.flight_sharing.entities.Flight;
@@ -106,6 +108,26 @@ public class ReservationService extends Service {
 		return "{\"result\":\"ok \"}";
 	}
 
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes("application/x-www-form-urlencoded")
+	@Path("/myreservations/{id}")
+	public List<String> searchMyReservations(@PathParam("id") String id) {
+		List<String> result = null;
+		try {
+			BoolQueryBuilder searchBuilder = QueryBuilders.boolQuery();
+			if (!id.isEmpty()) {
+				searchBuilder.must(QueryBuilders.termQuery("passengerId",id));
+			}
+			result = reservationDao.search(searchBuilder);
+			return result;
+		} catch (Exception e) {
+			registerException(e);
+		}
+		return result;
+	}
+	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes("application/x-www-form-urlencoded")
