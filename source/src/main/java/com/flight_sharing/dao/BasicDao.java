@@ -30,6 +30,22 @@ public abstract class BasicDao implements Dao {
 		}
 	}
 
+	@SuppressWarnings({ "resource" })
+	public TransportClient getClient() {
+		TransportClient client = null;
+		try {
+			if (serverAddr == null) {
+				serverAddr = "localhost";
+			}
+			// on startup
+			client = new PreBuiltTransportClient(Settings.EMPTY)
+					.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(serverAddr), 9300));
+
+		} catch (Exception e) {
+			registerException(e);
+		}
+		return client;
+	}
 
 	private static void registerException(Exception e) {
 		Logger.getLogger(BasicDao.class.getName()).log(Level.SEVERE, null, e);
