@@ -36,11 +36,64 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
    </head>
    <body>
+      <a id="back" href="#"> back </a>
       <div class="container">
          <div id="div1" class="row col-md-5 col-md-offset-2 custyle">
          </div>
       </div>
-      <script type="text/javascript">
+  
+
+
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <p><b>Verification</b></p>
+    </div>
+    <div class="modal-body">
+      <p>Some text in the Modal Body</p>
+      <p>Some other text...</p>
+    </div>
+    <div class="modal-footer">
+    <input type="button" value="comfirm">
+    <input type="button" value="cancel">
+    </div>
+  </div>
+
+</div>
+
+
+   </body>
+    
+<script type="text/javascript">
+   // Get the modal
+      var modal = document.getElementById('myModal');
+
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks the button, open the modal 
+     function show() {
+        modal.style.display = "block";
+      }
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
          $.ajax({
          type: "get",
          url: '/ws/reservation/toapprove/'+sessionStorage.getItem("user"),
@@ -64,7 +117,7 @@
              var td1="<td>"+obj.flightId+"</td>";
              var td2="<td>"+obj.passengerId+"</td>";
              var td3="<td>"+obj.seat+"</td>";
-             var td4="<td class=\"text-center\"><a class='btn btn-info btn-xs' href=\"#ok\"><span class=\"glyphicon glyphicon-ok\"></span> Ok</a> <a href=\"#\" class=\"btn btn-danger btn-xs\"><span class=\"glyphicon glyphicon-remove\"></span> Del</a></td></tr>"
+             var td4="<td class=\"text-center\"><a class='btn btn-info btn-xs okbtn' href=\"#ok\" onclick=\"show();\"><span class=\"glyphicon glyphicon-ok\"></span> Ok</a> <a href=\"#\" class=\"btn btn-danger btn-xs delbtn\"><span class=\"glyphicon glyphicon-remove\"></span> Del</a></td></tr>"
              
          tbl+=td0+td1+td2+td3+td4; 
            
@@ -76,6 +129,102 @@
 
          }
          });
+
+       	$(document).ready(function(){
+       		var type=sessionStorage.getItem("type");
+       		if(type=="Passenger"){
+       			$('#back').attr("href","test.html");
+       		}else{
+       			$('#back').attr("href",'testp.html');
+       		}
+       	});
       </script>
-   </body>
+        
+      <style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  -webkit-animation-name: fadeIn; /* Fade in the background */
+  -webkit-animation-duration: 0.4s;
+  animation-name: fadeIn;
+  animation-duration: 0.4s;
+ 
+}
+
+/* Modal Content */
+.modal-content {
+  position: fixed;
+  top: 30%;
+	left: 30%;
+  background-color: white;
+  width: 40%;
+  margin:0 auto;
+  -webkit-animation-name: slideIn;
+  -webkit-animation-duration: 0.1s;
+  animation-name: slideIn;
+  animation-duration: 0.1s
+}
+
+/* The Close Button */
+.close {
+  color: black;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 10px;
+  background-color: white;
+  color: black;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: white;
+  color: black;
+}
+
+/* Add Animation */
+@-webkit-keyframes slideIn {
+  from {bottom: -300px; opacity: 0} 
+  to {bottom: 0; opacity: 1}
+}
+
+@keyframes slideIn {
+  from {bottom: -300px; opacity: 0}
+  to {bottom: 0; opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+</style>
+      
 </html>

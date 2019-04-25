@@ -10,7 +10,6 @@ function login() {
 		},
 		dataType: "json",
 		success: function(data) {
-			
 			if (data.result == 'ok') {
 				sessionStorage.setItem("user", usr)
 				sessionStorage.setItem("type", 'Passenger');

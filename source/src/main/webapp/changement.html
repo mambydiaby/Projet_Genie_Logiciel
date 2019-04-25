@@ -36,6 +36,8 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
    </head>
    <body>
+         <a id="back" href="#"> back </a>
+   
       <div class="container">
          <div id="div1" class="row col-md-5 col-md-offset-2 custyle">
          </div>
@@ -76,6 +78,16 @@
 
          }
          });
+
+       	$(document).ready(function(){
+       		var type=sessionStorage.getItem("type");
+       		if(type=="Passenger"){
+       			$('#back').attr("href","test.html");
+       		}else{
+       			$('#back').attr("href",'testp.html');
+       		}
+       	});
       </script>
+
    </body>
 </html>

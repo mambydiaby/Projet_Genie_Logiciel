@@ -135,8 +135,8 @@ public class UserService extends Service {
 	@Path("profile/{id}")
 	public String privateProfile(@PathParam("id") String userId) {
 
-//		if (!IsLogged())
-//			return "{\"result\":\"Please Login !\"}";
+		if (!IsLogged())
+			return "{\"result\":\"Please Login !\"}";
 		try {
 			String user = passengerDao.getById(userId);
 

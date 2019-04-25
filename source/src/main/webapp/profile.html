@@ -23,6 +23,7 @@
    </head>
    <body>
       <script type="text/javascript" src="js/profile.js"></script>
+      <a id="back" href="#"> back </a>
       <div class="container">
          <div class="row">
             <h2>Create your snippet's HTML, CSS and Javascript in the editor tabs</h2>
@@ -88,5 +89,15 @@
             </div>
          </div>
       </div>
+      <script>
+      	$(document).ready(function(){
+      		var type=sessionStorage.getItem("type");
+      		if(type=="Passenger"){
+      			$('#back').attr("href","test.html");
+      		}else{
+      			$('#back').attr("href",'testp.html');
+      		}
+      	});
+      </script>
    </body>
 </html>

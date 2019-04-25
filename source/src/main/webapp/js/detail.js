@@ -29,7 +29,7 @@ $(document).ready(function() {
 
 function updatePilot(data){
 	$.get( "/ws/user/profile/"+data, function( id ) {
-		  $( ".pilot" ).html(id.firstName+" "+id.lastName);
+		  $( ".pilot" ).html("Pilot : "+id.firstName+" "+id.lastName);
 		});
 }
 
