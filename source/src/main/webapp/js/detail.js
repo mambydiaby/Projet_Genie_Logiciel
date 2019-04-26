@@ -2,6 +2,7 @@
 $(document).ready(function() {
 	var id=sessionStorage.getItem('flight_info');
 	var user=sessionStorage.getItem("user");
+	$(".lds-hourglass").css("display","none");
 	sessionStorage.setItem("userId",user);
 	if(user!=null){
 		$('#login_ref').hide();
@@ -41,6 +42,7 @@ function checkSeat(id_flight){
 		var num=$('#seats').val();
 		var	only=flight.seat;
 		  	if(num>only){
+		  		$(".lds-hourglass").css("display","none");
 				alert('not enough seats! only '+ only+' seats left for this flight' );
 			}else{
 				var regi = {
@@ -74,6 +76,7 @@ function checkSeat(id_flight){
 }
 
 function bookFlight(){
+	$(".lds-hourglass").css("display","blocked");
 	var id_flight=sessionStorage.getItem('flight_info');
 	var user=sessionStorage.getItem("user");
 

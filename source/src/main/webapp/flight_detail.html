@@ -15,9 +15,9 @@
 <script type="text/javascript" src="js/detail.js"></script>
 
         
-        <title>Detail_Flight</title>
+       
     </head>
-
+ <title>Detail_Flight</title>
     <body>
         <header>
             <nav class="navbar navbar-light" style="background-color: #FFA500;">
@@ -54,6 +54,8 @@
                         <span class="close">&times;</span>
                     </div>
                     <div class="modal-body">
+                            <div class="lds-hourglass"></div>
+                    
                         <h5 class='arrival'>Lyon</h5>
                         <section>
                             <p class='departure'>From: Marseille</p>
@@ -68,12 +70,15 @@
                             </p>
                         </aside>
                     </div>
+                    
                     <div class="modal-footer">
                         <input type="submit" id="btnconfirm" class="btn btn-warning btn-lg" onclick=" bookFlight();" value="Confirm"/>
                     </div>
                 </div>
             </div>
         </div>
+      
+      
         <script>
             // Get the modal
             var modal = document.getElementById('myModal');
@@ -97,4 +102,5 @@
             }
         </script>
     </body>		
+     
 </html>

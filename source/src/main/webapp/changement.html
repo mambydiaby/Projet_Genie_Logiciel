@@ -42,6 +42,37 @@
          <div id="div1" class="row col-md-5 col-md-offset-2 custyle">
          </div>
       </div>
+      
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <p><b>Verification</b></p>
+    </div>
+    <div class="modal-body">
+     <p ><b id='vec'>Accepting this reservations?</b></p>
+     <p id='name'></p>
+     <p id='seat_wanted'>1</p>
+	 <p id='seat_left'>1</p>
+     <p id='date'>1</p>
+     <p id='departure'>1</p>
+     <p id= 'arrival'> 1</p>
+     <a id= 'more' href="#" target="_blank"> </a>
+     
+      
+    </div>
+    <div class="modal-footer">
+    <input id="accept" onclick="approve()" type="button" value="accept">
+    <input id="back" onclick="back()" type="button" value="cancel">
+    </div>
+  </div>
+
+	</div>
+ </body>
+   
       <script type="text/javascript">
          $.ajax({
          type: "get",
@@ -53,8 +84,8 @@
          "                  <tr>\r\n" + 
          "                     <th>ID</th>\r\n" + 
          "                     <th>Flight</th>\r\n" + 
-         "                     <th>Passenger</th>\r\n" + 
          "                     <th>Seat Booked</th>\r\n" + 
+         "                     <th>State</th>\r\n" + 
          "                     <th class=\"text-center\">Action</th>\r\n" + 
          "                  </tr>\r\n" + 
          "               </thead>"
@@ -64,12 +95,12 @@
              var obj = JSON.parse(data[i]);
              var td0="<tr><td>"+obj.id+"</td>";
              var td1="<td>"+obj.flightId+"</td>";
-             var td2="<td>"+obj.passengerId+"</td>";
              var td3="<td>"+obj.seat+"</td>";
-             
-             var td4="<td class=\"text-center\"><a class='btn btn-info btn-xs' href=\"#ok\"><span class=\"glyphicon glyphicon-ok\"></span> Ok</a> <a href=\"#\" class=\"btn btn-danger btn-xs\"><span class=\"glyphicon glyphicon-remove\"></span> Del</a></td></tr>"
-             
-         tbl+=td0+td1+td2+td3+td4; 
+          
+             var td3_5="<td>"+(obj.approved=="true"?"approved":"waiting")+"</td>";
+             var td4="<td class=\"text-center\"><a  onclick=\"show(\'"+obj.id+"\');\"  	class='btn btn-info btn-xs' ><span class=\"glyphicon glyphicon-ok\" ></span> View</a> <a class=\"btn btn-danger btn-xs\"  onclick=\"show2(\'"+obj.id+"\');\"><span class=\"glyphicon glyphicon-remove\"></span> Cancel</a></td></tr>"
+
+         tbl+=td0+td1+td3+td3_5+td4; 
            
          }
         	tbl += "</table>";
@@ -88,7 +119,183 @@
        			$('#back').attr("href",'testp.html');
        		}
        	});
-      </script>
+       	
+       	
+       	
+     // Get the modal
+        var modal = document.getElementById('myModal');
 
-   </body>
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        function back(){
+      	  modal.style.display = "none";
+      	  document.location.reload(true);
+        }
+       
+        
+        function disapprove(id){
+      	  console.log("disapprove"+id);
+      	  var result=id;
+      	  $.ajax({
+      		  type:"delete",
+      		  url:"/ws/reservation/disapprove/"+id,
+      		  success: function (data) {
+    			  	console.log("success : "+data);
+      			console.log(data.result);
+        		  	$('#name').html("");	
+        		  	$('#seat_wanted').html("");	
+        		  	$('#vec').html("success, the reservation has been disapproved/canceled!");	
+      		  	$('#seat_left').html("");
+    	    	    $('#date').html("");
+    	    	    $('#arrival').html("");
+    	    	    $('#departure').html("");
+    	    	    $('#accept').attr("onclick",'back();');
+   	    	    $('#accept').attr("value",'Ok');
+
+    		  },
+    		  error:function(error){
+  	    		alert(error);
+    		  },   		  
+    		});	 	    
+      }
+        // When the user clicks the button, open the modal 
+       function show(id) {
+      	 $.get( "/ws/reservation/getbyid/"+id, function( data ) {
+  			var seat=data.seat;
+  			var flightId=data.flightId;
+      	     $('#seat_wanted').html("Seats booked : "+seat);
+        	 $('#vec').html("Information flight");
+        	 sessionStorage.setItem("flight_info",flightId);
+ 			$('#more').attr("href","flight_detail.html");
+ 			$('#more').html("more information");
+      	     $.get( "/ws/flight/getbyid/"+flightId, function( data2 ) {
+      				var seat=data2.seat;
+      				var date=data2.date;
+      				var arrival=data2.arrival;
+      				var departure=data2.departure;
+  	     			var pil=data2.pilotId;
+      	    	     $('#seat_left').html("Seats left :" +seat);
+      	    	     $('#date').html("date : "+date);
+      	    	     $('#arrival').html("arrival : "+arrival);
+      	    	     $('#departure').html("departure : "+departure);
+      	    	  	 $.get( "/ws/user/profile/"+pil, function( data3 ) {
+      	   				var fn=data3.firstName;
+      	   				var ln=data3.lastName;
+      	   	    	     $('#name').html("Pilot : "+fn+" "+ ln);
+      	   	    		});
+      	      		});
+      	    		});
+      	    
+          modal.style.display = "block";
+          $('#accept').attr("onclick",'back();');
+          $('#accept').attr("value",'OK');
+
+        }
+        
+       function show2(id) {
+      	 show(id);
+      	 $('#vec').html("Deleting this reservation?");
+           modal.style.display = "block";
+           $('#accept').attr("onclick",'back();');
+           $('#accept').attr("value",'Delete');
+
+         }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+
+      </script>
+      
+      
+      <style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  -webkit-animation-name: fadeIn; /* Fade in the background */
+  -webkit-animation-duration: 0.4s;
+  animation-name: fadeIn;
+  animation-duration: 0.4s;
+ 
+}
+
+/* Modal Content */
+.modal-content {
+  position: fixed;
+  top: 30%;
+	left: 30%;
+  background-color: white;
+  width: 40%;
+  margin:0 auto;
+  -webkit-animation-name: slideIn;
+  -webkit-animation-duration: 0.1s;
+  animation-name: slideIn;
+  animation-duration: 0.1s
+}
+
+/* The Close Button */
+.close {
+  color: black;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 10px;
+  background-color: white;
+  color: black;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: white;
+  color: black;
+}
+
+/* Add Animation */
+@-webkit-keyframes slideIn {
+  from {bottom: -300px; opacity: 0} 
+  to {bottom: 0; opacity: 1}
+}
+
+@keyframes slideIn {
+  from {bottom: -300px; opacity: 0}
+  to {bottom: 0; opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+</style>
+
 </html>

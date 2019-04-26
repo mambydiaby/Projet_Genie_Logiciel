@@ -63,6 +63,7 @@
      <p id='date'>1</p>
      <p id='departure'>1</p>
      <p id= 'arrival'> 1</p>
+     <a id= 'more' href="#" target="_blank"> </a>
       
     </div>
     <div class="modal-footer">
@@ -97,8 +98,7 @@
     		  success: function (data) {
     			  	console.log("success : "+data);
       			  	console.log(data.result);
-        		  	$('#name').html("");	
-
+        		  	$('#name').html("");
         		  	$('#seat_wanted').html("");	
         		  	$('#vec').html("success, the reservation has been approved!");	
       		  		$('#seat_left').html("");
@@ -146,8 +146,11 @@
 			var seat=data.seat;
 			var flightId=data.flightId;
 			var pas=data.passengerId;
+			sessionStorage.setItem("flight_info",flightId);
+			$('#more').attr("href","flight_detail.html");
+			$('#more').html("more information");
     	     $('#seat_wanted').html("Seats booked : "+seat);
-    	     
+        	 $('#vec').html("Accepting this reservation?");
     	     $.get( "/ws/flight/getbyid/"+flightId, function( data2 ) {
     				var seat=data2.seat;
     				var date=data2.date;
