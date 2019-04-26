@@ -31,6 +31,7 @@ public class ReservationService extends Service {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/new")
 	public String add(Reservation r) throws Exception {
+		System.out.println(r.getFlightId()+r.getId()+r.getPassengerId()+r.getSeat());
 		if (!IsLogged())
 			return "{\"result\":\"Please Login !\"}";
 		Flight flight = (Flight) ConvertObject.jsonToObject(flightDao.getById(r.getFlightId()), ConvertObject.FLIGHT);
@@ -60,7 +61,8 @@ public class ReservationService extends Service {
 	@Consumes("application/x-www-form-urlencoded")
 	@Path("/approve/{id}")
 	public String approve(@PathParam("id") String id) throws Exception {
-
+		System.out.println("approve");
+	
 		if (!(IsLogged() && isPilot()))
 			return "{\"result\":\"Please Login !\"}";
 		Reservation rt = (Reservation) ConvertObject.jsonToObject(reservationDao.getById(id),
@@ -71,12 +73,21 @@ public class ReservationService extends Service {
 		if (flight == null)
 			return "{\"result\":\"error\"}";
 		flight.setSeat(flight.getSeat() - rt.getSeat());
+		System.out.println("pass"+flight.getPassengerId()+",id"+rt.getPassengerId());
+
 		flight.getPassengerId().add(rt.getPassengerId());
 		flightDao.add(ConvertObject.objectToByte(flight), flight.getId());
 		reservationDao.update(id, "approved", "true");
-
-		Passenger pa = (Passenger) ConvertObject.jsonToObject(passengerDao.getById(rt.getPassengerId()),
+		Passenger pa=null;
+		try {
+		 pa = (Passenger) ConvertObject.jsonToObject(passengerDao.getById(rt.getPassengerId()),
 				ConvertObject.PASSENGER);
+		}catch(Exception e) {
+			pa=(Passenger) ConvertObject.jsonToObject(pilotDao.getById(rt.getPassengerId()),
+					ConvertObject.PILOT);
+		}
+			
+		
 		String body = "Hello Mr/Mrs/Ms " + pa.getLastName() + ",<br/><br/>Your booking for the flight "
 				+ rt.getFlightId()
 				+ "  has been approved by the pilot. You will receive an email containing the essential information the "
@@ -99,8 +110,15 @@ public class ReservationService extends Service {
 				ConvertObject.RESERVATION);
 		if (rt == null || rt.isApproved())
 			return "{\"result\":\"error\"}";
-		Passenger pa = (Passenger) ConvertObject.jsonToObject(passengerDao.getById(rt.getPassengerId()),
-				ConvertObject.PASSENGER);
+		Passenger pa=null;
+		try {
+			 pa = (Passenger) ConvertObject.jsonToObject(passengerDao.getById(rt.getPassengerId()),
+					ConvertObject.PASSENGER);
+			}catch(Exception e) {
+				pa=(Passenger) ConvertObject.jsonToObject(pilotDao.getById(rt.getPassengerId()),
+						ConvertObject.PILOT);
+			}
+			
 		String body = "Hello Mr/Mrs/Ms " + pa.getLastName() + ",<br/><br/>Your booking for the flight "
 				+ rt.getFlightId() + " has been rejected by the pilot. <br/><br/>Best regards.";
 		Email.send(pa.getEmail(), "Flight booking", body);
@@ -122,6 +140,20 @@ public class ReservationService extends Service {
 			}
 			result = reservationDao.search(searchBuilder);
 			return result;
+		} catch (Exception e) {
+			registerException(e);
+		}
+		return result;
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes("application/x-www-form-urlencoded")
+	@Path("/getbyid/{id}")
+	public String getById(@PathParam("id") String id) {
+		String result=null;
+		try {
+			 result = reservationDao.getById(id);	
 		} catch (Exception e) {
 			registerException(e);
 		}

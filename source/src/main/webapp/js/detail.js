@@ -36,7 +36,7 @@ function updatePilot(data){
 
 function checkSeat(id_flight){
 	var user=sessionStorage.getItem("user");
-	var regiId=id_flight+user+$('#seats').val();
+	var regiId=id_flight+user+$('#seats').val()+Math.floor(Math.random() * 55);
 	$.get( '/ws/flight/getbyid/'+id_flight, function( flight ) {
 		var num=$('#seats').val();
 		var	only=flight.seat;
@@ -71,8 +71,8 @@ function checkSeat(id_flight){
 					})
 			}
 		});
-
 }
+
 function bookFlight(){
 	var id_flight=sessionStorage.getItem('flight_info');
 	var user=sessionStorage.getItem("user");

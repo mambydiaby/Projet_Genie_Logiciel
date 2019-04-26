@@ -24,7 +24,7 @@ function login() {
 						location.href = '../test.html';
 					}
 				}
-				//location.replace("http://localhost:8081/test.html");
+				location.replace("../test.html");
 			} else if (data.result == 'okp') {
 				sessionStorage.setItem("user", usr)
 				sessionStorage.setItem("type", 'Pilot');
@@ -38,6 +38,7 @@ function login() {
 					else{
 						location.href = '../testp.html';
 					}
+
 				}
 				//location.replace("http://localhost:8081/testp.html");
 			} else {

@@ -65,7 +65,6 @@ function mysubmit() {
 $(function() {
 	var today = moment().format("YYYY-MM-DD");
 	document.getElementById('date').setAttribute("min", today);
-	
 });
 
 

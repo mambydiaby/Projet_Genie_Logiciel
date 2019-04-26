@@ -70,11 +70,11 @@ public class FillData {
 		flight[2]= new Flight("PWO996","032",12,null,"Toulouse","Lyon", "2019-12-22", "13:30","4h","166"); 		
 		flight[3]= new Flight("GP902", "032",19, null, "Nancy", "Lyon", "2020-03-31", "23:30", "3h", "166"); 		
 		flight[4]= new Flight("GW999", "032", 29, null, "Paris", "Limoges", "2019-05-01", "23:30", "2.5h", "160"); 	
-		flight[5]= new Flight("GW908", "032", 5, null, "Limoges", "Lyon", "2029-07-01", "21:30", "3h", "196"); 		
+		flight[5]= new Flight("GW908", "032", 45, null, "Limoges", "Lyon", "2029-07-01", "21:30", "3h", "196"); 		
 		flight[6]= new Flight("GO932", "003",19, null,"Strasbourg", "Lyon", "2019-06-02", "23:30", "3h", "196"); 		
-		flight[7]= new Flight("GW552","032",9, null, "Toulouse", "Lyon", "2019-06-21", "13:30", "3h", "166");
-		flight[8]= new Flight("GW913","032",9,null,"Lyon","Lyon","2019-06-21","23:30","3h","166");
-		flight[9]= new Flight("GW002","009",9,null,"Paris","Paris","2019-12-31","23:30","3h","126");
+		flight[7]= new Flight("GW552","032",99, null, "Toulouse", "Lyon", "2019-06-21", "13:30", "3h", "166");
+		flight[8]= new Flight("GW913","032",49,null,"Lyon","Lyon","2019-06-21","23:30","3h","166");
+		flight[9]= new Flight("GW002","009",39,null,"Paris","Paris","2019-12-31","23:30","3h","126");
 		flight[10]=new Flight("GGWP123","009",11,null,"Paris","Nancy","2019-09-01","23:30","3h","93");	
 		flight[11]=new Flight("GPP142","009",2,null,"Nancy","Paris","2019-10-01","23:30","3h","88");	
 		flight[12]=new Flight("GPOE12","009",31,null,"Nancy","Limoges","2020-09-01","23:30","3h","99");	
@@ -88,11 +88,19 @@ public class FillData {
 	
 	public static void addReservation() throws JsonProcessingException, Exception {
 		ActionDao reservationDao = FactoryDao.createDAO(FactoryDao.RESERVATION);	
-		Reservation[] r=new Reservation[4];
-		r[0]=new Reservation("R1234","GW913","jhuy7x",3);
+		Reservation[] r=new Reservation[10];
+		r[0]=new Reservation("R1234","GW913","jhuy7x",1);
 		r[1]=new Reservation("R1235","GW913","all",2);
 		r[2]=new Reservation("R1245","GW552","all",1);
-		r[3]=new Reservation("R1345","GW552","jhuy7x",4);
+		r[3]=new Reservation("R1345","GW552","009",4);
+		r[4]=new Reservation("R1343","GW552","jhuy7x",4);
+		r[5]=new Reservation("R1341","GW552","jhuy7x",5);
+		r[6]=new Reservation("R1305","GW552","jhuy7x",6);
+		r[7]=new Reservation("R1385","GW552","jhuy7x",12);
+		r[8]=new Reservation("R1045","GW552","jhuy7x",13);
+		r[9]=new Reservation("R10045","GW552","jhuy7x",14);
+
+		
 		for(Reservation a:r) {
 			reservationDao.add(ConvertObject.objectToByte(a),a.getId());
 		}	

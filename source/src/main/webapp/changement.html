@@ -54,7 +54,7 @@
          "                     <th>ID</th>\r\n" + 
          "                     <th>Flight</th>\r\n" + 
          "                     <th>Passenger</th>\r\n" + 
-         "                     <th>Seat</th>\r\n" + 
+         "                     <th>Seat Booked</th>\r\n" + 
          "                     <th class=\"text-center\">Action</th>\r\n" + 
          "                  </tr>\r\n" + 
          "               </thead>"
@@ -66,6 +66,7 @@
              var td1="<td>"+obj.flightId+"</td>";
              var td2="<td>"+obj.passengerId+"</td>";
              var td3="<td>"+obj.seat+"</td>";
+             
              var td4="<td class=\"text-center\"><a class='btn btn-info btn-xs' href=\"#ok\"><span class=\"glyphicon glyphicon-ok\"></span> Ok</a> <a href=\"#\" class=\"btn btn-danger btn-xs\"><span class=\"glyphicon glyphicon-remove\"></span> Del</a></td></tr>"
              
          tbl+=td0+td1+td2+td3+td4; 

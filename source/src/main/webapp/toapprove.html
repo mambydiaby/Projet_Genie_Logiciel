@@ -56,12 +56,18 @@
       <p><b>Verification</b></p>
     </div>
     <div class="modal-body">
-      <p>Some text in the Modal Body</p>
-      <p>Some other text...</p>
+     <p ><b id='vec'>Accepting this reservations?</b></p>
+     <p id='name'></p>
+     <p id='seat_wanted'>1</p>
+	 <p id='seat_left'>1</p>
+     <p id='date'>1</p>
+     <p id='departure'>1</p>
+     <p id= 'arrival'> 1</p>
+      
     </div>
     <div class="modal-footer">
-    <input type="button" value="comfirm">
-    <input type="button" value="cancel">
+    <input id="accept" onclick="approve()" type="button" value="accept">
+    <input id="back" onclick="back()" type="button" value="cancel">
     </div>
   </div>
 
@@ -78,10 +84,100 @@
       // Get the <span> element that closes the modal
       var span = document.getElementsByClassName("close")[0];
 
-      // When the user clicks the button, open the modal 
-     function show() {
-        modal.style.display = "block";
+      function back(){
+    	  modal.style.display = "none";
+    	  document.location.reload(true);
       }
+      function approve(id){
+    	  console.log("approve"+id);
+    	  var result=id;
+    	  $.ajax({
+    		  type:"post",
+    		  url:"/ws/reservation/approve/"+id,
+    		  success: function (data) {
+    			  	console.log("success : "+data);
+      			  	console.log(data.result);
+        		  	$('#name').html("");	
+
+        		  	$('#seat_wanted').html("");	
+        		  	$('#vec').html("success, the reservation has been approved!");	
+      		  		$('#seat_left').html("");
+    	    	    $('#date').html("");
+    	    	    $('#arrival').html("");
+    	    	    $('#departure').html("");
+    	    	    $('#accept').attr("onclick",'back();');
+   	    	    	 $('#accept').attr("value",'Ok');
+
+    		  },
+    		  error:function(error){
+	    		alert(error);
+    		  },   		  
+    		});	 	    
+      }
+      
+      function disapprove(id){
+    	  console.log("disapprove"+id);
+    	  var result=id;
+    	  $.ajax({
+    		  type:"delete",
+    		  url:"/ws/reservation/disapprove/"+id,
+    		  success: function (data) {
+  			  	console.log("success : "+data);
+    			console.log(data.result);
+      		  	$('#name').html("");	
+      		  	$('#seat_wanted').html("");	
+      		  	$('#vec').html("success, the reservation has been disapproved/canceled!");	
+    		  	$('#seat_left').html("");
+  	    	    $('#date').html("");
+  	    	    $('#arrival').html("");
+  	    	    $('#departure').html("");
+  	    	    $('#accept').attr("onclick",'back();');
+ 	    	    $('#accept').attr("value",'Ok');
+
+  		  },
+  		  error:function(error){
+	    		alert(error);
+  		  },   		  
+  		});	 	    
+    }
+      // When the user clicks the button, open the modal 
+     function show(id) {
+    	 $.get( "/ws/reservation/getbyid/"+id, function( data ) {
+			var seat=data.seat;
+			var flightId=data.flightId;
+			var pas=data.passengerId;
+    	     $('#seat_wanted').html("Seats booked : "+seat);
+    	     
+    	     $.get( "/ws/flight/getbyid/"+flightId, function( data2 ) {
+    				var seat=data2.seat;
+    				var date=data2.date;
+    				var arrival=data2.arrival;
+    				var departure=data2.departure;
+    	    	     $('#seat_left').html("Seats left :" +seat);
+    	    	     $('#date').html("date : "+date);
+    	    	     $('#arrival').html("arrival : "+arrival);
+    	    	     $('#departure').html("departure : "+departure);
+    	    		});
+    	     $.get( "/ws/user/profile/"+pas, function( data3 ) {
+ 				var fn=data3.firstName;
+ 				var ln=data3.lastName;
+ 	    	     $('#name').html("Passenger : "+fn+" "+ ln);
+ 	    		});
+    		});
+        modal.style.display = "block";
+        $('#accept').attr("onclick",'approve(\''+id+'\')');
+        $('#accept').attr("value",'Approve');
+
+      }
+      
+     function show2(id) {
+    	 show(id);
+    	 $('#vec').html("Denying this reservation?");
+         modal.style.display = "block";
+         $('#accept').attr("onclick",'disapprove(\''+id+'\')');
+         $('#accept').attr("value",'Disapprove');
+
+       }
 
       // When the user clicks on <span> (x), close the modal
       span.onclick = function() {
@@ -117,7 +213,7 @@
              var td1="<td>"+obj.flightId+"</td>";
              var td2="<td>"+obj.passengerId+"</td>";
              var td3="<td>"+obj.seat+"</td>";
-             var td4="<td class=\"text-center\"><a class='btn btn-info btn-xs okbtn' href=\"#ok\" onclick=\"show();\"><span class=\"glyphicon glyphicon-ok\"></span> Ok</a> <a href=\"#\" class=\"btn btn-danger btn-xs delbtn\"><span class=\"glyphicon glyphicon-remove\"></span> Del</a></td></tr>"
+             var td4="<td class=\"text-center\"><a class='btn btn-info btn-xs okbtn'  onclick=\"show(\'"+obj.id+"\');\"><span class=\"glyphicon glyphicon-ok\"></span> Ok</a> <a href=\"#\" onclick=\"show2(\'"+obj.id+"\');\" class=\"btn btn-danger btn-xs delbtn\"><span class=\"glyphicon glyphicon-remove\"></span> Del</a></td></tr>"
              
          tbl+=td0+td1+td2+td3+td4; 
            
