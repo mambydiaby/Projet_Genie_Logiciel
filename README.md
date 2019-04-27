@@ -1,4 +1,5 @@
 # Projet_Genie_Logiciel
+
 <h2>--------------- Run this project ---------------</h2>
 <ol>
     <li>run FillData.java in dao</li>
@@ -6,7 +7,10 @@
      <li>browser localhost:8081</li>
      <li>login with id=032,pwd=0 (a pilot account to watch more info)</li>
   </ol>
-    
+ <h2>----------Problems-----------</h2>
+<p><b> Always a little bit delay when log in / book a flight , if it doesn't work , wait for ten seconds and click again!!!</b></p>
+<p><b>todo: </b>remainder and email part and payment not done</p>
+
  <h2>---------- Difference with master -----------</h2>
   <h3>DAO </h3>
  <ol>
@@ -36,3 +40,5 @@
     <li> I didn't touch email/reminder part or the payment yet.</li>
     <li> For the list of flights page, i would rather use mine because a lot of works to do if i change to another page</li>
   </ol>
+
+<h2> Any other questions pls contact me, Nice day/night </h2>
