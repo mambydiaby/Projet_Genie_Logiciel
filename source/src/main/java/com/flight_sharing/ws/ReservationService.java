@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
-import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -132,6 +131,8 @@ public class ReservationService extends Service {
 	@Consumes("application/x-www-form-urlencoded")
 	@Path("/myreservations/{id}")
 	public List<String> searchMyReservations(@PathParam("id") String id) {
+		if (!(IsLogged() ))
+			return null;
 		List<String> result = null;
 		try {
 			BoolQueryBuilder searchBuilder = QueryBuilders.boolQuery();
@@ -151,6 +152,8 @@ public class ReservationService extends Service {
 	@Consumes("application/x-www-form-urlencoded")
 	@Path("/getbyid/{id}")
 	public String getById(@PathParam("id") String id) {
+		if (!(IsLogged()))
+			return null;
 		String result=null;
 		try {
 			 result = reservationDao.getById(id);	
