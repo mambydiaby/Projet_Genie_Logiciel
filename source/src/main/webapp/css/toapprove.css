@@ -1,6 +1,12 @@
-
+#back{
+		color: white;
+		font-size:30px;
+		 text-shadow: 0 0 20px #fdec84,
+            10px -10px 30px #ffae35;
+		
+}
 h1{
-    font: 70 60px "Comic Sans MS";
+    font: 700 100px "Comic Sans MS";
     color: white;
     text-shadow: 0 0 20px #fdec84,
             10px -10px 30px #ffae35;
@@ -42,29 +48,28 @@ input:hover{
 
  #filter{
        display:none;
-       color:white;
+  
  }
 #itable1_wrapper{ display: flex;
 flex-direction:column;
       
 
  }
-#itable1_idfo{order:-2;color:white;}
-#itable1_info{color:white}
+
+
 #itable1_length{ order: 1; 
-color:white}
-#itable1_paginate{order:1;color:white;}
+}
+#itable1_paginate{order:1;}
 #itable_wrapper{ display: flex;
 flex-direction:column;
-color:white;
+
  }
-#itable_info{color:white}
-#itable_idfo{order:-2;
-color:white}
-#itable_length{ order: 1; color:white;}
-#itable_paginate{order:1;color:white;}
+
+
+#itable_length{ order: 1;}
+#itable_paginate{order:1;}
 #div1{
-	 width: 80%;
-    margin-left: 20%;
+ width: 80%;
+    margin-left: 10%;
 }
    

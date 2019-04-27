@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <title>Search</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link
-	href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
-	rel="stylesheet">
+
+	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+	
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
   
 <link href="css/search.css" rel="stylesheet">
@@ -21,9 +21,24 @@
 <script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
 <script type="text/javascript" src="js/search.js"></script>
+    <link rel="stylesheet" href="css/List_flights.css"/>
+
+
+
+
 </head>
 <body>
-	<h1>Booking</h1>
+<header>
+    		<nav class="navbar navbar-light" style="background-color: #FFA500;">
+  				<a class="navbar-brand" href="">Kechache Airport</a>
+  				<p><a href="#">Login</a>/<a href="">Sign In</a></p>
+  				<form class="form-inline">
+    				<input class="form-control mr-sm-2" type="search" placeholder="Ville de départ..." aria-label="Search">
+    				<button class="btn btn-warning" type="submit">Search</button>
+  				</form>
+			</nav>
+	</header>
+	<h1>Best flights</h1>
 	<!-- /. filter input(chooseBox + text) -->
 	<div id="filter" class="input">
 		<label>Destination: </label> <select id='destination_filter'>

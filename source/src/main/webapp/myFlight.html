@@ -4,7 +4,7 @@
       <meta charset="utf-8">
       <title>Reservation</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link href="css/search.css" rel="stylesheet">
+      <link href="css/toapprove.css" rel="stylesheet">
       <link href="css/general.css" rel="stylesheet">
       <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
       
@@ -60,10 +60,8 @@
  				var td3 = "<td>" + obj.seat + "</td>";
  				var td4 = "<td>" + obj.price + "</td>";
  				var td5 = "<td class=\"text-center\"><a onclick=\"storing('"+obj.id+"');\" target=\"_blank\" class='btn btn-info btn-xs' href=\"../flight_detail.html\" >"+
- 				"<span class=\"glyphicon glyphicon-ok\"></span> See</a> <a onclick=\"storing('"+obj.id+"');\" target=\"_blank\" class='btn btn-info btn-xs' href=\"../flight_detail.html\" ><span class=\"glyphicon glyphicon-ok\"></span> Edit</a> </td></tr>"
-
+ 				"<span class=\"glyphicon glyphicon-ok\"></span> See</a> <a onclick=\"storing('"+obj.id+"');\" target=\"_blank\" class='btn btn-info btn-xs' href=\"../Edit_Flight.html\" ><span class=\"glyphicon glyphicon-ok\"></span> Edit</a> </td></tr>"
  				tbl += td0 + td1 +td1_5+ td2 + td3 + td4 + td5;
-
  			}
  			tbl += "</tbody></table>"
  			document.getElementById("div1").innerHTML = "";
@@ -75,7 +73,6 @@
  		}
          
          });
-
        	$(document).ready(function(){
        		var type=sessionStorage.getItem("type");
        		if(type=="Passenger"){
@@ -84,12 +81,9 @@
        			$('#back').attr("href",'testp.html');
        		}
        	});
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-          if (event.target == modal) {
-            modal.style.display = "none";
-          }
+        
+        function storing(obj){
+        	sessionStorage.setItem('flight_info',obj);
         }
       </script>
    </body>

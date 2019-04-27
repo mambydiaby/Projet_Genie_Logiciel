@@ -152,21 +152,18 @@ public class FlightService extends Service {
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("add")
+	@Path("/add")
 	public String addFlight(Flight flight) throws Exception {
-
+		System.out.println(flight);
 		if (!IsLogged())
 			return "{\"result: \":\"Please Login !\"}";
-
 		String result = "";
 		result = flightDao.add(ConvertObject.objectToByte(flight), flight.getId());
-
-		if (result.equals("OK")) {
+		if (result.equals("CREATED")) {
 			return "{\"addResult: \":\"success !\"}";
 		} else {
 			return "{\"addResult: \":\"error \"}";
 		}
 
 	}
-
 }

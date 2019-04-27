@@ -1,4 +1,9 @@
-body {font-family: Arial, Helvetica, sans-serif;}
+body
+{
+	background: url("../img/aircraft-airplane-aviation-615060.jpg") no-repeat fixed;
+	background-size:100% 100%;
+	
+}
 
 /* The Modal (background) */
 .modal {

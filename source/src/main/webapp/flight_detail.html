@@ -13,33 +13,39 @@
 	src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
 <script type="text/javascript" src="js/detail.js"></script>
-
-        
-       
+    <title>Detail_Flight</title>
     </head>
- <title>Detail_Flight</title>
+ <script>
+$(function(){
+var log=sessionStorage.getItem("user");
+if(log!=null){
+	$('#login').hide();
+}
+console.log(log);
+});
+</script>
     <body>
-        <header>
-            <nav class="navbar navbar-light" style="background-color: #FFA500;">
-                <a class="navbar-brand" href="">Kechache Airport</a>
-                <p id= "login_ref"><a href="#">Login</a>/<a href="">Sign In</a></p>
-                <form class="form-inline">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Ville de départ..." aria-label="Search">
-                    <button class="btn btn-warning" type="submit">Search</button>
-                </form>
-            </nav>
-        </header>
+       <header>
+    		<nav class="navbar navbar-light" style="background-color: #FFA500;">
+  				<a class="navbar-brand" href="index.html">Kechache Airport</a>
+  				<p id='login'><a href="login.html">Log In</a>/<a href="registration.html">Sign Up</a></p>
+  				<form class="form-inline">
+    				<input class="form-control mr-sm-2" type="search" placeholder="Ville de départ..." aria-label="Search"
+    				onclick="location.replace('search.html')">
+    				<button class="btn btn-warning" type="submit">Search</button>
+  				</form>
+			</nav>
+		</header>
 
         <div id="contenu">
             <section>
                 <h1 class='arrival'>Lyon</h1><br>							
-                <p>?</p>
+                <p id='info'>?</p>
                 <hr width="80%" height="2px" color="grey">
                 <p class='departure'>From: Marseille</p>
                 <p class='date'>Date: 12.03.2019</p>
                 <p class='duration'>Duration: 1 hour</p>
                 <p class='pilot'>Pilot: Will Smith</p>
-                <p>Plane model: Robin DR400</p>
             </section>
             <aside>
                 <h2 id='price'>55€</h2><br>

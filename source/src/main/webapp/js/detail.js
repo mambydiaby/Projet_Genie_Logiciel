@@ -12,6 +12,7 @@ $(document).ready(function() {
 		url: '/ws/flight/getbyid/'+id,
 		success: function(data) {
 			$('.arrival').html(data.arrival);
+			$('#info').html(data.info);
 			$('.departure').html("Departure :"+data.departure);
 			$('.date').html("date: "+data.date);
 			$('.duration').html("Duration: "+data.duration);
@@ -62,14 +63,9 @@ function checkSeat(id_flight){
 								console.log(data);
 								location.href = 'http://localhost:8081/congratuation.html';
 							} else {
-								$('#loginerror').show();
-								$('#loginerror').html(data.result);
-								$("#loginerror").css("display", "block");
-								$('#loginerror').fadeIn();
-								$('#loginerror').show();
+								
 							}
 						}
-
 					})
 			}
 		});
