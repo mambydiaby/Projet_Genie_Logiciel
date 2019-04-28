@@ -36,7 +36,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
    </head>
    <body>
-      <a id="back" href="#"> back </a>
+      <a id="back1" href="#"> back </a>
       <div class="container">
          <div id="div1" class="row col-md-5 col-md-offset-2 custyle">
          </div>
@@ -106,11 +106,11 @@
     	    	    $('#arrival').html("");
     	    	    $('#departure').html("");
     	    	    $('#accept').attr("onclick",'back();');
-   	    	    	 $('#accept').attr("value",'Ok');
+   	    	    	$('#accept').attr("value",'Ok');
 
     		  },
     		  error:function(error){
-	    		alert(error);
+	    		alert('error');
     		  },   		  
     		});	 	    
       }
@@ -232,9 +232,9 @@
        	$(document).ready(function(){
        		var type=sessionStorage.getItem("type");
        		if(type=="Passenger"){
-       			$('#back').attr("href","test.html");
+       			$('#back1').attr("href","test.html");
        		}else{
-       			$('#back').attr("href",'testp.html');
+       			$('#back1').attr("href",'testp.html');
        		}
        	});
       </script>
