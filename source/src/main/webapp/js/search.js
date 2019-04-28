@@ -112,7 +112,7 @@ function filter() {
 				var td0 = "<tr><td>" + obj.id + "</td>";
 				var td1 = "<td>" + obj.departure + "</td>";
 				var td1_5="<td>" + obj.arrival + "</td>";
-				var td2 = "<td>" + moment(obj.date).format("MMMM Do YYYY") + "</td>";
+				var td2 = "<td>" + moment(obj.date).format("YYYY-MM-DD") + "</td>";
 				var td3 = "<td>" + obj.seat + "</td>";
 				var td4 = "<td>" + obj.price + "</td>";
 				var td5 = "<td class=\"text-center\"><a onclick=\"storing('"+obj.id+"');\" target=\"_blank\" class='btn btn-info btn-xs' href=\"../flight_detail.html\" ><span class=\"glyphicon glyphicon-ok\"></span> See</a> </td></tr>"
