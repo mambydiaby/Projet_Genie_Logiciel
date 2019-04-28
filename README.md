@@ -11,6 +11,7 @@
 <p><b> Always a little bit delay when log in / book a flight , if it doesn't work , wait for ten seconds and click again!!!</b></p>
 <p><b>todo: </b>remainder and email part and payment not done</p>
 <p>profile: upload and images not done </p>
+<p>if this doesn't work, try 'tryThis' branche</p>
 
  <h2>---------- Difference with master -----------</h2>
   <h3>DAO </h3>
