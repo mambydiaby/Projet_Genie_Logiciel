@@ -39,20 +39,14 @@ $(function(){
        	$(document).ready(function(){
        		var type=sessionStorage.getItem("type");
        		if(type=="Passenger"){
-       			$('#back').attr("href","test.html");
+       			$('#back1').attr("href","test.html");
        		}else{
-       			$('#back').attr("href",'testp.html');
+       			$('#back1').attr("href",'testp.html');
        		}
        	});
        	
-       	
-       	
-     // Get the modal
-        var modal = document.getElementById('myModal');
-
-
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
+}) ; 
+    
 
         function back(){
       	  modal.style.display = "none";
@@ -127,9 +121,4 @@ $(function(){
            $('#accept').attr("value",'Delete');
 
          }
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-          modal.style.display = "none";
-        }
-}) ; 
+      
