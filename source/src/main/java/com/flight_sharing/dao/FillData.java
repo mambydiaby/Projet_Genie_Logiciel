@@ -23,11 +23,11 @@ public class FillData {
 	public static void addPilot() throws JsonProcessingException, Exception {
 		ActionDao pilotDao = FactoryDao.createDAO(FactoryDao.PILOT);
 		Pilot[] pilot=new Pilot[5];
-		pilot[0]=new Pilot("FLower","0","ling","JIARONG","lingjiarong@gmail.com","3 ans","bon");
-		pilot[1]=new Pilot("Flighter","0","curry","STEPHEN","le@gmail.com","22 ans","bon");
-		pilot[2]=new Pilot("003","0","jeremy","ARKI","jarkid@gmail.com","1 ans","bon");
-		pilot[3]=new Pilot("009","0","eminem","SHAR","shar.kid@gmail.com","2 ans","bon");
-		pilot[4]=new Pilot("032","0","venom","LUCY","lucy.oldman@gmail.com","13 ans","bon");
+		pilot[0]=new Pilot("FLower","0","ling","JIARONG","lingjiarong@gmail.com","3 years","best pilot in the world! ");
+		pilot[1]=new Pilot("Flighter","0","curry","STEPHEN","le@gmail.com","22 years","very great");
+		pilot[2]=new Pilot("003","0","jeremy","ARKI","jarkid@gmail.com","1 year","super ");
+		pilot[3]=new Pilot("009","0","eminem","SHAR","shar.kid@gmail.com","2 months","high skill");
+		pilot[4]=new Pilot("032","0","venom","LUCY","lucy.oldman@gmail.com","13 years","the best ");
 		
 
 		for (Pilot pilot1 : pilot) {
