@@ -11,8 +11,10 @@ function login() {
 		dataType: "json",
 		success: function(data) {
 			if (data.result == 'ok') {
-				sessionStorage.setItem("user", usr)
-				sessionStorage.setItem("type", 'Passenger');
+				sessionStorage.setItem("user", usr);
+				sessionStorage.setItem("userId", usr);
+
+				sessionStorage.setItem("type", 'passenger');
 				var prevLink = document.referrer;
 				if($.trim(prevLink)==''){
 					location.href = '../test.html';
@@ -26,8 +28,10 @@ function login() {
 				}
 				location.replace("../test.html");
 			} else if (data.result == 'okp') {
-				sessionStorage.setItem("user", usr)
-				sessionStorage.setItem("type", 'Pilot');
+				sessionStorage.setItem("user", usr);
+				sessionStorage.setItem("userId", usr);
+
+				sessionStorage.setItem("type", 'pilot');
 				var prevLink = document.referrer;
 				if($.trim(prevLink)==''){
 					location.href = '../testp.html';

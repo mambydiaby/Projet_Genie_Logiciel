@@ -47,9 +47,9 @@ $.ajax({
        		}else{
        			$('#back').attr("href",'testp.html');
        		}
-       	});
-        
-        function storing(obj){
-        	sessionStorage.setItem('flight_info',obj);
-        }
-}) ; 
+       	});    
+}) ;
+
+function storing(obj){
+	sessionStorage.setItem('flight_info',obj);
+}

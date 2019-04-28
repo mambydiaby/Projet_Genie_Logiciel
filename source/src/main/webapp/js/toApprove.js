@@ -105,7 +105,6 @@
        type: "get",
        url: '/ws/reservation/toapprove/'+sessionStorage.getItem("user"),
        success: function(data) {
-       //alert(data);
        	var tbl="<table id=\"itable\" class=\"table table-striped custab\">\r\n" + 
        "               <thead>\r\n" + 
        "                  <tr>\r\n" + 
@@ -116,7 +115,6 @@
        "                     <th class=\"text-center\">Action</th>\r\n" + 
        "                  </tr>\r\n" + 
        "               </thead>"
-       
        for(var i=0;i<data.length;i++)
        {
            var obj = JSON.parse(data[i]);

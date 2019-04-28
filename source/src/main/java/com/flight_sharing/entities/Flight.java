@@ -45,7 +45,10 @@ public class Flight {
 		this.id = id;
 		this.pilotId = pilotId;
 		this.seat = seat;
-		this.passengerId = passengerId;
+		if(passengerId==null) 
+			this.passengerId=new LinkedList<>();
+		else 
+			this.passengerId = passengerId;
 		this.departure = departure;
 		this.arrival = arrival;
 		this.date = date;

@@ -73,8 +73,8 @@ public class ReservationService extends Service {
 			return "{\"result\":\"error\"}";
 		flight.setSeat(flight.getSeat() - rt.getSeat());
 		System.out.println("pass"+flight.getPassengerId()+",id"+rt.getPassengerId());
-//		if(flight.getPassengerId()==null)
-//			flight.getPassengerId()=new LinkedList<>();
+		if(flight.getPassengerId()==null)
+			flight.getPassengerId();
 		flight.getPassengerId().add(rt.getPassengerId());
 		flightDao.add(ConvertObject.objectToByte(flight), flight.getId());
 		reservationDao.update(id, "approved", "true");
