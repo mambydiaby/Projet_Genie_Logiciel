@@ -1,5 +1,6 @@
 package com.flight_sharing.entities;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class Flight {
@@ -13,6 +14,7 @@ public class Flight {
 	private String time;
 	private String duration;
 	private String price;
+	private String info;
 
 	public Flight() {
 		// TODO Auto-generated constructor stub
@@ -23,13 +25,44 @@ public class Flight {
 		this.id = id;
 		this.pilotId = pilotId;
 		this.seat = seat;
-		this.passengerId = passengerId;
+		if(passengerId==null) 
+			this.passengerId=new LinkedList<>();
+		else 
+			this.passengerId = passengerId;
 		this.departure = departure;
 		this.arrival = arrival;
 		this.date = date;
 		this.time = time;
 		this.duration = duration;
 		this.price = price;
+		this.info="Pilot has nothing to add.";
+	}
+
+	
+	public Flight(String id, String pilotId, int seat, List<String> passengerId, String departure, String arrival,
+			String date, String time, String duration, String price, String info) {
+		super();
+		this.id = id;
+		this.pilotId = pilotId;
+		this.seat = seat;
+		if(passengerId==null) 
+			this.passengerId=new LinkedList<>();
+		else 
+			this.passengerId = passengerId;
+		this.departure = departure;
+		this.arrival = arrival;
+		this.date = date;
+		this.time = time;
+		this.duration = duration;
+		this.price = price;
+		if(info==null)
+			this.info = "Pilot has nothing to add.";
+		else
+			this.info=info;
+	}
+
+	public String getInfo() {
+		return info;
 	}
 
 	public String getId() {

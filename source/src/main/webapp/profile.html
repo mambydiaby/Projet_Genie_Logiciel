@@ -6,6 +6,17 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
       <style type="text/css">
+      #back1{
+		color: white;
+		font-size:30px;
+		 text-shadow: 0 0 20px #fdec84,
+            10px -10px 30px #ffae35;
+		
+}
+      .col-md-7{
+      width :50%;
+      left: 25%;
+      }
          input.hidden {
          position: absolute;
          left: -9999px;
@@ -18,14 +29,16 @@
          .tital{ font-size:16px; font-weight:500;}
          .bot-border{ border-bottom:1px #f8f8f8 solid;  margin:5px 0  5px 0}  
       </style>
+      <link rel="stylesheet" href="css/Edit_Flight.css" />
+      
       <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
       <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
    </head>
    <body>
       <script type="text/javascript" src="js/profile.js"></script>
+      <a id="back1" href="#"> back </a>
       <div class="container">
-         <div class="row">
-            <h2>Create your snippet's HTML, CSS and Javascript in the editor tabs</h2>
+         <div class="row">    
             <div class="col-md-7 ">
                <div class="panel panel-default">
                   <div class="panel-heading">
@@ -46,10 +59,10 @@
                            </div>
                            <div class="col-sm-6">
                               <h4 style="color:#00b1b1;" >
-                                 <div id="name"></div>
+                                 <div id="name"> </div>
                               </h4>
-                              </span>
                               <span>
+                              
                                  <p id="utype"></p>
                               </span>
                            </div>
@@ -88,5 +101,15 @@
             </div>
          </div>
       </div>
+      <script>
+      	$(document).ready(function(){
+      		var type=sessionStorage.getItem("type");
+      		if(type=="Passenger"){
+      			$('#back1').attr("href","test.html");
+      		}else{
+      			$('#back1').attr("href",'testp.html');
+      		}
+      	});
+      </script>
    </body>
 </html>

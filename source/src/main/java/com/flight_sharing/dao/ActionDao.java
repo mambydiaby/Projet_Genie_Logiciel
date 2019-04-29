@@ -3,6 +3,9 @@ package com.flight_sharing.dao;
 import static org.elasticsearch.common.xcontent.XContentFactory.jsonBuilder;
 import static org.elasticsearch.index.query.QueryBuilders.matchAllQuery;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -15,16 +18,19 @@ import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.search.SearchType;
 import org.elasticsearch.action.update.UpdateRequest;
 import org.elasticsearch.client.transport.TransportClient;
+import org.elasticsearch.common.xcontent.XContentType;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.search.SearchHit;
 
 public class ActionDao extends BasicDao {
 	/** entity's type */
 	private String mainType;
-	private final TransportClient client = getClient();
-
-	public ActionDao(String mainType) {
+	private final TransportClient client ;
+	
+	public ActionDao(String mainType,TransportClient client) {
 		this.mainType = mainType;
+		this.client=client;
+		
 	}
 
 	public List<String> getAll() throws Exception {
@@ -49,6 +55,7 @@ public class ActionDao extends BasicDao {
 
 	public String add(byte[] json, String id) throws Exception {
 		IndexResponse response = client.prepareIndex(BasicDao.index, mainType, id).setSource(json).get();
+		System.out.println(response.status().toString());
 		return response.status().toString();
 	}
 
@@ -63,7 +70,22 @@ public class ActionDao extends BasicDao {
 		try {
 			SearchResponse response = client.prepareSearch(BasicDao.index).setTypes(mainType)
 					.setSearchType(SearchType.DFS_QUERY_THEN_FETCH).setQuery(queryBuilder)
-					.setExplain(true).get();
+					.setExplain(true).setSize(100).setFrom(0).get();
+			for (SearchHit searchHit : response.getHits().getHits()) {
+				results.add(searchHit.getSourceAsString());
+			}
+		} catch (Exception e) {
+			registerException(e);
+		}
+		return results;
+	}
+	
+	public List<String> search(QueryBuilder queryBuilder,int from,int size) throws Exception {
+		List<String> results = new ArrayList<String>();
+		try {
+			SearchResponse response = client.prepareSearch(BasicDao.index).setTypes(mainType)
+					.setSearchType(SearchType.DFS_QUERY_THEN_FETCH).setQuery(queryBuilder)
+					.setExplain(true).setSize(size).setFrom(from).get();
 			for (SearchHit searchHit : response.getHits().getHits()) {
 				results.add(searchHit.getSourceAsString());
 			}

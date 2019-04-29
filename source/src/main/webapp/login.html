@@ -4,26 +4,31 @@
 	<head>
 		<title> Log In </title>
 		<meta charset="UTF-8">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 		<link href="css/login.css" rel="stylesheet">
-		<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-     	<script type="text/javascript" src="js/login.js"></script>
+		<script type="text/javascript" src="js/login.js"></script>
+		
 	</head>
 
 	<body id="body_login">
+	
 		<div id="container">
             <form>
                 <h2>LOG IN</h2>
                 <div class="form-group">
                     <label for="username">Username :</label>
-                    <input type="email" class="form-control" id="usr" aria-describedby="emailHelp" placeholder="Enter username">
+                    <input type="text" class="form-control" id="usr" placeholder="Enter username">
                 </div>
                 <div class="form-group">
                     <label for="InputPassword">Password :</label>
                     <input type="password" class="form-control" id="pwd" placeholder="***************">
                 </div>
-                <button type="submit" id="submit_login" class="btn btn-primary" onclick="login();">Submit</button>
-                <a href="signup.html">Or create a new account...</a>
+                <button type="button" id="submit_login" class="btn btn-primary" onclick="login();">Submit</button>
+                <div>
+                <a href="registration.html">Or create a new account...</a>
+                <a href='search.html'>search without login</a>
+                </div>
             </form>
 		</div>
 	</body>

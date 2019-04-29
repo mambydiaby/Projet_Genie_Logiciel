@@ -11,12 +11,19 @@ $(function() {
 
       success: function(data) {
           document.getElementById('usr').innerText =data.id;
-           document.getElementById('fname').innerText =data.firstName;
+          document.getElementById('fname').innerText =data.firstName;
           document.getElementById('lname').innerText =data.lastName;
-           document.getElementById('email').innerText =data.email;
-           document.getElementById('exp').innerText =data.experience;
-           document.getElementById('qual').innerText =data.qualification;
-           document.getElementById('name').innerText =data.firstName+' '+data.lastName;
+          document.getElementById('email').innerText =data.email;
+          if(data.experience!=null)
+          document.getElementById('exp').innerText =data.experience;
+          else
+        	  document.getElementById('exp').innerText ="---------";
+          if(data.qualification!=null)
+        	  document.getElementById('qual').innerText =data.qualification;
+          else
+            document.getElementById('qual').innerText ="---------";
+          
+          document.getElementById('name').innerText =data.firstName+' '+data.lastName;
         }
     })
   

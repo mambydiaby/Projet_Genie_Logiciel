@@ -1,16 +1,70 @@
  <!DOCTYPE html>
 <html>
 	<head>
-		<title>profile</title>
+		<title>Welcome </title>
+				 <link rel="stylesheet" href="css/flight_detail.css"/> 
+		
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 	</head>
 	<body>
-	
-		<h1>Welcome Pilote</h1>
-		<a href="profile.html">my profile</a>
-		<a href="toapprove.html#contenu">flight to approve</a>
-		<div id="contenu"><br><br></div>
 		
+		<h1 id='welcome'>Hello Pilot</h1>
+		<div id='k'>
+		<a href="profile.html">My profile</a>
+		<br/>
+		<br/>
+		<a href="toapprove.html#contenu">Flight to approve</a>
+		<br/>
+		<br/>
+		<a href="myFlight.html">My flights</a>
+		<br/>
+		<br/>
+		<a href="myReservation.html">My Reservations</a>
+		<br/>
+		<br/>
+		<a href="search.html">Search flights</a>
+			<br/>
+		<br/>
+		<a id='new' href="Create_Flight.html">New flight</a>
+		</div>
+		
+	<script>
+	$(document).ready(function() {
+		var user=sessionStorage.getItem("user");
+		$.get('/ws/user/profile/'+user, function(result){
+			var name=result.firstName;
+		    $("#welcome").html("Welcome "+name);
+		  });
+		});	 
+	</script>
 	</body>
+	<style>
+	#new{
+	color:red;}
+	h1{
+    font:  50px "Comic Sans MS";
+    color: black;
+    text-shadow: 0 0 20px #fdec84,
+            10px -10px 30px #ffae35;  
+  	 text-align:center;
+  	 padding : 10px;
+	}
+	body
+	{
+	background: url("../img/haha.jpg") no-repeat fixed;
+	background-size:100% 100%;
+	text-align:center;
+	}
+	a{
+	font-size:20px;
+	padding: 10px 10px;
+	
+	font-weight: 900;
+	}
+	a:hover{
+	background-color:white;
+	}
+	
+	</style>
 </html>

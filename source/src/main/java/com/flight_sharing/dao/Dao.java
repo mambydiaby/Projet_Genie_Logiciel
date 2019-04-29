@@ -35,7 +35,7 @@ public interface Dao {
 	 * Add an object in the database
 	 * 
 	 * @param json
-	 * @param id   object's id
+	 * @param id object's id
 	 * @return success or error message
 	 * @throws Exception
 	 */

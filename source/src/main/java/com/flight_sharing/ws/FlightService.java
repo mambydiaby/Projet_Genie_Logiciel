@@ -22,6 +22,35 @@ import com.flight_sharing.json.ConvertObject;
 @Path("/flight")
 public class FlightService extends Service {
 
+
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes("application/x-www-form-urlencoded")
+	@Path("/filter")
+	public List<String> searchDetail(@FormParam("departure") String departure,@FormParam("arrival") String arrival, @FormParam("seat") int seat,@FormParam("date") String date) {
+		List<String> result = null;
+		try {
+			BoolQueryBuilder searchBuilder = QueryBuilders.boolQuery();
+			
+			if (!departure.isEmpty()) {
+				searchBuilder.must(QueryBuilders.wildcardQuery("departure", "*" + departure.toLowerCase() + "*"));
+			}
+			if (!date.isEmpty()) {
+				searchBuilder.must(QueryBuilders.rangeQuery("date").from(date));
+			}
+			if(seat!=0)
+				searchBuilder.must(QueryBuilders.rangeQuery("seat").from(seat));
+			
+			if(!arrival.isEmpty())
+				searchBuilder.must(QueryBuilders.wildcardQuery("arrival", "*" + arrival.toLowerCase() + "*"));
+			result = flightDao.search(searchBuilder);
+			return result;
+		} catch (Exception e) {
+			registerException(e);
+		}
+		return result;
+	}
+
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes("application/x-www-form-urlencoded")
@@ -34,7 +63,7 @@ public class FlightService extends Service {
 				searchBuilder.must(QueryBuilders.wildcardQuery("departure", "*" + departure.toLowerCase() + "*"));
 			}
 			if (!date.isEmpty()) {
-				searchBuilder.must(QueryBuilders.rangeQuery("date").from(date).to(date + "T00:59:00"));
+				searchBuilder.must(QueryBuilders.rangeQuery("date").from(date));
 			}
 			searchBuilder.must(QueryBuilders.rangeQuery("seat").from(1));
 			result = flightDao.search(searchBuilder);
@@ -44,6 +73,30 @@ public class FlightService extends Service {
 		}
 		return result;
 	}
+
+	
+
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes("application/x-www-form-urlencoded")
+	@Path("/myflights")
+	public List<String> searchMyFlights(@FormParam("id") String id) {
+		List<String> result = null;
+		try {
+			BoolQueryBuilder searchBuilder = QueryBuilders.boolQuery();
+			if (!id.isEmpty()) {
+				searchBuilder.must(QueryBuilders.termQuery("pilotId",id));
+			}
+			searchBuilder.must(QueryBuilders.rangeQuery("seat").from(1));
+			result = flightDao.search(searchBuilder);
+			return result;
+		} catch (Exception e) {
+			registerException(e);
+		}
+		return result;
+	}
+
+	
 
 	/**
 	 * web service to get more detailed information about the flight
@@ -99,21 +152,18 @@ public class FlightService extends Service {
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("add")
+	@Path("/add")
 	public String addFlight(Flight flight) throws Exception {
-
+		System.out.println(flight);
 		if (!IsLogged())
 			return "{\"result: \":\"Please Login !\"}";
-
 		String result = "";
 		result = flightDao.add(ConvertObject.objectToByte(flight), flight.getId());
-
-		if (result.equals("OK")) {
+		if (result.equals("CREATED")) {
 			return "{\"addResult: \":\"success !\"}";
 		} else {
 			return "{\"addResult: \":\"error \"}";
 		}
 
 	}
-
 }

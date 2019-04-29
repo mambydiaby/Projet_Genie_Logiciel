@@ -25,6 +25,7 @@ public class Service {
 	}
 	
 	protected boolean isPilot() {
+
 		return request.getSession().getAttribute("type").equals("pilot");
 	}
 	
