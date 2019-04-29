@@ -176,7 +176,7 @@ public class ReservationService extends Service {
 						.mustNot(QueryBuilders.termQuery("approved", "true")));
 
 		if (!rtList.equals(null))
-			for (int i =rtList.size()-1; i >0; i--) {
+			for (int i =rtList.size()-1; i >=0; i--) {
 				Reservation rt = (Reservation) ConvertObject.jsonToObject(rtList.get(i), ConvertObject.RESERVATION);
 				if (rt == null)
 					return null;

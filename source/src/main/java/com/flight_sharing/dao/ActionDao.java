@@ -77,6 +77,10 @@ public class ActionDao extends BasicDao {
 		return results;
 	}
 	
+	/**
+	 *  Extra param from and size for
+	 *   elasticsearch configuration
+	 */
 	public List<String> search(QueryBuilder queryBuilder,int from,int size) throws Exception {
 		List<String> results = new ArrayList<String>();
 		try {

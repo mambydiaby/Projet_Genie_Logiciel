@@ -10,6 +10,7 @@ import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.elasticsearch.transport.client.PreBuiltTransportClient;
 
+
 public class FactoryDao {
 	public static final int FLIGHT = 1;
 	public static final int PILOT = 2;
