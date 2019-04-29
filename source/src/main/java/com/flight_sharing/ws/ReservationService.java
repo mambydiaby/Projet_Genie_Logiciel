@@ -182,8 +182,6 @@ public class ReservationService extends Service {
 					return null;
 				Flight flight = (Flight) ConvertObject.jsonToObject(flightDao.getById(rt.getFlightId()),
 						ConvertObject.FLIGHT);
-				System.out.println(flight.getPilotId());
-				System.out.println();
 				if (flight != null && !flight.getPilotId().equals(piloteId))
 					rtList.remove(i);
 
