@@ -1,20 +1,14 @@
 package com.flight_sharing.dao;
 
-import java.net.InetAddress;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import org.elasticsearch.client.transport.TransportClient;
-import org.elasticsearch.common.settings.Settings;
-import org.elasticsearch.common.transport.InetSocketTransportAddress;
-import org.elasticsearch.transport.client.PreBuiltTransportClient;
 
 public abstract class BasicDao implements Dao {
 	/* index of tables */
 	public static String index;
 	/* address of the server */
-	private static String serverAddr;
+	protected static String serverAddr;
 	/* setting elastic properties */
 	static {
 		try {
