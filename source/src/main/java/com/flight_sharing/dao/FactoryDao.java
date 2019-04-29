@@ -34,7 +34,19 @@ public class FactoryDao {
 			client = new PreBuiltTransportClient(Settings.EMPTY)
 					.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(serverAddr), 9300));
 
-		} catch (Exception e) {
+		}catch(NullPointerException e1) {
+			String serverAddr = "localhost";
+			try {
+				client = new PreBuiltTransportClient(Settings.EMPTY)
+					.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(serverAddr), 9300));
+			} catch (Exception e) {
+				
+				registerException(e);
+			}
+
+			
+		}catch (Exception e) {
+		
 			registerException(e);
 		}
 		return client;

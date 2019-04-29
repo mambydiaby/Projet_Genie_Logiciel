@@ -15,7 +15,6 @@ public class User {
 	protected String address;
 
 	public User() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public User(String id, String pwd, String firstName, String lastName, String email/* , String address */) {

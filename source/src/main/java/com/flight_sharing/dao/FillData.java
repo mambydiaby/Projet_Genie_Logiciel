@@ -3,7 +3,11 @@ package com.flight_sharing.dao;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.flight_sharing.entities.*;
 import com.flight_sharing.json.ConvertObject;
-
+/**
+ *  
+ *  add Data to database
+ *
+ */
 public class FillData {
 
 	public static void addPassenger() throws JsonProcessingException, Exception {
