@@ -1,17 +1,23 @@
 package com.flight_sharing.dao;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> c064310ace455292d0d89eeb5631c383720a3eee
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> c064310ace455292d0d89eeb5631c383720a3eee
 public abstract class BasicDao implements Dao {
 	/* index of tables */
 	public static String index;
 	/* address of the server */
-	private static String serverAddr;
+	protected static String serverAddr;
 	/* setting elastic properties */
 	static {
 		try {
