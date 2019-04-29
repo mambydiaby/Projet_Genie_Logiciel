@@ -44,7 +44,7 @@
     		  	$('#name').html("");	
     		  	$('#seat_wanted').html("");	
     		  	$('#vec').html("success, the reservation has been disapproved/canceled!");	
-  		  	$('#seat_left').html("");
+    		  	$('#seat_left').html("");
 	    	    $('#date').html("");
 	    	    $('#arrival').html("");
 	    	    $('#departure').html("");

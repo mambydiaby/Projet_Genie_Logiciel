@@ -1,0 +1,42 @@
+body
+{
+	background: url("../img/aircraft-airplane-aviation-615060.jpg") no-repeat fixed;
+	background-size:100% 100%;
+	
+}
+
+section
+{
+	border:2px;
+	border-radius: 3px;
+	background: white;
+	margin-top: 4%;
+	margin-left:10%;
+	margin-right: 10%;
+	padding:20px;
+}
+
+#submitf
+{
+	color: white;
+ 	background-color:orange;
+}
+
+#submitf:hover
+{
+	color: orange;
+  	background-color:white;
+}
+
+a
+{
+	color:black;
+}
+
+a:hover
+{
+	color:black;
+}
+
+
+

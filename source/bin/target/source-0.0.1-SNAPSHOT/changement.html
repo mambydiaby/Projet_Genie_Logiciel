@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <title>Reservation</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+      <style type="text/css">
+         .custab{
+         border: 1px solid #ccc;
+         padding: 5px;
+         margin: 5% 0;
+         box-shadow: 3px 3px 2px #ccc;
+         transition: 0.5s;
+         }
+         .custab:hover{
+         box-shadow: 3px 3px 0px transparent;
+         transition: 0.5s;
+         }
+      </style>
+     <link
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+	rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+  
+<link href="css/search.css" rel="stylesheet">
+
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script
+	src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
+   </head>
+   <body>
+         <a id="back" href="#"> back </a>
+   
+      <div class="container">
+         <div id="div1" class="row col-md-5 col-md-offset-2 custyle">
+         </div>
+      </div>
+      <script type="text/javascript">
+         $.ajax({
+         type: "get",
+         url: '/ws/reservation/myreservations/'+sessionStorage.getItem("user"),
+         success: function(data) {
+         //alert(data);
+         	var tbl="<table id=\"itable\" class=\"table table-striped custab\">\r\n" + 
+         "               <thead>\r\n" + 
+         "                  <tr>\r\n" + 
+         "                     <th>ID</th>\r\n" + 
+         "                     <th>Flight</th>\r\n" + 
+         "                     <th>Passenger</th>\r\n" + 
+         "                     <th>Seat</th>\r\n" + 
+         "                     <th class=\"text-center\">Action</th>\r\n" + 
+         "                  </tr>\r\n" + 
+         "               </thead>"
+         
+         for(var i=0;i<data.length;i++)
+         {
+             var obj = JSON.parse(data[i]);
+             var td0="<tr><td>"+obj.id+"</td>";
+             var td1="<td>"+obj.flightId+"</td>";
+             var td2="<td>"+obj.passengerId+"</td>";
+             var td3="<td>"+obj.seat+"</td>";
+             var td4="<td class=\"text-center\"><a class='btn btn-info btn-xs' href=\"#ok\"><span class=\"glyphicon glyphicon-ok\"></span> Ok</a> <a href=\"#\" class=\"btn btn-danger btn-xs\"><span class=\"glyphicon glyphicon-remove\"></span> Del</a></td></tr>"
+             
+         tbl+=td0+td1+td2+td3+td4; 
+           
+         }
+        	tbl += "</table>";
+    			document.getElementById("div1").innerHTML = "";
+    			$("#div1").append(tbl);
+    			$("#itable").DataTable();
+
+         }
+         });
+
+       	$(document).ready(function(){
+       		var type=sessionStorage.getItem("type");
+       		if(type=="Passenger"){
+       			$('#back').attr("href","test.html");
+       		}else{
+       			$('#back').attr("href",'testp.html');
+       		}
+       	});
+      </script>
+
+   </body>
+</html>
