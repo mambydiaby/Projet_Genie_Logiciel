@@ -18,17 +18,27 @@
  <script>
 $(function(){
 var log=sessionStorage.getItem("user");
+var type=sessionStorage.getItem("type");
+console.log(type);
+
 if(log!=null){
 	$('#login').hide();
+	$('#profile').show();
+	if(type=='passenger'){
+		$('#test').attr('href','test.html');
+	}
 }
 console.log(log);
 });
+
 </script>
     <body>
        <header>
     		<nav class="navbar navbar-light" style="background-color: #FFA500;">
   				<a class="navbar-brand" href="index.html">Kechache Airport</a>
   				<p id='login'><a href="login.html">Log In</a>/<a href="registration.html">Sign Up</a></p>
+  				 <p id='profile'><a id='test' href='testp.html'>My profile</a></p>
+  				
   				<form class="form-inline">
     				<input class="form-control mr-sm-2" type="search" placeholder="Ville de départ..." aria-label="Search"
     				onclick="location.replace('search.html')">
