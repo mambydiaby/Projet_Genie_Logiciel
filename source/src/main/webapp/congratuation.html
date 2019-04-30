@@ -23,6 +23,13 @@
 			$('#profile').show();
 			if (type == 'passenger') {
 				$('#test').attr('href', 'test.html');
+				$('#herfer').attr("href", "test.html");
+
+			}else{
+				$('#test').attr('href', 'testp.html');
+				$('#herfer').attr("href", "testp.html");
+
+
 			}
 		}
 	});
@@ -57,14 +64,6 @@
 	</div>
 
 </body>
-<script>
-	$(document).ready(function() {
-		var type = sessionStorage.getItem("type");
-		if (type == 'Pilot') {
-			$('#herfer').attr("href", "testp.html");
-		} else {
-			$('#herfer').attr("href", "test.html");
-		}
-	});
-</script>
+
+	
 </html>
