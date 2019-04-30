@@ -2,6 +2,8 @@
 <html>
 
 	<head>
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	
 		<title> Home Page </title>
 		<meta charset="UTF-8">
 		<link href="css/index.css" rel="stylesheet">
@@ -9,10 +11,17 @@
 
 	<body id="body_index">
 		<div id="container">
-            <div id="login">
+            <div id="login" class='a'>
                 <a href="login.html">Log In / Sign Up</a>
             </div>
+             <div id="test" class='a'>
+                <a href="test.html">My profile</a>
+            </div> 
+            <div id="testp" class='a'>
+                <a href="testp.html">My profile</a>
+            </div>
             <h1>
+            
                 FLIGHT SHARING PLATFORM
             </h1>
             <div id="btn_find_flight">
@@ -20,5 +29,22 @@
             </div>
 		</div>
 	</body>
+    <script>
     
+    var type=sessionStorage.getItem('type');
+   
+    if(type==null){
+    	$('#login').show();
+    	$('#testp').hide();
+    	$('#test').hide();
+    }else if(type=='passenger'){
+    	$('#login').hide();
+    	$('#testp').hide();
+    	$('#test').show();
+    }else if(type=='pilot'){
+    	$('#login').hide();
+    	$('#testp').hide();
+    	$('#test').show();
+    }
+    </script>
 </html>

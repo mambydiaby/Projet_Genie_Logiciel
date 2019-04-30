@@ -50,7 +50,6 @@ function reset(){
 }
 
 
-//todo
 	function modify() {
 	
 		

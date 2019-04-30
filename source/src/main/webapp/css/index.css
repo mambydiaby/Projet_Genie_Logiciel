@@ -15,18 +15,18 @@ body {
     font-weight: bold;
 }
 
-#login {
+#login,.a {
     text-align: right;
     margin: 30px;
 }
 
-#login a {
+#login,.a a {
     font-size: 15px;
     color: #6e644b;
     text-decoration: underline;
 }
 
-#login a: hover {
+#login,.a a: hover {
     cursor: pointer;
 }
 
@@ -49,3 +49,6 @@ body {
     background-color: white;
     border-color: orange;
 }
+
+
+

@@ -24,9 +24,12 @@
 		<br/>
 		<br/>
 		<a href="search.html">Search flights</a>
-			<br/>
+		<br/>
 		<br/>
 		<a id='new' href="Create_Flight.html">New flight</a>
+		<br/>
+		<br/>
+		<a id='disconnect' href="#" onclick="disconnect();">Disconnect</a>
 		</div>
 		
 	<script>
@@ -37,6 +40,13 @@
 		    $("#welcome").html("Welcome "+name);
 		  });
 		});	 
+	function disconnect(){
+		sessionStorage.removeItem('user');
+		sessionStorage.removeItem('type');
+		sessionStorage.removeItem('userId');
+		location.replace('index.html');
+
+	}
 	</script>
 	</body>
 	<style>
@@ -65,6 +75,8 @@
 	a:hover{
 	background-color:white;
 	}
-	
+	#disconnect{
+	color:green
+	}
 	</style>
 </html>
