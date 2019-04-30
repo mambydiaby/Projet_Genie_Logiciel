@@ -13,7 +13,6 @@ function login() {
 			if (data.result == 'ok') {
 				sessionStorage.setItem("user", usr);
 				sessionStorage.setItem("userId", usr);
-
 				sessionStorage.setItem("type", 'passenger');
 				var prevLink = document.referrer;
 				if($.trim(prevLink)==''){
@@ -30,7 +29,6 @@ function login() {
 			} else if (data.result == 'okp') {
 				sessionStorage.setItem("user", usr);
 				sessionStorage.setItem("userId", usr);
-
 				sessionStorage.setItem("type", 'pilot');
 				var prevLink = document.referrer;
 				if($.trim(prevLink)==''){

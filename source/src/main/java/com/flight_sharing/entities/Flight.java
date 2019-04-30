@@ -15,6 +15,8 @@ public class Flight {
 	private String duration;
 	private String price;
 	private String info;
+	private String privateInfo;
+	private String trajet;
 
 	public Flight() {
 		// TODO Auto-generated constructor stub
@@ -25,8 +27,8 @@ public class Flight {
 		this.id = id;
 		this.pilotId = pilotId;
 		this.seat = seat;
-		if(passengerId==null) 
-			this.passengerId=new LinkedList<>();
+		if(passengerId==null) {
+			this.passengerId=new LinkedList<>();}
 		else 
 			this.passengerId = passengerId;
 		this.departure = departure;
@@ -36,11 +38,13 @@ public class Flight {
 		this.duration = duration;
 		this.price = price;
 		this.info="Pilot has nothing to add.";
+		this.privateInfo= "Private infomations to be added by the pilot.";
+		this.trajet="Trajet to be added by the pilot";
 	}
 
 	
 	public Flight(String id, String pilotId, int seat, List<String> passengerId, String departure, String arrival,
-			String date, String time, String duration, String price, String info) {
+			String date, String time, String duration, String price, String info,String privateInfo,String trajet) {
 		super();
 		this.id = id;
 		this.pilotId = pilotId;
@@ -55,10 +59,26 @@ public class Flight {
 		this.time = time;
 		this.duration = duration;
 		this.price = price;
-		if(info==null)
+		if(info==null||"".equals(info.trim()))
 			this.info = "Pilot has nothing to add.";
 		else
 			this.info=info;
+		if(privateInfo==null||"".equals(privateInfo.trim()))
+			this.privateInfo = "Private infomations to be added by the pilot.";
+		else
+			this.privateInfo=privateInfo;	
+		if(trajet==null||"".equals(trajet.trim()))
+			this.trajet="Trajet to be added by the pilot";
+		else
+			this.trajet=trajet;
+	}
+
+	public String getPrivateInfo() {
+		return privateInfo;
+	}
+
+	public String getTrajet() {
+		return trajet;
 	}
 
 	public String getInfo() {
@@ -148,6 +168,6 @@ public class Flight {
 	@Override
 	public String toString() {
 
-		return id + " " + pilotId + " " + date;
+		return id + " " + pilotId + " " + date+ " "+ info +" "+ privateInfo+ " "+ trajet;
 	}
 }

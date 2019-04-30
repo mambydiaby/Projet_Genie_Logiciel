@@ -6,12 +6,15 @@ $(document).ready(function() {
 		type: "get",
 		url: '/ws/flight/getbyid/'+id,
 		success: function(data) {
-			 $('#places').attr("placeholder",data.seat);
-    		 $('#departure').attr("placeholder",data.departure);
-    		 $('#arrival').attr("placeholder",data.arrival);
-    		 $('#duration').attr("placeholder",data.duration);
-    		 $('#price').attr("placeholder",data.price);
-    		$('#description').attr("placeholder",data.description);
+			$('#places').attr("placeholder",data.seat);
+			$('#date').attr("placeholder",data.date);
+    		$('#departure').attr("placeholder",data.departure);
+    		$('#arrival').attr("placeholder",data.arrival);
+    		$('#duration').attr("placeholder",data.duration);
+    		$('#price').attr("placeholder",data.price);
+    		$('#description').attr("placeholder",data.info);
+    		$('#trajet').attr("placeholder",data.trajet);
+    		$('#descriptionPrivate').attr("placeholder",data.privateInfo);
 		},
 		error: function(){
 			alert("can't find coresponding flights");
@@ -27,12 +30,18 @@ function reset(){
 		type: "get",
 		url: '/ws/flight/getbyid/'+id,
 		success: function(data) {
+			console.log(data);
+
 			$('#places').attr("placeholder",data.seat);
+			$('#date').attr("placeholder",data.date);
     		$('#departure').attr("placeholder",data.departure);
     		$('#arrival').attr("placeholder",data.arrival);
     		$('#duration').attr("placeholder",data.duration);
     		$('#price').attr("placeholder",data.price);
-    		$('#description').attr("placeholder",data.description);
+    		$('#description').attr("placeholder",data.info);
+    		$('#trajet').attr("placeholder",data.trajet);
+    		$('#descriptionPrivate').attr("placeholder",data.privateInfo);
+
 		},
 		error: function(){
 			alert("can't find coresponding flights");
@@ -41,8 +50,10 @@ function reset(){
 }
 
 
-
+//todo
 	function modify() {
+	
+		
 		var flight_id = sessionStorage.getItem('flight_info');
 		var user_id = sessionStorage.getItem("user");
 		var f_seat;
@@ -54,6 +65,9 @@ function reset(){
 		var f_duration;
 		var f_price;
 		var f_info;
+		var f_date;
+		var f_trajet;
+		var f_infoPrive;
 		$.ajax({
 			type: "get",
 			url: '/ws/flight/getbyid/'+flight_id,
@@ -64,15 +78,16 @@ function reset(){
 	    		f_departure=data.departure;
 	    		f_duration=data.duration;
 	    		f_price=data.price;
-	    		f_description=data.description;
+	    		f_description=data.info;
 	    		f_date=data.date;
 	    		f_info=data.info;
 	    		f_time=data.time;
+	    		f_date=data.date;
+	    		f_trajet=data.trajet;
+	    		f_infoPrive=data.privateInfo;
 	    		console.log(data.info+f_seat);
-	    		if($('#places').val()!='')
+	    		if($('#places').val().trim()!=''&&$('#places').val()!=null)
 	    			f_seat=$('#places').val();
-	    	
-
 	    		if($('#departure').val()!='')
 	    			f_departure=$('#departure').val();
 	    		if($('#arrival').val()!='')
@@ -83,6 +98,13 @@ function reset(){
 	    			f_price=$('#price').val();
 	    		if($('#description').val()!='')
 	    			f_info=$('#description').val();
+	    		if($('#date').val()!='')
+	    			f_date=$('#date').val();
+	    		if($('#trajet').val()!='')
+	    			f_trajet=$('#trajet').val();
+	    		if($('#descriptionPrivate').val()!='')
+	    			f_infoPrive=$('#descriptionPrivate').val();
+		
 	    		var newFlight = {
 	    			id : flight_id,
 	    			pilotId : user_id,
@@ -94,7 +116,11 @@ function reset(){
 	    			time : f_time,
 	    			duration : f_duration,
 	    			price : f_price,
-	    			info : f_info
+	    			info : f_info,
+	    			time:f_time,
+	    			date:f_date,
+	    			trajet:f_trajet,
+	    			privateInfo:f_infoPrive
 	    		}
 	    		$.ajax({
 	    			url : "/ws/flight/add",
@@ -102,7 +128,6 @@ function reset(){
 	    			dataType : 'json',
 	    			contentType : 'application/json',
 	    			data : JSON.stringify(newFlight),
-
 	    			success : function(data) {
 	    				console.log(newFlight);
 	    				alert("successful!");

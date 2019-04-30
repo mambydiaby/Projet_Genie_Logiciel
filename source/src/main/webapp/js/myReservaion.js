@@ -38,7 +38,7 @@ $(function(){
 
        	$(document).ready(function(){
        		var type=sessionStorage.getItem("type");
-       		if(type=="Passenger"){
+       		if(type=="passenger"){
        			$('#back1').attr("href","test.html");
        		}else{
        			$('#back1').attr("href",'testp.html');

@@ -42,7 +42,7 @@ $.ajax({
          });
        	$(document).ready(function(){
        		var type=sessionStorage.getItem("type");
-       		if(type=="Passenger"){
+       		if(type=="passenger"){
        			$('#back').attr("href","test.html");
        		}else{
        			$('#back').attr("href",'testp.html');

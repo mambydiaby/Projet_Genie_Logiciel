@@ -1,5 +1,16 @@
 $(function(){
 $('#submitf').click(function() {
+		var empty=0;
+		$(".form-control").each(function(){
+	        var val = $(this).val(); 
+	        var id=$(this).attr('id');
+	        if(val.trim()==""&&empty==0&&id!="ignore"){
+				alert("empty input : "+id);
+				empty=1;
+	        }
+	    });
+		if(empty==1)
+			return;
     	var n1=Math.ceil(Math.random()*100)+Math.ceil(Math.random()*100);
     	var n2=Math.ceil(Math.random()*100)+Math.ceil(Math.random()*100)+Math.ceil(Math.random()*100);
     	var n3=Math.ceil(Math.random()*100);
@@ -9,14 +20,16 @@ $('#submitf').click(function() {
     		id:rand_id,
     		pilotId:user_id,
     		seat: $('#places').val(),
-    		passengerId:null,
+    		passengerId:[],
     		departure: $('#departure').val(),
     		arrival: $('#arrival').val(),
-    		date:"2020-09-01",
-    		time:null,
+    		date:$('#date').val(),
+    		time:"00:00",
     		duration: $('#duration').val(),
     		price: $('#price').val(),
-    		info:$('#description').val()
+    		info:$('#description').val(),
+    		privateInfo:$('#descriptionPrivate').val(),
+    		trajet:$('#trajet').val()
     	}
     	console.log(newFlight);
     	$.ajax({

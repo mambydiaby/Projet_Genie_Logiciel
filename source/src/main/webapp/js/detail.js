@@ -3,7 +3,6 @@ $(document).ready(function() {
 	var id=sessionStorage.getItem('flight_info');
 	var user=sessionStorage.getItem("user");
 	$(".lds-hourglass").css("display","none");
-	sessionStorage.setItem("userId",user);
 	if(user!=null){
 		$('#login_ref').hide();
 	}
@@ -12,8 +11,10 @@ $(document).ready(function() {
 		url: '/ws/flight/getbyid/'+id,
 		success: function(data) {
 			$('.arrival').html(data.arrival);
-			$('#info').html(data.info);
-			$('.departure').html("Departure :"+data.departure);
+			$('#trajet').html("trajet: "+data.trajet);
+			$('#infoPrivate').html("private info: "+data.privateInfo);
+			$('#info').html("more info: "+data.info);
+			$('.departure').html("Departure:"+data.departure);
 			$('.date').html("date: "+data.date);
 			$('.duration').html("Duration: "+data.duration);
 			$('.price').html(data.price);
@@ -22,6 +23,7 @@ $(document).ready(function() {
 			console.log(url1);
 			$('body').css('background-image', "url(\""+url1+ "\")");
 			updatePilot(data.pilotId);
+			privateInfo(id,user);
 		},
 		error: function(){
 			alert("can't find coresponding flights");
@@ -29,10 +31,25 @@ $(document).ready(function() {
 	}) 
 });
 
+
 function updatePilot(data){
 	$.get( "/ws/user/profile/"+data, function( id ) {
 		  $( ".pilot" ).html("Pilot : "+id.firstName+" "+id.lastName);
 		});
+}
+
+function privateInfo(id,user){
+	$('#infoPrivate').hide();
+	$.get("/ws/flight/getbyid/"+id , function(data ){
+		var isPilot=(data.pilotId==user);
+		
+		console.log(user+data.passengerId.indexOf(user));
+
+		var isPassenger=(data.passengerId.indexOf(user)!=-1);
+		if(isPilot||isPassenger){
+			$('#infoPrivate').show();
+		}
+	});
 }
 
 

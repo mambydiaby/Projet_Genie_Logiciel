@@ -69,8 +69,8 @@ public class FillData {
 	public static void addFlight() throws JsonProcessingException, Exception {
 		ActionDao flightDao = FactoryDao.createDAO(FactoryDao.FLIGHT);
 		Flight[] flight =new Flight[16];
-		flight[0]= new Flight("GW902","009",9,null,"Paris","Lyon","2019-08-22","23:30","3h","96");
-		flight[1]= new Flight("WE666","009",2,null,"Lyon", "Paris", "2019-05-08","20:30","3h", "200"); 	
+		flight[0]= new Flight("GW902","009",9,null,"Paris","Lyon","2019-08-22","23:30","3h","96","more infos","rdv at 3:00","Paris->Lyon->Lille->Lyon");
+		flight[1]= new Flight("WE666","009",2,null,"Lyon", "Paris", "2019-05-08","20:30","3h", "200","welcome 2 my flight","rdv at 3:00 12/04/2019","Lyon->Lille->Paris"); 	
 		flight[2]= new Flight("PWO996","032",12,null,"Toulouse","Lyon", "2019-12-22", "13:30","4h","166"); 		
 		flight[3]= new Flight("GP902", "032",19, null, "Nancy", "Lyon", "2020-03-31", "23:30", "3h", "166"); 		
 		flight[4]= new Flight("GW999", "032", 29, null, "Paris", "Limoges", "2019-05-01", "23:30", "2.5h", "160"); 	

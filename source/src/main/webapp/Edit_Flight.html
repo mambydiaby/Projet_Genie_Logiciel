@@ -28,7 +28,7 @@ console.log(log);
   				<a class="navbar-brand" href="index.html">Kechache Airport</a>
   				<p id='login'><a href="login.html">Log In</a>/<a href="registration.html">Sign Up</a></p>
   				<form class="form-inline">
-    				<input required="required" class="form-control mr-sm-2" type="search" placeholder="Ville de départ..." aria-label="Search"
+    				<input id='ignore' class="form-control mr-sm-2" type="search" placeholder="Ville de départ..." aria-label="Search"
     				onclick="location.replace('search.html')">
     				<button class="btn btn-warning" type="submit">Search</button>
   				</form>
@@ -36,6 +36,8 @@ console.log(log);
 		</header>
 	<section>
 		<form>
+		
+		
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<label for="departure">Departure</label> <input type="text"
@@ -47,31 +49,41 @@ console.log(log);
 				</div>
 			</div>
 			<div class="form-row">
-				<div class="form-group col-md-4">
+				<div class="form-group col-md-3">
 					<label for="price">Price</label> <input type="number"
 						class="form-control" id="price" placeholder="60">
 				</div>
 				<div class="valid-feedback">Looks good!</div>
-				<div class="form-group col-md-4">
+				<div class="form-group col-md-3">
 					<label for="places">Available places</label> <input type="number"
 						class="form-control" id="places" placeholder="350">
 				</div>
-				<div class="form-group col-md-4">
+				 <div class="form-group col-md-3">
+                        <label for="Date">Date :</label>
+                        <input type="date" class="form-control" id="date" > 
+                    </div>
+				<div class="form-group col-md-3">
 					<label for="duration">Flight duration</label> <input type="time"
 						class="form-control" id="duration" placeholder="1:30">
 				</div>
 			</div>
-			<label for="description">Description</label><br />
-			<textarea name="description" id="description" rows="10" cols="60"
-				placeholder="say hi to your passenger"></textarea>
+			
+		  <label for="trajet">Detail Flight path</label><br />
+                <textarea name="trajet" id="trajet" rows="1" cols="80" placeholder="Write your detail trajet here"></textarea>
+                <br />
+                <label for="description">Description</label><br />
+                <textarea name="description" id="description" rows="5" cols="80" placeholder="Your public information"></textarea>
+            	 <br />
+                 <label for="descriptionPrivate">Private information</label><br />
+                <textarea name="descriptionPrivate" id="descriptionPrivate" rows="5" cols="80" placeholder="Your private information : can only be seen by participants(meeting date/place) "></textarea>
+				
 			<div class="form-group">
 				<div class="form-check">
 					<input class="form-check-input is-invalid" type="checkbox" value=""
 						id="invalidCheck" required> <label
 						class="form-check-label" for="invalidCheck"> Agree to
 						terms and conditions </label>
-					<div class="invalid-feedback">You must agree before
-						submitting.</div>
+					<div class="invalid-feedback">You must agree before submitting.</div>
 				</div>
 			</div>
 			<button class="btn btn-wanted" id="submitf" type="button"

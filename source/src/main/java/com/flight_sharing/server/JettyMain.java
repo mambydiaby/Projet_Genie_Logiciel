@@ -1,6 +1,5 @@
 package com.flight_sharing.server;
 
-import java.net.InetAddress;
 
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
