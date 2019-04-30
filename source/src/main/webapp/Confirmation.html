@@ -7,12 +7,28 @@
     <link rel="stylesheet" href="css/Confirmation.css"/>
     <title>Confirmation</title>
 </head>
+<script>
+$(function(){
+var log=sessionStorage.getItem("user");
+var type=sessionStorage.getItem("type");
 
-<body>
-	<header>
+if(log!=null){
+	$('#login').hide();
+	$('#profile').show();
+	if(type=='passenger'){
+		$('#test').attr('href','test.html');
+	}
+}
+});
+
+</script>
+    <body>
+       <header>
     		<nav class="navbar navbar-light" style="background-color: #FFA500;">
-  				<a class="navbar-brand" href="">Kechache Airport</a>
-  				<p><a href="#">Login</a>/<a href="">Sign In</a></p>
+  				<a class="navbar-brand" href="index.html">Kechache Airport</a>
+  				<p id='login'><a href="login.html">Log In</a>/<a href="registration.html">Sign Up</a></p>
+  				 <p id='profile'><a id='test' href='testp.html'>My profile</a></p>
+  				
   				<form class="form-inline">
     				<input class="form-control mr-sm-2" type="search" placeholder="Ville de départ..." aria-label="Search">
     				<button class="btn btn-warning" type="submit">Search</button>

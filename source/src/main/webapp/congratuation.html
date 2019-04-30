@@ -3,12 +3,40 @@
 	<head>
 		<title>Success</title>
 		<meta charset="UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
 
 		<link href="css/index.css" rel="stylesheet">
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 	</head>
-	<body>	
+	<script>
+$(function(){
+var log=sessionStorage.getItem("user");
+var type=sessionStorage.getItem("type");
+
+if(log!=null){
+	$('#login').hide();
+	$('#profile').show();
+	if(type=='passenger'){
+		$('#test').attr('href','test.html');
+	}
+}
+});
+
+</script>
+    <body>
+       <header>
+    		<nav class="navbar navbar-light" style="background-color: #FFA500;">
+  				<a class="navbar-brand" href="index.html">Kechache Airport</a>
+  				<p id='login'><a href="login.html">Log In</a>/<a href="registration.html">Sign Up</a></p>
+  				 <p id='profile'><a id='test' href='testp.html'>My profile</a></p>
+
+  				<form class="form-inline">
+    				<input class="form-control mr-sm-2" type="search" placeholder="Ville de départ..." aria-label="Search">
+    				<button class="btn btn-warning" type="submit">Search</button>
+  				</form>
+			</nav>
+		</header>
 	
 		<h1>Congratulations! Your booking has been registered , please wait for response from pilot </h1>
 		<a id='herfer' href="test.html">my profile</a>
