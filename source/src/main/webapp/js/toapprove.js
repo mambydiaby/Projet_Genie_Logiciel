@@ -116,12 +116,37 @@ function show(id) {
  * @returns
  */
 function show2(id) {
-	show(id);
-	$('#vec').html("Denying this reservation?");
+	$.get("/ws/reservation/getbyid/" + id, function(data) {
+		var seat = data.seat;
+		var flightId = data.flightId;
+		var pas = data.passengerId;
+		sessionStorage.setItem("flight_info", flightId);
+		$('#more').attr("href", "flight_detail.html");
+		$('#more').html("more information");
+		$('#seat_wanted').html("Seats booked : " + seat);
+		$('#vec').html("Denying/Disapproving this reservation?");
+		$.get("/ws/flight/getbyid/" + flightId, function(data2) {
+			var seat = data2.seat;
+			var date = data2.date;
+			var arrival = data2.arrival;
+			var departure = data2.departure;
+			$('#seat_left').html("Seats left :" + seat);
+			$('#date').html("date : " + date);
+			$('#arrival').html("arrival : " + arrival);
+			$('#departure').html("departure : " + departure);
+		});
+		$.get("/ws/user/profile/" + pas, function(data3) {
+			var fn = data3.firstName;
+			var ln = data3.lastName;
+			$('#name').html("Passenger : " + fn + " " + ln);
+		});
+	});
 	modal.style.display = "block";
 	$('#accept').attr("onclick", 'disapprove(\'' + id + '\')');
 	$('#accept').attr("value", 'Disapprove');
 
+
+	
 }
 
 /**
@@ -153,7 +178,7 @@ $(function() {
 						var td3 = "<td>" + obj.seat + "</td>";
 						var td4 = "<td class=\"text-center\"><a class='btn btn-info btn-xs okbtn'  onclick=\"show(\'"
 								+ obj.id
-								+ "\');\"><span class=\"glyphicon glyphicon-ok\"></span> Ok</a> <a href=\"#\" onclick=\"show2(\'"
+								+ "\');\"><span class=\"glyphicon glyphicon-ok\"></span> Ok</a> <a  onclick=\"show2(\'"
 								+ obj.id
 								+ "\');\" class=\"btn btn-danger btn-xs delbtn\"><span class=\"glyphicon glyphicon-remove\"></span> Del</a></td></tr>"
 

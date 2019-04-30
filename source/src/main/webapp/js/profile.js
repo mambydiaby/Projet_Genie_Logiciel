@@ -7,7 +7,6 @@
  */
 
 $(function() {
-
 	var type = sessionStorage.getItem("type");
 	if (type == "passenger") {
 		$('#back1').attr("href", "test.html");
