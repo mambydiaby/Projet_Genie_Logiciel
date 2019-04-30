@@ -1,109 +1,116 @@
 <!doctype html>
 <html lang="en">
 
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="css/Create_Flight.css"/>
-        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-        <script type="text/javascript"
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/Create_Flight.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 <script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
-	<script type="text/javascript" src="js/Creat_Flight.js"></script>
-	
-        <title>Create flight</title>
-    </head>
+<script type="text/javascript" src="js/Creat_Flight.js"></script>
+
+<title>Create flight</title>
+</head>
 <script>
-$(function(){
-var log=sessionStorage.getItem("user");
-var type=sessionStorage.getItem("type");
+	$(function() {
+		var log = sessionStorage.getItem("user");
+		var type = sessionStorage.getItem("type");
 
-if(log!=null){
-	$('#login').hide();
-	$('#profile').show();
-	if(type=='passenger'){
-		$('#test').attr('href','test.html');
-	}
-}
-});
-
+		if (log != null) {
+			$('#login').hide();
+			$('#profile').show();
+			if (type == 'passenger') {
+				$('#test').attr('href', 'test.html');
+			}
+		}
+	});
 </script>
-    <body>
-       <header>
-    		<nav class="navbar navbar-light" style="background-color: #FFA500;">
-  				<a class="navbar-brand" href="index.html">Kechache Airport</a>
-  				<p id='login'><a href="login.html">Log In</a>/<a href="registration.html">Sign Up</a></p>
-  				 <p id='profile'><a id='test' href='testp.html'>My profile</a></p>
-  				
-  				<form class="form-inline">
-    				<input id='ignore' class="form-control mr-sm-2" type="search" placeholder="Ville de départ..." aria-label="Search"
-    				onclick="location.replace('search.html')">
-    				<button class="btn btn-warning" type="submit">Search</button>
-  				</form>
-			</nav>
-		</header>
-        <section>
-            <form>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="departure">Departure</label>
-                        <input type="text" class="form-control" id="departure"  placeholder="Paris" required > 
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="arrival">Arrival :</label>
-                        <input type="text" class="form-control" id="arrival"  placeholder="Bordeaux" required> 	
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-3">
-                        <label for="price">Price :</label>
-                        <input type="number" class="form-control" id="price" placeholder="60"  required> 	
-                    </div>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="places">Available seats :</label>
-                        <input type="number" class="form-control" id="places"  placeholder="8"  required> 	
-                    </div>
-                    <br/>
-                     <div class="form-group col-md-3">
-                        <label for="Date">Date :</label>
-                        <input type="date" class="form-control" id="date"   required> 
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="duration">Duration :</label>
-                        <input type="time" class="form-control" id="duration"  placeholder="1:30" required> 
-                    </div>
-                    
-                </div>			
-                 <label for="trajet">Detail Flight path</label><br />
-                <textarea name="trajet" id="trajet" rows="1" cols="80" placeholder="Paris->Lyon->Marseille->Paris"></textarea>
-                <br />
-                <label for="description">Description</label><br />
-                <textarea name="description" id="description" rows="5" cols="80" placeholder="public information: everyone can see this information"></textarea>
-            	 <br />
-                 <label for="descriptionPrivate">Private information</label><br />
-                <textarea name="descriptionPrivate" id="descriptionPrivate" rows="5" cols="80" placeholder="private information : can only be seen by participants(meeting date/place) "></textarea>
-                <div class="form-group">
-                    <div class="form-check">
-                        <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck" required>
-                        <label class="form-check-label" for="invalidCheck">
-                            Agree to terms and conditions
-                        </label>
-                        <div class="invalid-feedback">
-                            You must agree before submitting.
-                        </div>
-                    </div>
-                </div>
-                <button class="btn btn-wanted" id="submitf" type="button">Create Flight</button>   
-                 <button class="btn" id="submitf" type="button" onclick="location.replace('testp.html')">Cancel</button>   		
-                		
-            </form>
-        </section>
-    </body>
-  
+<body>
+	<header>
+		<nav class="navbar navbar-light" style="background-color: #FFA500;">
+			<a class="navbar-brand" href="index.html">Kechache Airport</a>
+			<p id='login'>
+				<a href="login.html">Log In</a>/<a href="registration.html">Sign
+					Up</a>
+			</p>
+			<p id='profile'>
+				<a id='test' href='testp.html'>My profile</a>
+			</p>
+
+			<form class="form-inline">
+				<input id='ignore' class="form-control mr-sm-2" type="search"
+					placeholder="Ville de départ..." aria-label="Search"
+					onclick="location.replace('search.html')">
+				<button class="btn btn-warning" type="submit">Search</button>
+			</form>
+		</nav>
+	</header>
+	<section>
+		<form>
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="departure">Departure</label> <input type="text"
+						class="form-control" id="departure" placeholder="Paris" required>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="arrival">Arrival :</label> <input type="text"
+						class="form-control" id="arrival" placeholder="Bordeaux" required>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-3">
+					<label for="price">Price :</label> <input type="number"
+						class="form-control" id="price" placeholder="60" required>
+				</div>
+				<div class="valid-feedback">Looks good!</div>
+				<div class="form-group col-md-3">
+					<label for="places">Available seats :</label> <input type="number"
+						class="form-control" id="places" placeholder="8" required>
+				</div>
+				<br />
+				<div class="form-group col-md-3">
+					<label for="Date">Date :</label> <input type="date"
+						class="form-control" id="date" required>
+				</div>
+				<div class="form-group col-md-3">
+					<label for="duration">Duration :</label> <input type="time"
+						class="form-control" id="duration" placeholder="1:30" required>
+				</div>
+
+			</div>
+			<label for="trajet">Detail Flight path</label><br />
+			<textarea name="trajet" id="trajet" rows="1" cols="80"
+				placeholder="Paris->Lyon->Marseille->Paris"></textarea>
+			<br /> <label for="description">Description</label><br />
+			<textarea name="description" id="description" rows="5" cols="80"
+				placeholder="public information: everyone can see this information"></textarea>
+			<br /> <label for="descriptionPrivate">Private information</label><br />
+			<textarea name="descriptionPrivate" id="descriptionPrivate" rows="5"
+				cols="80"
+				placeholder="private information : can only be seen by participants(meeting date/place) "></textarea>
+			<div class="form-group">
+				<div class="form-check">
+					<input class="form-check-input is-invalid" type="checkbox" value=""
+						id="invalidCheck" required> <label
+						class="form-check-label" for="invalidCheck"> Agree to
+						terms and conditions </label>
+					<div class="invalid-feedback">You must agree before
+						submitting.</div>
+				</div>
+			</div>
+			<button class="btn btn-wanted" id="submitf" type="button">Create
+				Flight</button>
+			<button class="btn" id="submitf" type="button"
+				onclick="location.replace('testp.html')">Cancel</button>
+
+		</form>
+	</section>
+</body>
+
 </html>
 
 

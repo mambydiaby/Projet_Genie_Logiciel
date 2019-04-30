@@ -23,16 +23,16 @@ public class Service {
 	protected boolean IsLogged() {
 		return request.getSession().getAttribute("userId") != null;
 	}
-	
+
 	protected boolean isPilot() {
 
 		return request.getSession().getAttribute("type").equals("pilot");
 	}
-	
+
 	protected boolean isPassenger() {
 		return request.getSession().getAttribute("type").equals("passenger");
 	}
-	
+
 	protected void registerException(Exception e) {
 		Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, e);
 	}

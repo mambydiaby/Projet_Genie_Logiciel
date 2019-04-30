@@ -19,6 +19,8 @@ public abstract class BasicDao implements Dao {
 			if (index == null || index.length() == 0) {
 				index = "default";
 			}
+			//sometimes happens 
+
 		} catch(NullPointerException e1) {
 			index = "default";
 			serverAddr="localhost";

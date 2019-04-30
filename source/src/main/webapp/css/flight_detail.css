@@ -1,147 +1,153 @@
-body
-{
+body {
 	background: url("../img/lyon.jpg") no-repeat fixed;
-	background-size:100% 100%;
-	
+	background-size: 100% 100%;
 }
 
-#btnconfirm
-{
-  color: white;
-  background-color:orange;
+#btnconfirm {
+	color: white;
+	background-color: orange;
 }
 
-#btnconfirm:hover
-{
-  color: orange;
-  background-color:white;
+#btnconfirm:hover {
+	color: orange;
+	background-color: white;
 }
 
-#myBtn
-{
-  color: white;
-  background-color:orange;
+#myBtn {
+	color: white;
+	background-color: orange;
 }
 
-#myBtn:hover
-{
-  color: orange;
-  background-color:white;
+#myBtn:hover {
+	color: orange;
+	background-color: white;
 }
 
-a
-{
-	color:black;
+a {
+	color: black;
 }
 
-a:hover
-{
-	color:black;
+a:hover {
+	color: black;
 }
 
-a:visited
-{
-	color:black;
+a:visited {
+	color: black;
 }
 
-#contenu
-{
-	border:2px;
+#contenu {
+	border: 2px;
 	background: white;
 	margin-left: 0%;
 	margin-top: 30%;
 	display: flex;
-  justify-content: space-around;
-  word-wrap: break-word;
-
+	justify-content: space-around;
+	word-wrap: break-word;
 }
 
-.lds-hourglass {  
-display: inline-block;
-
-  top: 35%;
-  right: 25%;
-  width: 200px;
-  height: 200px;
-  position: absolute;
-
+.lds-hourglass {
+	display: inline-block;
+	top: 35%;
+	right: 25%;
+	width: 200px;
+	height: 200px;
+	position: absolute;
 }
+
 .lds-hourglass:after {
-  content: " ";
-  display: block;
-  border-radius: 50%;
-  position: absolute;
-  top: 35%;
-  right: 25%;
-  width: 0;
-  height: 0;
-  margin: 6px;
-  box-sizing: border-box;
-  border: 44px solid #444;
-  border-color: #444 transparent #444 transparent;
-  animation: lds-hourglass 1.2s infinite;
-}
-@keyframes lds-hourglass {
-  0% {
-    transform: rotate(0);
-    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
-  }
-  50% {
-    transform: rotate(900deg);
-    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-  }
-  100% {
-    transform: rotate(1800deg);
-  }
+	content: " ";
+	display: block;
+	border-radius: 50%;
+	position: absolute;
+	top: 35%;
+	right: 25%;
+	width: 0;
+	height: 0;
+	margin: 6px;
+	box-sizing: border-box;
+	border: 44px solid #444;
+	border-color: #444 transparent #444 transparent;
+	animation: lds-hourglass 1.2s infinite;
 }
 
+@
+keyframes lds-hourglass { 0% {
+	transform: rotate(0);
+	animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
 
-.modal
+50%
 {
+transform
+:
+ 
+rotate
+(900deg);
 
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: #FF7F50; /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    
+animation-timing-function
+:
+ 
+cubic-bezier
+(0
+.215
+,
+0
+.61
+,
+0
+.355
+,
+1);
+}
+100%
+{
+transform
+:
+ 
+rotate
+(1800deg);
 
+  
+}
+}
+.modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	padding-top: 100px; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: #FF7F50; /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 .modal-content {
-  background-color: #FF7F50;
-  background: white;
-  margin-left: 0%;
-  margin-top: 30%;
+	background-color: #FF7F50;
+	background: white;
+	margin-left: 0%;
+	margin-top: 30%;
 }
 
-.modal-body
-{
-	
+.modal-body {
 	display: flex;
-  justify-content: space-around;
-  word-wrap: break-word;
+	justify-content: space-around;
+	word-wrap: break-word;
 }
 
-
-.close 
-{
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+.close {
+	color: #aaaaaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
 }
 
-aside
-{
-	margin-top:6%;
+aside {
+	margin-top: 6%;
 }
 
-h2
-{
-	font-size:40px;
+h2 {
+	font-size: 40px;
 }

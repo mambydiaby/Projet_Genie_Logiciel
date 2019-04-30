@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <meta charset="utf-8" />
- <link rel="stylesheet" href="css/flight_detail.css"/>                
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="css/flight_detail.css" />
 <script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 <script type="text/javascript"
@@ -11,116 +11,129 @@
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script
 	src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
 <script type="text/javascript" src="js/detail.js"></script>
-    <title>Detail_Flight</title>
-    </head>
- <script>
-$(function(){
-var log=sessionStorage.getItem("user");
-var type=sessionStorage.getItem("type");
-console.log(type);
+<title>Detail_Flight</title>
+</head>
+<script>
+	$(function() {
+		var log = sessionStorage.getItem("user");
+		var type = sessionStorage.getItem("type");
+		console.log(type);
 
-if(log!=null){
-	$('#login').hide();
-	$('#profile').show();
-	if(type=='passenger'){
-		$('#test').attr('href','test.html');
-	}
-}
-console.log(log);
-});
-
+		if (log != null) {
+			$('#login').hide();
+			$('#profile').show();
+			if (type == 'passenger') {
+				$('#test').attr('href', 'test.html');
+			}
+		}else{
+			$('#login').show();
+			$('#profile').hide();
+		}
+		console.log(log);
+	});
 </script>
-    <body>
-       <header>
-    		<nav class="navbar navbar-light" style="background-color: #FFA500;">
-  				<a class="navbar-brand" href="index.html">Kechache Airport</a>
-  				<p id='login'><a href="login.html">Log In</a>/<a href="registration.html">Sign Up</a></p>
-  				 <p id='profile'><a id='test' href='testp.html'>My profile</a></p>
-  				
-  				<form class="form-inline">
-    				<input class="form-control mr-sm-2" type="search" placeholder="Ville de départ..." aria-label="Search"
-    				onclick="location.replace('search.html')">
-    				<button class="btn btn-warning" type="submit">Search</button>
-  				</form>
-			</nav>
-		</header>
+<body>
+	<header>
+		<nav class="navbar navbar-light" style="background-color: #FFA500;">
+			<a class="navbar-brand" href="index.html">Kechache Airport</a>
+			<p id='login'>
+				<a href="login.html">Log In</a>/<a href="registration.html">Sign
+					Up</a>
+			</p>
+			<p id='profile'>
+				<a id='test' href='testp.html'>My profile</a>
+			</p>
 
-        <div id="contenu">
-            <section>
-                <h1 class='arrival'>Lyon</h1><br>							
-                <hr width="80%"  color="grey">
-                <p class='departure'>From: Marseille</p>
-                <p class='date'>Date: 12.03.2019</p>
-                <p class='duration'>Duration: 1 hour</p>
-                <p class='pilot'>Pilot: Will Smith</p>
-                <p id='trajet'>trajet</p>
-                <p id='info'>?</p>
-             	<p id='infoPrivate'>private</p>
-                
-                
-            </section>
-            <aside>
-                <h2 id='price'>55€</h2><br>
-                <button id="myBtn" class="btn btn-warning btn-lg">Book this flight</button>
-            </aside>
-        </div>
-        <div id="myModal" class="modal">
-            <div class="modal-dialog">
-                <div class="modal-content">	
-                    <div class="modal-header">
-                        <h4 class="modal-title">Book this flight</h4>
-                        <span class="close">&times;</span>
-                    </div>
-                    <div class="modal-body">
-                            <div class="lds-hourglass"></div>
-                    
-                        <h5 class='arrival'>Lyon</h5>
-                        <section>
-                            <p class='departure'>From: Marseille</p>
-                            <p class='date'>Date: 04.15.2019</p>
-                            <p class='duration'>Duration: 1 hour</p>					
-                            <p class='pilot'>Pilot: Will Smith</p>
-                        </section>
-                        <aside>
-                            <p>
-                                <label for="seats">Seats</label><br />
-                                <input type="number" class="form-control" id="seats" step="1" min="1" max="5">
-                            </p>
-                        </aside>
-                    </div>
-                    
-                    <div class="modal-footer">
-                        <input type="submit" id="btnconfirm" class="btn btn-warning btn-lg" onclick=" bookFlight();" value="Confirm"/>
-                    </div>
-                </div>
-            </div>
-        </div>
-      
-      
-        <script>
-            // Get the modal
-            var modal = document.getElementById('myModal');
-            // Get the button that opens the modal
-            var btn = document.getElementById("myBtn");
-            // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
-            // When the user clicks the button, open the modal 
-            btn.onclick = function() {
-                modal.style.display = "block";
-            }				
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
-                modal.style.display = "none";
-            }
-            //When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-        </script>
-    </body>		
-     
+			<form class="form-inline">
+				<input class="form-control mr-sm-2" type="search"
+					placeholder="Ville de départ..." aria-label="Search"
+					onclick="location.replace('search.html')">
+				<button class="btn btn-warning" type="submit">Search</button>
+			</form>
+		</nav>
+	</header>
+
+	<div id="contenu">
+		<section>
+			<h1 class='arrival'>Lyon</h1>
+			<br>
+			<hr width="80%" color="grey">
+			<p class='departure'>From: Marseille</p>
+			<p class='date'>Date: 12.03.2019</p>
+			<p class='duration'>Duration: 1 hour</p>
+			<p class='pilot'>Pilot: Will Smith</p>
+			<p id='trajet'>trajet</p>
+			<p id='info'>?</p>
+			<p id='infoPrivate'>private</p>
+
+
+		</section>
+		<aside>
+			<h2 id='price'>55€</h2>
+			<br>
+			<button id="myBtn" class="btn btn-warning btn-lg">Book this
+				flight</button>
+		</aside>
+	</div>
+	<div id="myModal" class="modal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Book this flight</h4>
+					<span class="close">&times;</span>
+				</div>
+				<div class="modal-body">
+					<div class="lds-hourglass"></div>
+
+					<h5 class='arrival'>Lyon</h5>
+					<section>
+						<p class='departure'>From: Marseille</p>
+						<p class='date'>Date: 04.15.2019</p>
+						<p class='duration'>Duration: 1 hour</p>
+						<p class='pilot'>Pilot: Will Smith</p>
+					</section>
+					<aside>
+						<p>
+							<label for="seats">Seats</label><br /> <input type="number"
+								class="form-control" id="seats" step="1" min="1" max="5">
+						</p>
+					</aside>
+				</div>
+
+				<div class="modal-footer">
+					<input type="submit" id="btnconfirm" class="btn btn-warning btn-lg"
+						onclick=" bookFlight();" value="Confirm" />
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script>
+		// Get the modal
+		var modal = document.getElementById('myModal');
+		// Get the button that opens the modal
+		var btn = document.getElementById("myBtn");
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+		// When the user clicks the button, open the modal 
+		btn.onclick = function() {
+			modal.style.display = "block";
+		}
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function() {
+			modal.style.display = "none";
+		}
+		//When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+	</script>
+</body>
+
 </html>

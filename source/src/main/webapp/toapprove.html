@@ -1,187 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="utf-8">
-      <title>Reservation</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
-      <style type="text/css">
-         .custab{
-         border: 1px solid #ccc;
-         padding: 5px;
-         margin: 5% 0;
-         box-shadow: 3px 3px 2px #ccc;
-         transition: 0.5s;
-         }
-         .custab:hover{
-         box-shadow: 3px 3px 0px transparent;
-         transition: 0.5s;
-         }
-      </style>
-     <link
+<head>
+<meta charset="utf-8">
+<title>Reservation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
 	href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
 	rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-  
+<style type="text/css">
+.custab {
+	border: 1px solid #ccc;
+	padding: 5px;
+	margin: 5% 0;
+	box-shadow: 3px 3px 2px #ccc;
+	transition: 0.5s;
+}
+
+.custab:hover {
+	box-shadow: 3px 3px 0px transparent;
+	transition: 0.5s;
+}
+</style>
+<link
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+	rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+
 <link href="css/toapprove.css" rel="stylesheet">
 
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script
 	src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+<script type="text/javascript" charset="utf8"
+	src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 
 <script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 <script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
- <script type="text/javascript" src="js/toApprove.js"> </script>
-	    
-   </head>
-   <body>
-      <a id="back1" href="#"> back </a>
-      <div class="container">
-         <div id="div1" class="row col-md-5 col-md-offset-2 custyle">
-         </div>
-      </div>
-  
-
-
-
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <div class="modal-header">
-      <span class="close">&times;</span>
-      <p><b>Verification</b></p>
-    </div>
-    <div class="modal-body">
-     <p ><b id='vec'>Accepting this reservations?</b></p>
-     <p id='name'></p>
-     <p id='seat_wanted'>1</p>
-	 <p id='seat_left'>1</p>
-     <p id='date'>1</p>
-     <p id='departure'>1</p>
-     <p id= 'arrival'> 1</p>
-     <a id= 'more' href="#" target="_blank"> </a>
-      
-    </div>
-    <div class="modal-footer">
-    <input id="accept" onclick="approve()" type="button" value="accept">
-    <input id="back" onclick="back()" type="button" value="cancel">
-    </div>
-  </div>
-
-</div>
-
-   </body>
-<script>
-// Get the modal
-var modal = document.getElementById('myModal');
-
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
- // When the user clicks on <span> (x), close the modal
- span.onclick = function() {
-   modal.style.display = "none";
- }
-
- // When the user clicks anywhere outside of the modal, close it
- window.onclick= function(event) {
-   if (event.target == modal) {
-     modal.style.display = "none";
-   }
- }
+<script type="text/javascript" src="js/toApprove.js">
+	
 </script>
-        
-      <style>
-body {font-family: Arial, Helvetica, sans-serif;}
+
+</head>
+<body>
+	<a id="back1" href="#"> back </a>
+	<div class="container">
+		<div id="div1" class="row col-md-5 col-md-offset-2 custyle"></div>
+	</div>
+
+
+
+
+
+	<!-- The Modal -->
+	<div id="myModal" class="modal">
+
+		<!-- Modal content -->
+		<div class="modal-content">
+			<div class="modal-header">
+				<span class="close">&times;</span>
+				<p>
+					<b>Verification</b>
+				</p>
+			</div>
+			<div class="modal-body">
+				<p>
+					<b id='vec'>Accepting this reservations?</b>
+				</p>
+				<p id='name'></p>
+				<p id='seat_wanted'>1</p>
+				<p id='seat_left'>1</p>
+				<p id='date'>1</p>
+				<p id='departure'>1</p>
+				<p id='arrival'>1</p>
+				<a id='more' href="#" target="_blank"> </a>
+
+			</div>
+			<div class="modal-footer">
+				<input id="accept" onclick="approve()" type="button" value="accept">
+				<input id="back" onclick="back()" type="button" value="cancel">
+			</div>
+		</div>
+
+	</div>
+
+</body>
+<script>
+	// Get the modal
+	var modal = document.getElementById('myModal');
+
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+		modal.style.display = "none";
+	}
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+</script>
+
+<style>
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
 
 /* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  -webkit-animation-name: fadeIn; /* Fade in the background */
-  -webkit-animation-duration: 0.4s;
-  animation-name: fadeIn;
-  animation-duration: 0.4s;
- 
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+	-webkit-animation-name: fadeIn; /* Fade in the background */
+	-webkit-animation-duration: 0.4s;
+	animation-name: fadeIn;
+	animation-duration: 0.4s;
 }
 
 /* Modal Content */
 .modal-content {
-  position: fixed;
-  top: 30%;
+	position: fixed;
+	top: 30%;
 	left: 30%;
-  background-color: white;
-  width: 40%;
-  margin:0 auto;
-  -webkit-animation-name: slideIn;
-  -webkit-animation-duration: 0.1s;
-  animation-name: slideIn;
-  animation-duration: 0.1s
+	background-color: white;
+	width: 40%;
+	margin: 0 auto;
+	-webkit-animation-name: slideIn;
+	-webkit-animation-duration: 0.1s;
+	animation-name: slideIn;
+	animation-duration: 0.1s
 }
 
 /* The Close Button */
 .close {
-  color: black;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+	color: black;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
+.close:hover, .close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
 }
 
 .modal-header {
-  padding: 2px 10px;
-  background-color: white;
-  color: black;
+	padding: 2px 10px;
+	background-color: white;
+	color: black;
 }
 
-.modal-body {padding: 2px 16px;}
+.modal-body {
+	padding: 2px 16px;
+}
 
 .modal-footer {
-  padding: 2px 16px;
-  background-color: white;
-  color: black;
+	padding: 2px 16px;
+	background-color: white;
+	color: black;
 }
 
 /* Add Animation */
-@-webkit-keyframes slideIn {
-  from {bottom: -300px; opacity: 0} 
-  to {bottom: 0; opacity: 1}
+@
+-webkit-keyframes slideIn {
+	from {bottom: -300px;
+	opacity: 0
 }
 
-@keyframes slideIn {
-  from {bottom: -300px; opacity: 0}
-  to {bottom: 0; opacity: 1}
+to {
+	bottom: 0;
+	opacity: 1
 }
 
-@-webkit-keyframes fadeIn {
-  from {opacity: 0} 
-  to {opacity: 1}
+}
+@
+keyframes slideIn {
+	from {bottom: -300px;
+	opacity: 0
 }
 
-@keyframes fadeIn {
-  from {opacity: 0} 
-  to {opacity: 1}
+to {
+	bottom: 0;
+	opacity: 1
+}
+
+}
+@
+-webkit-keyframes fadeIn {
+	from {opacity: 0
+}
+
+to {
+	opacity: 1
+}
+
+}
+@
+keyframes fadeIn {
+	from {opacity: 0
+}
+
+to {
+	opacity: 1
+}
 }
 </style>
-      
+
 </html>

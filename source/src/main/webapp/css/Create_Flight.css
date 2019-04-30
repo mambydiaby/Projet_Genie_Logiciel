@@ -1,42 +1,33 @@
-body
-{
-	background: url("../img/aircraft-airplane-aviation-615060.jpg") no-repeat fixed;
-	background-size:100% 100%;
-	
+body {
+	background: url("../img/aircraft-airplane-aviation-615060.jpg")
+		no-repeat fixed;
+	background-size: 100% 100%;
 }
 
-section
-{
-	border:2px;
+section {
+	border: 2px;
 	border-radius: 3px;
 	background: white;
 	margin-top: 4%;
-	margin-left:10%;
+	margin-left: 10%;
 	margin-right: 10%;
-	padding:20px;
+	padding: 20px;
 }
 
-#submitf
-{
+#submitf {
 	color: white;
- 	background-color:orange;
+	background-color: orange;
 }
 
-#submitf:hover
-{
+#submitf:hover {
 	color: orange;
-  	background-color:white;
+	background-color: white;
 }
 
-a
-{
-	color:black;
+a {
+	color: black;
 }
 
-a:hover
-{
-	color:black;
+a:hover {
+	color: black;
 }
-
-
-

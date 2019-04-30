@@ -56,7 +56,7 @@ public class AirplaneService extends Service {
 		if (!(IsLogged() && isPilot()))
 			return "{\"result\":\"Please Login as Pilot!\"}";
 		String result = null;
-
+		
 		try {
 			result = airplaneDao.delete(id);
 		} catch (Exception e) {

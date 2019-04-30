@@ -24,7 +24,12 @@ import com.flight_sharing.mail.Email;
 
 @Path("reservation")
 public class ReservationService extends Service {
-
+	/**
+	 *  web service to create a new reservation
+	 * @param r
+	 * @return
+	 * @throws Exception
+	 */
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -55,13 +60,19 @@ public class ReservationService extends Service {
 		}
 	}
 
+	/**
+	 * web service to approve a reservation
+	 * @param id
+	 * @return
+	 * @throws Exception
+	 */
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes("application/x-www-form-urlencoded")
 	@Path("/approve/{id}")
 	public String approve(@PathParam("id") String id) throws Exception {
 		System.out.println("approve");
-	
+
 		if (!(IsLogged() && isPilot()))
 			return "{\"result\":\"Please Login !\"}";
 		Reservation rt = (Reservation) ConvertObject.jsonToObject(reservationDao.getById(id),
@@ -80,14 +91,14 @@ public class ReservationService extends Service {
 		reservationDao.update(id, "approved", "true");
 		Passenger pa=null;
 		try {
-		 pa = (Passenger) ConvertObject.jsonToObject(passengerDao.getById(rt.getPassengerId()),
-				ConvertObject.PASSENGER);
+			pa = (Passenger) ConvertObject.jsonToObject(passengerDao.getById(rt.getPassengerId()),
+					ConvertObject.PASSENGER);
 		}catch(Exception e) {
 			pa=(Passenger) ConvertObject.jsonToObject(pilotDao.getById(rt.getPassengerId()),
 					ConvertObject.PILOT);
 		}
-			
-		
+
+
 		String body = "Hello Mr/Mrs/Ms " + pa.getLastName() + ",<br/><br/>Your booking for the flight "
 				+ rt.getFlightId()
 				+ "  has been approved by the pilot. You will receive an email containing the essential information the "
@@ -96,7 +107,12 @@ public class ReservationService extends Service {
 		reservationDao.delete(id);
 		return "{\"result\":\"ok\"}";
 	}
-
+	/**
+	 * disapprove a reservation
+	 * @param id
+	 * @return
+	 * @throws Exception
+	 */
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -112,13 +128,13 @@ public class ReservationService extends Service {
 			return "{\"result\":\"error\"}";
 		Passenger pa=null;
 		try {
-			 pa = (Passenger) ConvertObject.jsonToObject(passengerDao.getById(rt.getPassengerId()),
+			pa = (Passenger) ConvertObject.jsonToObject(passengerDao.getById(rt.getPassengerId()),
 					ConvertObject.PASSENGER);
-			}catch(Exception e) {
-				pa=(Passenger) ConvertObject.jsonToObject(pilotDao.getById(rt.getPassengerId()),
-						ConvertObject.PILOT);
-			}
-			
+		}catch(Exception e) {
+			pa=(Passenger) ConvertObject.jsonToObject(pilotDao.getById(rt.getPassengerId()),
+					ConvertObject.PILOT);
+		}
+
 		String body = "Hello Mr/Mrs/Ms " + pa.getLastName() + ",<br/><br/>Your booking for the flight "
 				+ rt.getFlightId() + " has been rejected by the pilot. <br/><br/>Best regards.";
 		Email.send(pa.getEmail(), "Flight booking", body);
@@ -126,7 +142,11 @@ public class ReservationService extends Service {
 		return "{\"result\":\"ok \"}";
 	}
 
-	
+	/**
+	 * get my reservations 
+	 * @param id
+	 * @return
+	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes("application/x-www-form-urlencoded")
@@ -147,7 +167,12 @@ public class ReservationService extends Service {
 		}
 		return result;
 	}
-	
+
+	/**
+	 * get a reservation by its id
+	 * @param id
+	 * @return
+	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes("application/x-www-form-urlencoded")
@@ -157,13 +182,20 @@ public class ReservationService extends Service {
 			return null;
 		String result=null;
 		try {
-			 result = reservationDao.getById(id);	
+			result = reservationDao.getById(id);	
 		} catch (Exception e) {
 			registerException(e);
 		}
 		return result;
 	}
-	
+
+	/**
+	 *  
+	 *  get all the reservations to be approved
+	 * @param piloteId
+	 * @return
+	 * @throws Exception
+	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes("application/x-www-form-urlencoded")
@@ -186,7 +218,7 @@ public class ReservationService extends Service {
 					rtList.remove(i);
 
 			}
-		
+
 		return rtList;
 	}
 }

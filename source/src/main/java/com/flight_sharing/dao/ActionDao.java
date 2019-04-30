@@ -23,13 +23,14 @@ public class ActionDao extends BasicDao {
 	/** entity's type */
 	private String mainType;
 	private final TransportClient client ;
-	
+
 	public ActionDao(String mainType,TransportClient client) {
 		this.mainType = mainType;
 		this.client=client;
-		
+
 	}
 
+	
 	public List<String> getAll() throws Exception {
 		SearchResponse response = client.prepareSearch(BasicDao.index).setTypes(mainType)
 				.setSearchType(SearchType.DFS_QUERY_THEN_FETCH).setQuery(matchAllQuery()).get();
@@ -39,12 +40,12 @@ public class ActionDao extends BasicDao {
 		}
 		return results;
 	}
-
+	
 	public String getById(String id) throws Exception {
 		GetResponse response=client.prepareGet(BasicDao.index, mainType, id).get();
 		return response.getSourceAsString();
 	}
-
+	
 	public String delete(String id) throws Exception {
 		DeleteResponse response = client.prepareDelete(BasicDao.index, mainType, id).get();
 		return response.status().toString();
@@ -76,7 +77,7 @@ public class ActionDao extends BasicDao {
 		}
 		return results;
 	}
-	
+
 	/**
 	 *  Extra param from and size for
 	 *   elasticsearch configuration
@@ -95,7 +96,7 @@ public class ActionDao extends BasicDao {
 		}
 		return results;
 	}
-	
+
 	private static void registerException(Exception e) {
 		Logger.getLogger(ActionDao.class.getName()).log(Level.SEVERE, null, e);
 	}

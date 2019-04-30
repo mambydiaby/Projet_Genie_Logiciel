@@ -1,24 +1,28 @@
+/**
+ * 
+ * @returns
+ */
 $('#register').click(function() {
 	var passenger = {
-		id: $('#usr').val(),
-		pwd: $('#pwd').val(),
-		firstName: $('#fname').val(),
-		lastName: $('#lname').val(),
-		email: $('#email').val()
+		id : $('#usr').val(),
+		pwd : $('#pwd').val(),
+		firstName : $('#fname').val(),
+		lastName : $('#lname').val(),
+		email : $('#email').val()
 	}
 	$.ajax({
-		url: '/ws/user/reg',
-		type: 'put',
-		dataType: 'json',
-		contentType: 'application/json',
-		data: JSON.stringify(passenger),
+		url : '/ws/user/reg',
+		type : 'put',
+		dataType : 'json',
+		contentType : 'application/json',
+		data : JSON.stringify(passenger),
 
-		success: function(data) {
+		success : function(data) {
 			if (data.result == 'ok') {
-				
-				//location.replace("search.html");
+
+				// location.replace("search.html");
 			} else {
-				//alert(data.result);
+				// alert(data.result);
 				$('#loginerror').show();
 				$('#loginerror').html(data.result);
 				$("#loginerror").css("display", "block");
@@ -30,24 +34,24 @@ $('#register').click(function() {
 	})
 })
 
-$('#registerp').click(function () {
+$('#registerp').click(function() {
 	var pilote = {
-		id: $('#usr1').val(),
-		pwd: $('#pwd1').val(),
-		firstName: $('#fname1').val(),
-		lastName: $('#lname1').val(),
-		email: $('#email1').val(),
-		experience: $('#exp').val(),
-		qualification: $('#qual').val() 
+		id : $('#usr1').val(),
+		pwd : $('#pwd1').val(),
+		firstName : $('#fname1').val(),
+		lastName : $('#lname1').val(),
+		email : $('#email1').val(),
+		experience : $('#exp').val(),
+		qualification : $('#qual').val()
 	}
 	$.ajax({
-		url: '/ws/user/regpilote',
-		type: 'put',
-		dataType: 'json',
-		contentType: 'application/json',
-		data: JSON.stringify(pilote),
+		url : '/ws/user/regpilote',
+		type : 'put',
+		dataType : 'json',
+		contentType : 'application/json',
+		data : JSON.stringify(pilote),
 
-		success: function(data) {
+		success : function(data) {
 			if (data.result == 'ok') {
 				location.href = 'http://localhost:8081/login.html';
 			} else {

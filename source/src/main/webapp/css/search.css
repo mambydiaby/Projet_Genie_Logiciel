@@ -1,70 +1,96 @@
-
-h1{
-    font: 70 60px "Comic Sans MS";
-    color: white;
-    text-shadow: 0 0 20px #fdec84,
-            10px -10px 30px #ffae35;
-          
-  	 text-align:center;
-  	 padding : 10px;
+h1 {
+	font: 70 60px "Comic Sans MS";
+	color: white;
+	text-shadow: 0 0 20px #fdec84, 10px -10px 30px #ffae35;
+	text-align: center;
+	padding: 10px;
 }
 
 body {
-    font-family: 'Helvetica', Sans-Serif;
-    margin: 0px;
-    background-image: url('../img/haha.jpg');
-    background-position: auto auto;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
+	font-family: 'Helvetica', Sans-Serif;
+	margin: 0px;
+	background-image: url('../img/haha.jpg');
+	background-position: auto auto;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
 }
 
-input{
-         border: 1px solid #ccc;
-         padding: 5px;
-         margin: 0.5% 0;
-         box-shadow: 1px 2px 2px #ccc;
-         transition: 0.5s;
+input {
+	border: 1px solid #ccc;
+	padding: 5px;
+	margin: 0.5% 0;
+	box-shadow: 1px 2px 2px #ccc;
+	transition: 0.5s;
 }
 
-input:hover{
-         box-shadow: 3px 3px 0px transparent;
-          cursor: pointer;
-         transition: 0.5s;
- }
-
- .input{
-        size: 500px;
-        position: relative;
-        text-align: center;
-
- }
-
- #filter{
-       display:none;
-       color:white;
- }
-#itable1_wrapper{ display: flex;
-flex-direction:column;
-      
-
- }
-#itable1_idfo{order:-2;color:white;}
-#itable1_info{color:white}
-#itable1_length{ order: 1; 
-color:white}
-#itable1_paginate{order:1;color:white;}
-#itable_wrapper{ display: flex;
-flex-direction:column;
-color:white;
- }
-#itable_info{color:white}
-#itable_idfo{order:-2;
-color:white}
-#itable_length{ order: 1; color:white;}
-#itable_paginate{order:1;color:white;}
-#div1{
-	 width: 80%;
-    margin-left: 20%;
+input:hover {
+	box-shadow: 3px 3px 0px transparent;
+	cursor: pointer;
+	transition: 0.5s;
 }
-   
+
+.input {
+	size: 500px;
+	position: relative;
+	text-align: center;
+}
+
+#filter {
+	display: none;
+	color: white;
+}
+
+#itable1_wrapper {
+	display: flex;
+	flex-direction: column;
+}
+
+#itable1_idfo {
+	order: -2;
+	color: white;
+}
+
+#itable1_info {
+	color: white
+}
+
+#itable1_length {
+	order: 1;
+	color: white
+}
+
+#itable1_paginate {
+	order: 1;
+	color: white;
+}
+
+#itable_wrapper {
+	display: flex;
+	flex-direction: column;
+	color: white;
+}
+
+#itable_info {
+	color: white
+}
+
+#itable_idfo {
+	order: -2;
+	color: white
+}
+
+#itable_length {
+	order: 1;
+	color: white;
+}
+
+#itable_paginate {
+	order: 1;
+	color: white;
+}
+
+#div1 {
+	width: 80%;
+	margin-left: 20%;
+}

@@ -31,7 +31,7 @@ public class FlightService extends Service {
 		List<String> result = null;
 		try {
 			BoolQueryBuilder searchBuilder = QueryBuilders.boolQuery();
-			
+
 			if (!departure.isEmpty()) {
 				searchBuilder.must(QueryBuilders.wildcardQuery("departure", "*" + departure.toLowerCase() + "*"));
 			}
@@ -40,7 +40,7 @@ public class FlightService extends Service {
 			}
 			if(seat!=0)
 				searchBuilder.must(QueryBuilders.rangeQuery("seat").from(seat));
-			
+
 			if(!arrival.isEmpty())
 				searchBuilder.must(QueryBuilders.wildcardQuery("arrival", "*" + arrival.toLowerCase() + "*"));
 			result = flightDao.search(searchBuilder);
@@ -51,6 +51,13 @@ public class FlightService extends Service {
 		return result;
 	}
 
+	/**
+	 * 
+	 * search flights only with departure and date
+	 * @param departure
+	 * @param date
+	 * @return
+	 */
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes("application/x-www-form-urlencoded")
@@ -74,7 +81,12 @@ public class FlightService extends Service {
 		return result;
 	}
 
-	
+	/**
+	 * web services to get all my flights
+	 * 
+	 * @param id
+	 * @return
+	 */
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
@@ -96,7 +108,7 @@ public class FlightService extends Service {
 		return result;
 	}
 
-	
+
 
 	/**
 	 * web service to get more detailed information about the flight
