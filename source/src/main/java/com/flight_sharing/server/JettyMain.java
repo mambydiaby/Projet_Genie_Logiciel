@@ -1,6 +1,5 @@
 package com.flight_sharing.server;
 
-
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
@@ -14,11 +13,11 @@ import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
 
+import com.flight_sharing.reminder.Reminder;
 
 public class JettyMain {
 
 	public static void main(String[] args) throws Exception {
-
 		// Initialize the server
 		Server server = new Server();
 
@@ -28,18 +27,19 @@ public class JettyMain {
 		connector.setPort(8081);
 		connector.setIdleTimeout(30000);
 		server.addConnector(connector);
-		
+
 		// Configure Jersey
 		ResourceConfig rc = new ResourceConfig();
 		rc.packages(true, "com.flight_sharing.ws");
 		rc.register(JacksonFeature.class);
 		rc.register(LoggingFilter.class);
-		
+
 		// Add a servlet handler for web services (/ws/*)
 		ServletHolder servletHolder = new ServletHolder(new ServletContainer(rc));
 		ServletContextHandler handlerWebServices = new ServletContextHandler(ServletContextHandler.SESSIONS);
 		handlerWebServices.setContextPath("/ws");
 		handlerWebServices.addServlet(servletHolder, "/*");
+
 		// Add a handler for resources (/*)
 		ResourceHandler handlerPortal = new ResourceHandler();
 		handlerPortal.setResourceBase("src/main/webapp");
@@ -55,12 +55,10 @@ public class JettyMain {
 		server.setHandler(contexts);
 		
 		//launch reminder
-		//Reminder.start();
+		Reminder.start();
 		
 		// Start server
 		server.start();
-       // server.join();
-
 
 		
 	}

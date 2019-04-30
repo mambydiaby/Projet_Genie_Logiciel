@@ -30,7 +30,7 @@ public class UserService extends Service {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes("application/x-www-form-urlencoded")
-	@Path("/login")
+	@Path("login")
 	public String login(@FormParam("id") String userId, @FormParam("pwd") String userPwd) {
 		try {
 			if (userId == null || userPwd == null) {
@@ -48,8 +48,7 @@ public class UserService extends Service {
 					}
 
 					Pilot p = (Pilot) ConvertObject.jsonToObject(user, ConvertObject.PILOT);
-					System.out.println(p.getId()+"\n first name "+p.getFirstName()+"\nqulification"+p.getQualification()+
-							"pwd"+p.getPwd());
+
 					if (p.getPwd().equals(userPwd)) {
 						request.getSession().setAttribute("userId", p.getId());
 						request.getSession().setAttribute("type", "pilot");
@@ -76,7 +75,7 @@ public class UserService extends Service {
 	}
 
 	/**
-	 * webservice for passenger registration 
+	 * webservice for passenger registration
 	 * 
 	 * @param userId
 	 * @param userPwd
@@ -134,15 +133,15 @@ public class UserService extends Service {
 	@Consumes("application/x-www-form-urlencoded")
 	@Path("profile/{id}")
 	public String privateProfile(@PathParam("id") String userId) {
-
+		
 		if (!IsLogged())
 			return "{\"result\":\"Please Login !\"}";
 		try {
-			String user = passengerDao.getById(userId);
-
-			if (user == null)
+			String user = null;
+			if (isPassenger())
+				user = passengerDao.getById(userId);
+			else if (isPilot())
 				user = pilotDao.getById(userId);
-			System.out.println(user);
 			if (!user.isEmpty()) {
 				JSONObject json = new JSONObject(user);
 				json.remove("pwd");
@@ -157,13 +156,12 @@ public class UserService extends Service {
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes("application/x-www-form-urlencoded")
-	@Path("{type}/profile/{id}")
-	public String delete(@PathParam("type") String uType, @PathParam("id") String userId) {
-		System.out.print(uType);
+	@Path("/profile/{id}")
+	public String delete(@PathParam("id") String userId) {
 		try {
-			if (uType.equals("Pilote"))
+			if (isPilot())
 				return pilotDao.delete(userId);
-			else if (uType.equals("Passenger"))
+			else if (isPassenger())
 				return passengerDao.delete(userId);
 		} catch (Exception e) {
 			registerException(e);
