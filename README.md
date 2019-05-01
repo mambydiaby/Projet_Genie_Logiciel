@@ -13,6 +13,7 @@
   
  <h2>----------Problems-----------</h2>
 <p><b>  A little bit delay when log in / book a flight /aprouve a flight /disapprove a flight (Because of sending email/binding database.. ) , if it doesn't work , wait for ten seconds and click again!!!</b></p>
+<p>A large delay when you delete a filght which contains a lot of reservations.(be patient! maybe 2 minutes because we need to send an email to each passenger.)  </p>
 <p><b>todo: </b> add payment pages. test emailsender/remainder</p>
 <p>In profile : upload and show image icon not done </p>
 <p>A new README.md to present this project </p>
