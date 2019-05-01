@@ -53,5 +53,6 @@
     <li> I added much more details for edit_flight and create_flight pages to fill more information (only missing flight time now.) </li>
     <li> For the list of flights page, i would rather use mine because a lot of works to do if i change to another page(pagination,filtre....) </li>
   </ol>
-
+ <h2>---------- New Changes from 2019/05/01(to be deleted from README.md)-----------</h2>
+    <p>delete a flight and send email to all passengers who have reservation of this flight</p>
 <h2> Any other questions,pls contact me, nice day/night </h2>
