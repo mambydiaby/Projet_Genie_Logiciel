@@ -15,9 +15,29 @@
 <p><b>  A little bit delay when log in / book a flight /aprouve a flight /disapprove a flight (Because of sending email/binding database.. ) , if it doesn't work , wait for ten seconds and click again!!!</b></p>
 <p>A large delay when you delete a filght which contains a lot of reservations.(be patient! maybe 2 minutes because we need to send an email to each passenger.)  </p>
 <p><b>todo: </b> add payment pages. test emailsender/remainder</p>
-<p>In profile : upload and show image icon not done </p>
-<p>A new README.md to present this project </p>
-<p>Maybe there are bugs that i didn't find </p>
+<br/>
+<h3> <b>Here's sth you can do if you want to continue (not sure if needed)</b></h3>
+<ul>
+<li><p>In profile : upload and show image icon not done </p></li>
+<li><p>designe a beautiful congratulation page</p></li>
+<li><p><b>designe a little logo</b></p></li>
+ <li><p>Thinkof a company name?</p></li>
+
+<li><p>Improve css / html of all page</p></li>
+<li><p>Modify account informations </p></li>
+<li><p>Add more details to creat-flight : such as flight time </p></li>
+<li><p>Passengers cancel his reservations </p></li>
+<li><p>Add more pictures for other cities(for instance, only 5 or 6 cities available) </p></li>
+<li><p>Web security </p></li>
+<li><p>Test with more informations to find bugs  </p></li>
+<li><p>More comments on code</p></li>
+<li><p><b>A perfect Readme.md instead of this one</b></p></li>
+
+
+</ul>
+ 
+
+
 <h2>---------- New Changes from 2019/05/01(to be deleted from README.md)-----------</h2>
     <p>delete a flight and send email to all passengers who have reservation of this flight</p>
  <h2>---------- Changes from 2019/04/20(to be deleted from README.md)-----------</h2>
