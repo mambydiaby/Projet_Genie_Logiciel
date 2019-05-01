@@ -42,7 +42,9 @@ $(function() {
 								+ "');\" target=\"_blank\" class='btn btn-info btn-xs' href=\"../flight_detail.html\" >"
 								+ "<span class=\"glyphicon glyphicon-ok\"></span> See</a> <a onclick=\"storing('"
 								+ obj.id
-								+ "');\" target=\"_blank\" class='btn btn-info btn-xs' href=\"../Edit_Flight.html\" ><span class=\"glyphicon glyphicon-ok\"></span> Edit</a> </td></tr>"
+								+ "');\" target=\"_blank\" class='btn btn-info btn-xs' href=\"../Edit_Flight.html\" ><span class=\"glyphicon glyphicon-ok\"></span> Edit</a> "
+								+"</td></tr>";
+								
 						tbl += td0 + td1 + td1_5 + td2 + td3 + td4 + td5;
 					}
 					tbl += "</tbody></table>"

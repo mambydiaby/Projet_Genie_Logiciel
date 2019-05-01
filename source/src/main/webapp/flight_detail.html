@@ -76,6 +76,8 @@
 			<br>
 			<button id="myBtn" class="btn btn-warning btn-lg">Book this
 				flight</button>
+				<button id="myBtn2" class="btn btn-warning btn-lg">Delete this
+				flight</button>
 		</aside>
 	</div>
 	<div id="myModal" class="modal">
@@ -96,7 +98,7 @@
 						<p class='pilot'>Pilot: Will Smith</p>
 					</section>
 					<aside>
-						<p>
+						<p id='D_seat'>
 							<label for="seats">Seats</label><br /> <input type="number"
 								class="form-control" id="seats" step="1" min="1" max="5">
 						</p>
@@ -106,6 +108,8 @@
 				<div class="modal-footer">
 					<input type="submit" id="btnconfirm" class="btn btn-warning btn-lg"
 						onclick=" bookFlight();" value="Confirm" />
+					<input type="submit" id="btncondel" class="btn btn-warning btn-lg"
+						onclick=" deleteFlight();" value="Delete" />
 				</div>
 			</div>
 		</div>
@@ -117,11 +121,26 @@
 		var modal = document.getElementById('myModal');
 		// Get the button that opens the modal
 		var btn = document.getElementById("myBtn");
+		var btn2 = document.getElementById("myBtn2");
 		// Get the <span> element that closes the modal
 		var span = document.getElementsByClassName("close")[0];
 		// When the user clicks the button, open the modal 
 		btn.onclick = function() {
 			modal.style.display = "block";
+			$('#D_seat').show();
+			$('#btnconfirm').show();
+			$('#btncondel').hide();
+
+
+		}
+
+		btn2.onclick = function() {
+			modal.style.display = "block";
+			$('#D_seat').hide();
+			$('#btnconfirm').hide();
+			$('#btncondel').show();
+
+
 		}
 		// When the user clicks on <span> (x), close the modal
 		span.onclick = function() {

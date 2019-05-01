@@ -17,9 +17,12 @@ import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 
 import com.flight_sharing.entities.Flight;
+import com.flight_sharing.entities.Passenger;
+import com.flight_sharing.entities.Reservation;
 import com.flight_sharing.json.ConvertObject;
+import com.flight_sharing.mail.Email;
 
-@Path("/flight")
+@Path("flight")
 public class FlightService extends Service {
 
 
@@ -150,10 +153,33 @@ public class FlightService extends Service {
 
 		try {
 			result = flightDao.delete(id);
+			List<String> res = reservationDao.getAll();
+			//delete flight -> delete reservations ... 	
+			for(int i=res.size()-1;i>=0;i--) {
+				Reservation rt = (Reservation) ConvertObject.jsonToObject(res.get(i),ConvertObject.RESERVATION);
+				if(rt.getFlightId().equals(id)) {
+					reservationDao.delete(rt.getId());
+					Passenger pa=null;
+					try {
+						pa = (Passenger) ConvertObject.jsonToObject(passengerDao.getById(rt.getPassengerId()),
+								ConvertObject.PASSENGER);
+					}catch(Exception e) {
+						pa=(Passenger) ConvertObject.jsonToObject(pilotDao.getById(rt.getPassengerId()),
+								ConvertObject.PILOT);
+					}
+
+					String body = "Hello Mr/Mrs/Ms " + pa.getLastName() + ",<br/><br/>Your booking for the flight "
+							+ rt.getFlightId() + " has been canceled by the pilot.Sorry for any inconvenience caused <br/><br/>Best regards.";
+					
+					Email.send(pa.getEmail(), "Flight booking", body);
+					reservationDao.delete(id);
+				}
+			}	
 		} catch (Exception e) {
 			registerException(e);
 		}
 
+		
 		if (result.equals("OK")) {
 			return "{\"result\":\"success !\"}";
 		} else {
