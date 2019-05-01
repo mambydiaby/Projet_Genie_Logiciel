@@ -27,7 +27,8 @@ $(document).ready(function() {
 	})
 });
 /**
- *  back to initial settings 
+ * back to initial settings
+ * 
  * @returns
  */
 function reset() {
@@ -58,9 +59,9 @@ function reset() {
 }
 
 /**
- * changes .. only change what users input
- * keep other things as unchanged
- * @returns redirection to testp.html 
+ * changes .. only change what users input keep other things as unchanged
+ * 
+ * @returns redirection to testp.html
  * 
  */
 function modify() {

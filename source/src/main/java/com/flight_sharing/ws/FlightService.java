@@ -170,7 +170,7 @@ public class FlightService extends Service {
 
 					String body = "Hello Mr/Mrs/Ms " + pa.getLastName() + ",<br/><br/>Your booking for the flight "
 							+ rt.getFlightId() + " has been canceled by the pilot.Sorry for any inconvenience caused <br/><br/>Best regards.";
-					
+
 					Email.send(pa.getEmail(), "Flight booking", body);
 				}
 			}	
@@ -179,7 +179,7 @@ public class FlightService extends Service {
 			registerException(e);
 		}
 
-		
+
 		if (result.equals("OK")) {
 			return "{\"result\":\"success !\"}";
 		} else {

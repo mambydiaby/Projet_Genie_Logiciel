@@ -16,13 +16,13 @@ $(document).ready(function() {
 		type : "get",
 		url : '/ws/flight/getbyid/' + id,
 		success : function(data) {
-			if(user==data.pilotId){
+			if (user == data.pilotId) {
 				$('#myBtn').hide();
 				$('#myBtn2').show();
-			}else{
+			} else {
 				$('#myBtn').show();
 				$('#myBtn2').hide();
-				
+
 			}
 			$('.arrival').html(data.arrival);
 			$('#trajet').html("trajet: " + data.trajet);
@@ -48,7 +48,7 @@ $(document).ready(function() {
 /**
  * 
  * @param data
- * flightId
+ *            flightId
  * @returns change the pilot name after finished
  */
 function updatePilot(data) {
@@ -146,13 +146,10 @@ function bookFlight() {
 
 }
 
-
-
-
 /**
  * delete flight function
  * 
- * @returns 
+ * @returns
  * 
  */
 function deleteFlight() {
@@ -162,21 +159,19 @@ function deleteFlight() {
 		type : "get",
 		url : '/ws/flight/getbyid/' + id_flight,
 		success : function(data) {
-			if(data.pilotId==user){		
+			if (data.pilotId == user) {
 				$.ajax({
 					type : "delete",
 					url : '/ws/flight/delete/' + id_flight,
-					success:function(data2){
-							alert("sucessful!");
-							location.replace("testp.html");
-						}
-					})
-			}	
-			else{
+					success : function(data2) {
+						alert("sucessful!");
+						location.replace("testp.html");
+					}
+				})
+			} else {
 				alert('no rights to do that');
 			}
 		}
-	});	
-	
-}
+	});
 
+}
