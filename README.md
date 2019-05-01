@@ -3,6 +3,7 @@
 <h2>--------------- Run this project ---------------</h2>
 <ol>
     <li>import the project as maven project in IDE</li>
+    <li>lunch elastic search version 5.x.x <b>Check ES version first!</b> (In Dao, we used transport client which is deprecated in 7.0.0. The TransportClient is deprecated in favour of the Java High Level REST Client and will be removed in Elasticsearch 8.0. )</li>
     <li>run FillData.java in dao</li>
     <li> run JettyMain.java</li>
      <li>browser localhost:8081 or localhost:8081/index.html (I think index.html as welcome(start) page is better? )</li>
