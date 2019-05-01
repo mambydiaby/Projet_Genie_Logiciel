@@ -183,9 +183,9 @@ $(function() {
 						var td3 = "<td>" + obj.seat + "</td>";
 						var td4 = "<td class=\"text-center\"><a class='btn btn-info btn-xs okbtn'  onclick=\"show(\'"
 								+ obj.id
-								+ "\');\"><span class=\"glyphicon glyphicon-ok\"></span> Ok</a> <a  onclick=\"show2(\'"
+								+ "\');\"><span class=\"glyphicon glyphicon-ok\"></span> Accept</a> <a  onclick=\"show2(\'"
 								+ obj.id
-								+ "\');\" class=\"btn btn-danger btn-xs delbtn\"><span class=\"glyphicon glyphicon-remove\"></span> Del</a></td></tr>"
+								+ "\');\" class=\"btn btn-danger btn-xs delbtn\"><span class=\"glyphicon glyphicon-remove\"></span> Disapprove</a></td></tr>"
 
 						tbl += td0 + td1 + td2 + td3 + td4;
 

@@ -25,12 +25,12 @@ import com.flight_sharing.mail.Email;
 @Path("flight")
 public class FlightService extends Service {
 
-
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes("application/x-www-form-urlencoded")
 	@Path("/filter")
-	public List<String> searchDetail(@FormParam("departure") String departure,@FormParam("arrival") String arrival, @FormParam("seat") int seat,@FormParam("date") String date) {
+	public List<String> searchDetail(@FormParam("departure") String departure, @FormParam("arrival") String arrival,
+			@FormParam("seat") int seat, @FormParam("date") String date) {
 		List<String> result = null;
 		try {
 			BoolQueryBuilder searchBuilder = QueryBuilders.boolQuery();
@@ -41,10 +41,10 @@ public class FlightService extends Service {
 			if (!date.isEmpty()) {
 				searchBuilder.must(QueryBuilders.rangeQuery("date").from(date));
 			}
-			if(seat!=0)
+			if (seat != 0)
 				searchBuilder.must(QueryBuilders.rangeQuery("seat").from(seat));
 
-			if(!arrival.isEmpty())
+			if (!arrival.isEmpty())
 				searchBuilder.must(QueryBuilders.wildcardQuery("arrival", "*" + arrival.toLowerCase() + "*"));
 			result = flightDao.search(searchBuilder);
 			return result;
@@ -57,6 +57,7 @@ public class FlightService extends Service {
 	/**
 	 * 
 	 * search flights only with departure and date
+	 * 
 	 * @param departure
 	 * @param date
 	 * @return
@@ -100,7 +101,7 @@ public class FlightService extends Service {
 		try {
 			BoolQueryBuilder searchBuilder = QueryBuilders.boolQuery();
 			if (!id.isEmpty()) {
-				searchBuilder.must(QueryBuilders.termQuery("pilotId",id));
+				searchBuilder.must(QueryBuilders.termQuery("pilotId", id));
 			}
 			searchBuilder.must(QueryBuilders.rangeQuery("seat").from(1));
 			result = flightDao.search(searchBuilder);
@@ -110,8 +111,6 @@ public class FlightService extends Service {
 		}
 		return result;
 	}
-
-
 
 	/**
 	 * web service to get more detailed information about the flight
@@ -153,32 +152,32 @@ public class FlightService extends Service {
 
 		try {
 			List<String> res = reservationDao.getAll();
-			//delete flight -> delete reservations ... 	
-			for(int i=res.size()-1;i>=0;i--) {
-				Reservation rt = (Reservation) ConvertObject.jsonToObject(res.get(i),ConvertObject.RESERVATION);
-				if(rt.getFlightId().equals(id)) {
-					System.out.println("delete reservation"+rt.getId());
+			// delete flight -> delete reservations ...
+			for (int i = res.size() - 1; i >= 0; i--) {
+				Reservation rt = (Reservation) ConvertObject.jsonToObject(res.get(i), ConvertObject.RESERVATION);
+				if (rt.getFlightId().equals(id)) {
+					System.out.println("delete reservation" + rt.getId());
 					reservationDao.delete(rt.getId());
-					Passenger pa=null;
+					Passenger pa = null;
 					try {
 						pa = (Passenger) ConvertObject.jsonToObject(passengerDao.getById(rt.getPassengerId()),
 								ConvertObject.PASSENGER);
-					}catch(Exception e) {
-						pa=(Passenger) ConvertObject.jsonToObject(pilotDao.getById(rt.getPassengerId()),
+					} catch (Exception e) {
+						pa = (Passenger) ConvertObject.jsonToObject(pilotDao.getById(rt.getPassengerId()),
 								ConvertObject.PILOT);
 					}
 
 					String body = "Hello Mr/Mrs/Ms " + pa.getLastName() + ",<br/><br/>Your booking for the flight "
-							+ rt.getFlightId() + " has been canceled by the pilot.Sorry for any inconvenience caused <br/><br/>Best regards.";
+							+ rt.getFlightId()
+							+ " has been canceled by the pilot.Sorry for any inconvenience caused <br/><br/>Best regards.";
 
 					Email.send(pa.getEmail(), "Flight booking", body);
 				}
-			}	
+			}
 			result = flightDao.delete(id);
 		} catch (Exception e) {
 			registerException(e);
 		}
-
 
 		if (result.equals("OK")) {
 			return "{\"result\":\"success !\"}";

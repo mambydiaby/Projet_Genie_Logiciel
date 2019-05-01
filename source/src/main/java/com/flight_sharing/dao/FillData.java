@@ -32,7 +32,6 @@ public class FillData {
 		pilot[2]=new Pilot("003","0","jeremy","ARKI","jarkid@gmail.com","1 year","super ");
 		pilot[3]=new Pilot("009","0","eminem","SHAR","shar.kid@gmail.com","2 months","high skill");
 		pilot[4]=new Pilot("032","0","venom","LUCY","lucy.oldman@gmail.com","13 years","the best ");
-		
 
 		for (Pilot pilot1 : pilot) {
 			pilotDao.add(ConvertObject.objectToByte(pilot1), pilot1.getId());
