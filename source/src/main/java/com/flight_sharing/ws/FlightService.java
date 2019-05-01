@@ -152,12 +152,12 @@ public class FlightService extends Service {
 		String result = null;
 
 		try {
-			result = flightDao.delete(id);
 			List<String> res = reservationDao.getAll();
 			//delete flight -> delete reservations ... 	
 			for(int i=res.size()-1;i>=0;i--) {
 				Reservation rt = (Reservation) ConvertObject.jsonToObject(res.get(i),ConvertObject.RESERVATION);
 				if(rt.getFlightId().equals(id)) {
+					System.out.println("delete reservation"+rt.getId());
 					reservationDao.delete(rt.getId());
 					Passenger pa=null;
 					try {
@@ -172,9 +172,9 @@ public class FlightService extends Service {
 							+ rt.getFlightId() + " has been canceled by the pilot.Sorry for any inconvenience caused <br/><br/>Best regards.";
 					
 					Email.send(pa.getEmail(), "Flight booking", body);
-					reservationDao.delete(id);
 				}
 			}	
+			result = flightDao.delete(id);
 		} catch (Exception e) {
 			registerException(e);
 		}
