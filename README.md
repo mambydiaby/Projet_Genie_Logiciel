@@ -1,15 +1,26 @@
 # Projet_Genie_Logiciel
 
 <h2>--------------- Run this project ---------------</h2>
-<ol>
+<p><b>Important ! Check ElasticSearch version first! </b>  it has to be elastic search version 5.x.x </p>
+ <ul>
+    <li>In Dao, we used transport client which is deprecated in 7.0.0. the TransportClient is deprecated in favour of the Java High Level REST Client and will be removed in Elasticsearch 8.0.  
+        <br/>For more informations check https://www.elastic.co/guide/en/elasticsearch/client/java-api/current/transport-client.html</li>
+     <li> We chose to stock different types informations in the same index(flight_sharing) which is only supported in version 5 .In fact, indices created in 6.x only allow a single-type per index. Any name can be used for the type, but there can be only one. 
+         <br/>More info pls check https://www.elastic.co/guide/en/elasticsearch/reference/current/removal-of-types.html</li>
+</ul>
+        
+   <ol>
+    <li>lunch elastic search version 5.x.x </li>
     <li>import the project as maven project in IDE</li>
-    <li>lunch elastic search version 5.x.x <b>Check ES version first!</b> (In Dao, we used transport client which is deprecated in 7.0.0. The TransportClient is deprecated in favour of the Java High Level REST Client and will be removed in Elasticsearch 8.0. )</li>
     <li>run FillData.java in dao</li>
     <li> run JettyMain.java</li>
      <li>browser localhost:8081 or localhost:8081/index.html (I think index.html as welcome(start) page is better? )</li>
      <li>login with id=032,pwd=0 (a pilot account to see more info)</li>
      <li>login with id=all,pwd=9 (a client account to see other info)</li>
+    
   </ol>
+  
+  <b>Create a new folder src/main/test and try gain if it doesn't work</b>
   
  <h2>----------Problems-----------</h2>
 <p><b>  A little bit delay when log in / book a flight /aprouve a flight /disapprove a flight (Because of sending email/binding database.. ) , if it doesn't work , wait for ten seconds and click again!!!</b></p>
