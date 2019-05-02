@@ -5,7 +5,7 @@
  <ul>
     <li>In Dao, we used transport client which is deprecated in 7.0.0. the TransportClient is deprecated in favour of the Java High Level REST Client and will be removed in Elasticsearch 8.0.  
         <br/>For more informations check https://www.elastic.co/guide/en/elasticsearch/client/java-api/current/transport-client.html</li>
-     <li> We chose to stock different types informations in the same index(flight_sharing) which is only supported in version 5 .In fact, indices created in 6.x only allow a single-type per index. Any name can be used for the type, but there can be only one. 
+     <li> We chose to stock different types of informations in the same index(flight_sharing) which is only supported in version 5 .In fact, indices created in 6.x only allow a single-type per index. Any name can be used for the type, but there can be only one. 
          <br/>More info pls check https://www.elastic.co/guide/en/elasticsearch/reference/current/removal-of-types.html</li>
 </ul>
         
@@ -23,9 +23,9 @@
   <b>Create a new folder src/main/test and try gain if it doesn't work</b>
   
  <h2>----------Problems-----------</h2>
-<p><b>  A little bit delay when log in / book a flight /aprouve a flight /disapprove a flight (Because of sending email/binding database.. ) , if it doesn't work , wait for ten seconds and click again!!!</b></p>
+<p><b>  A little bit delay when log in / book a flight /aprouve a flight /disapprove a flight (Because of sending email/binding database.. ) , if it doesn't work , wait and click again!!! Deleting a flight can cause one minute:</b></p>
 <p>A large delay when you delete a filght which contains a lot of reservations.(be patient! maybe 2 minutes because we need to send an email to each passenger.)  </p>
-<p><b>todo: </b> add payment pages. test emailsender/remainder</p>
+<p><b>todo: </b> add payment pages.</p>
 <br/>
 <h3> <b>Here's sth you can do if you want to continue (not sure if needed)</b></h3>
 <ul>
