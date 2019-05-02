@@ -52,7 +52,7 @@ a:visited
 	margin-top: 30%;
 	display: flex;
   justify-content: space-around;
-  word-wrap: break-word;
+  flex-wrap: wrap;
 
 }
 
@@ -107,4 +107,15 @@ h2
 {
 	font-size:40px;
 }
+
+#map {
+    width: 70%;
+    height: 400px;
+    margin: auto auto;
+    margin-top: 50px;
+    border: 10px solid orange;
+    border-radius: 5px;
+}
+
+
 
