@@ -25,7 +25,7 @@ public abstract class BasicDao implements Dao {
 			index = "default";
 			serverAddr="localhost";
 		}catch (Exception e) {
-		
+			
 			registerException(e);
 		}
 	}

@@ -44,8 +44,7 @@ public class FactoryDao {
 				
 				registerException(e);
 			}
-
-			
+	
 		}catch (Exception e) {
 		
 			registerException(e);

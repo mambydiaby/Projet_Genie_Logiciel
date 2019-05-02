@@ -53,7 +53,6 @@ public class ActionDao extends BasicDao {
 
 	public String add(byte[] json, String id) throws Exception {
 		IndexResponse response = client.prepareIndex(BasicDao.index, mainType, id).setSource(json).get();
-		System.out.println(response.status().toString());
 		return response.status().toString();
 	}
 
