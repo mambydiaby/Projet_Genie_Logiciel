@@ -10,7 +10,6 @@ import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.elasticsearch.transport.client.PreBuiltTransportClient;
 
-
 public class FactoryDao {
 	public static final int FLIGHT = 1;
 	public static final int PILOT = 2;
@@ -19,7 +18,7 @@ public class FactoryDao {
 	public static final int RESERVATION = 5;
 	public static final int AIRPLANE = 6;
 
-	private static TransportClient tc=getClient();
+	private static TransportClient tc = getClient();
 
 	@SuppressWarnings({ "resource" })
 	public static TransportClient getClient() {
@@ -35,41 +34,47 @@ public class FactoryDao {
 			client = new PreBuiltTransportClient(Settings.EMPTY)
 					.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(serverAddr), 9300));
 
-		}catch(NullPointerException e1) {
+		} catch (NullPointerException e1) {
 			String serverAddr = "localhost";
 			try {
 				client = new PreBuiltTransportClient(Settings.EMPTY)
-					.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(serverAddr), 9300));
+						.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(serverAddr), 9300));
 			} catch (Exception e) {
-				
+
 				registerException(e);
 			}
-	
-		}catch (Exception e) {
-		
+
+		} catch (Exception e) {
+
 			registerException(e);
 		}
 		return client;
 	}
-	
+
 	private static void registerException(Exception e) {
 		Logger.getLogger(BasicDao.class.getName()).log(Level.SEVERE, null, e);
 	}
 
+	/**
+	 * Create Action Dao 
+	 * Same client to prevent too many sockets
+	 * @param id : index
+	 * @return
+	 */
 	public static ActionDao createDAO(int id) {
 		switch (id) {
 		case FLIGHT:
-			return new ActionDao("flight",tc);
+			return new ActionDao("flight", tc);
 		case PILOT:
-			return new ActionDao("pilote",tc);
+			return new ActionDao("pilote", tc);
 		case PASSENGER:
-			return new ActionDao("passenger",tc);
+			return new ActionDao("passenger", tc);
 		case AIRPORT:
-			return new ActionDao("airport",tc);
+			return new ActionDao("airport", tc);
 		case RESERVATION:
-			return new ActionDao("reservation",tc);
+			return new ActionDao("reservation", tc);
 		case AIRPLANE:
-			return new ActionDao("airplane",tc);
+			return new ActionDao("airplane", tc);
 		default:
 			return null;
 		}

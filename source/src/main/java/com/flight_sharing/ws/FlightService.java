@@ -97,13 +97,13 @@ public class FlightService extends Service {
 	@Consumes("application/x-www-form-urlencoded")
 	@Path("/myflights")
 	public List<String> searchMyFlights(@FormParam("id") String id) {
+		
 		List<String> result = null;
 		try {
 			BoolQueryBuilder searchBuilder = QueryBuilders.boolQuery();
-			if (!id.isEmpty()) {
+			if (!id.isEmpty()) 
 				searchBuilder.must(QueryBuilders.termQuery("pilotId", id));
-			}
-			searchBuilder.must(QueryBuilders.rangeQuery("seat").from(1));
+	
 			result = flightDao.search(searchBuilder);
 			return result;
 		} catch (Exception e) {
