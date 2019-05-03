@@ -127,13 +127,13 @@ public class UserService extends Service {
 		}
 		return "{\"result\":\"registration error500\"}";
 	}
-
+	/*
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes("application/x-www-form-urlencoded")
 	@Path("profile/{id}")
 	public String privateProfile(@PathParam("id") String userId) {
-		
+
 		if (!IsLogged())
 			return "{\"result\":\"Please Login !\"}";
 		try {
@@ -152,21 +152,20 @@ public class UserService extends Service {
 		}
 		return "{\"result\":\"error\"}";
 	}
+	 */
 
-	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes("application/x-www-form-urlencoded")
-	@Path("profile2/{id}")
+	@Path("profile/{id}")
 	public String publicProfile(@PathParam("id") String userId) {
 		String user = null;
 		try {
-			
-			if (isPassenger())
-				user = passengerDao.getById(userId);
-			else if (isPilot())
+			user = passengerDao.getById(userId);
+			if (user==null) {
 				user = pilotDao.getById(userId);
-			
+			}
+
 		} catch (Exception e) {
 			registerException(e);
 		}

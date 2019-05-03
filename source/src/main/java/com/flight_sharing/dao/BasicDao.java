@@ -17,12 +17,12 @@ public abstract class BasicDao implements Dao {
 			serverAddr = elasticProperties.getProperty("addr");
 			index = elasticProperties.getProperty("index");
 			if (index == null || index.length() == 0) {
-				index = "default";
+				index = "flight_shring";
 			}
 			//sometimes happens 
 
 		} catch(NullPointerException e1) {
-			index = "default";
+			index = "flight_sharing";
 			serverAddr="localhost";
 		}catch (Exception e) {
 			
