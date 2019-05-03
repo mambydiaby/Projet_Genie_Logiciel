@@ -51,6 +51,11 @@ The purpose of the project is to create a performing platform that is easy to us
 
 ## Details of this project
 
+ ### fillData.java
+ 
+  - Some prefill data just to test. If you don't want it, you can run Jettymaim.java directly.
+
+
 ### Search flight policy
 
   - It's a flight-sharing platform. At first, withou login, users can search flights with a departure and/or a date or nothing (all flights). In the departure field, user can type a short version of a city (like p/pa/par/pari/paris for paris and it's not case sensetive)
