@@ -39,7 +39,7 @@ function mysubmit() {
 							+ "                     <th>Date</th>\r\n"
 							+ "                     <th>Seat</th>\r\n"
 							+ "                     <th>Price</th>\r\n"
-							+ "                     <th class=\"text-center\">Action</th>\r\n"
+							+ "                     <th class=\"text-center\"></th>\r\n"
 							+ "                  </tr>\r\n"
 							+ "               </thead><tbody>"
 
@@ -56,7 +56,7 @@ function mysubmit() {
 						var td4 = "<td>" + obj.price + "</td>";
 						var td5 = "<td class=\"text-center\"><a onclick=\"storing('"
 								+ obj.id
-								+ "');\" target=\"_blank\" class='btn btn-info btn-xs' href=\"../flight_detail.html\" ><span class=\"glyphicon glyphicon-ok\"></span> See</a> </td></tr>"
+								+ "');\" target=\"_blank\" class='btn btn-info btn-xs' href=\"../flight_detail.html\" ><span class=\"glyphicon glyphicon-ok\"></span> More info...</a> </td></tr>"
 
 						tbl += td0 + td1 + td1_5 + td2 + td3 + td4 + td5;
 
@@ -115,7 +115,7 @@ function filter() {
 							+ "                     <th>Date</th>\r\n"
 							+ "                     <th>Seat</th>\r\n"
 							+ "                     <th>Price</th>\r\n"
-							+ "                     <th class=\"text-center\">Action</th>\r\n"
+							+ "                     <th class=\"text-center\"></th>\r\n"
 							+ "                  </tr>\r\n"
 							+ "               </thead>"
 
@@ -132,7 +132,7 @@ function filter() {
 						var td4 = "<td>" + obj.price + "</td>";
 						var td5 = "<td class=\"text-center\"><a onclick=\"storing('"
 								+ obj.id
-								+ "');\" target=\"_blank\" class='btn btn-info btn-xs' href=\"../flight_detail.html\" ><span class=\"glyphicon glyphicon-ok\"></span> See</a> </td></tr>"
+								+ "');\" target=\"_blank\" class='btn btn-info btn-xs' href=\"../flight_detail.html\" ><span class=\"glyphicon glyphicon-ok\"></span> More info...</a> </td></tr>"
 						tbl += td0 + td1 + td1_5 + td2 + td3 + td4 + td5;
 					}
 					tbl += "</table>";
