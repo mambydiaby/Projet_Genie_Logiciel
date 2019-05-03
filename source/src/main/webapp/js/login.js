@@ -24,31 +24,31 @@ function login() {
 				sessionStorage.setItem("type", 'passenger');
 				var prevLink = document.referrer;
 				if ($.trim(prevLink) == '') {
-					location.href = '../test.html';
+					location.href = '../passengerNav.html';
 				} else {
 					if (prevLink.indexOf('detail') != -1) {
 						location.href = '../flight_detail.html';
 					} else {
-						location.href = '../test.html';
+						location.href = '../passengerNav.html';
 					}
 				}
-				location.replace("../test.html");
+				location.replace("../passengerNav.html");
 			} else if (data.result == 'okp') {
 				sessionStorage.setItem("user", usr);
 				sessionStorage.setItem("userId", usr);
 				sessionStorage.setItem("type", 'pilot');
 				var prevLink = document.referrer;
 				if ($.trim(prevLink) == '') {
-					location.href = '../testp.html';
+					location.href = '../pilotNav.html';
 				} else {
 					if (prevLink.indexOf('detail') != -1) {
 						location.href = '../flight_detail.html';
 					} else {
-						location.href = '../testp.html';
+						location.href = '../pilotNav.html';
 					}
 
 				}
-				// location.replace("http://localhost:8081/testp.html");
+				// location.replace("http://localhost:8081/pilotNav.html");
 			} else {
 				alert(data.result);
 				$('#loginerror').show();

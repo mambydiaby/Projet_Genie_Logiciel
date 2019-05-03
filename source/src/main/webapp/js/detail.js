@@ -36,7 +36,6 @@ $(document).ready(function() {
 			$('.price').html(data.price);
 			var des = data.arrival + "";
 			var url1 = "../img/" + des.toLowerCase() + ".jpg";
-			console.log(url1);
 			$('body').css('background-image', "url(\"" + url1 + "\")");
 			updatePilot(data.pilotId);
 			privateInfo(id, user);
@@ -54,7 +53,6 @@ $(document).ready(function() {
  * @returns change the pilot name after finished
  */
 function updatePilot(data) {
-	console.log('PilotId '+data);
 	$.get("/ws/user/profile/" + data, function(id) {
 		$(".pilot").html("Pilot : " + id.firstName + " " + id.lastName);
 		$("#p_email").html("Email address : " + id.email);
@@ -79,8 +77,6 @@ function privateInfo(id, user) {
 	$('#infoPrivate').hide();
 	$.get("/ws/flight/getbyid/" + id, function(data) {
 		var isPilot = (data.pilotId == user);
-
-		console.log(user + data.passengerId.indexOf(user));
 
 		var isPassenger = (data.passengerId.indexOf(user) != -1);
 		if (isPilot || isPassenger) {
@@ -124,7 +120,6 @@ function checkSeat(id_flight) {
 										data : JSON.stringify(regi),
 										success : function(data) {
 											if (data.result == 'success !') {
-												console.log(data);
 												location.href = 'http://localhost:8081/congratuation.html';
 											} else {
 
@@ -175,7 +170,7 @@ function deleteFlight() {
 					url : '/ws/flight/delete/' + id_flight,
 					success : function(data2) {
 						alert("sucessful!");
-						location.replace("testp.html");
+						location.replace("pilotNav.html");
 					}
 				})
 			} else {

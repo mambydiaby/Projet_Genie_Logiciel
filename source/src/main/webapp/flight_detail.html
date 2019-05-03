@@ -20,19 +20,18 @@
 	$(function() {
 		var log = sessionStorage.getItem("user");
 		var type = sessionStorage.getItem("type");
-		console.log(type);
 
+		
 		if (log != null) {
 			$('#login').hide();
 			$('#profile').show();
 			if (type == 'passenger') {
-				$('#test').attr('href', 'test.html');
+				$('#test').attr('href', 'passengerNav.html');
 			}
 		}else{
 			$('#login').show();
 			$('#profile').hide();
 		}
-		console.log(log);
 	});
 </script>
 <body>
@@ -44,7 +43,7 @@
 					Up</a>
 			</p>
 			<p id='profile'>
-				<a id='test' href='testp.html'>My profile</a>
+				<a id='test' href='pilotNav.html'>My profile</a>
 			</p>
 
 			<form class="form-inline">

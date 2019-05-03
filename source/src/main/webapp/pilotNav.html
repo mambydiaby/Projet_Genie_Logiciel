@@ -25,6 +25,7 @@
 
 	<script>
 		$(document).ready(function() {
+			
 			var user = sessionStorage.getItem("user");
 			$.get('/ws/user/profile/' + user, function(result) {
 				var name = result.firstName;

@@ -44,7 +44,6 @@ function mysubmit() {
 							+ "               </thead><tbody>"
 
 					for (var i = 0; i < data.length; i++) {
-						console.log(data[i]);
 						var obj = JSON.parse(data[i]);
 						var td0 = "<tr><td>" + obj.id + "</td>";
 						var td1 = "<td>" + obj.departure + "</td>";
@@ -89,8 +88,6 @@ function filter() {
 	var date = $('#date_filter').val();
 	var destination = $('#destination_filter').val();
 	var seat = $('#seat_filter').val();
-	console.log('departure' + departure + 'arrival' + destination + 'seat'
-			+ seat + 'date' + date);
 	$
 			.ajax({
 				type : "post",

@@ -9,9 +9,9 @@
 $(function() {
 	var type = sessionStorage.getItem("type");
 	if (type == "passenger") {
-		$('#back1').attr("href", "test.html");
+		$('#back1').attr("href", "passengerNav.html");
 	} else {
-		$('#back1').attr("href", 'testp.html');
+		$('#back1').attr("href", 'pilotNav.html');
 	}
 
 	$('#profile-image1').on('click', function() {

@@ -17,14 +17,11 @@ function back() {
  * @returns
  */
 function approve(id) {
-	console.log("approve" + id);
 	var result = id;
 	$.ajax({
 		type : "post",
 		url : "/ws/reservation/approve/" + id,
 		success : function(data) {
-			console.log("success : " + data);
-			console.log(data.result);
 			$('#name').html("");
 			$('#seat_wanted').html("");
 			$('#vec').html("success, the reservation has been approved!");
@@ -48,14 +45,12 @@ function approve(id) {
  * @returns
  */
 function disapprove(id) {
-	console.log("disapprove" + id);
+
 	var result = id;
 	$.ajax({
 		type : "delete",
 		url : "/ws/reservation/disapprove/" + id,
 		success : function(data) {
-			console.log("success : " + data);
-			console.log(data.result);
 			$('#name').html("");
 			$('#seat_wanted').html("");
 			$('#vec').html(
@@ -207,8 +202,8 @@ $(function() {
 $(document).ready(function() {
 	var type = sessionStorage.getItem("type");
 	if (type == "passenger") {
-		$('#back1').attr("href", "test.html");
+		$('#back1').attr("href", "passengerNav.html");
 	} else {
-		$('#back1').attr("href", 'testp.html');
+		$('#back1').attr("href", 'pilotNav.html');
 	}
 });

@@ -27,7 +27,6 @@ $(function() {
 							+ "               </thead><tbody>"
 
 					for (var i = 0; i < data.length; i++) {
-						console.log(data[i]);
 						var obj = JSON.parse(data[i]);
 						var td0 = "<tr><td>" + obj.id + "</td>";
 						var td1 = "<td>" + obj.departure + "</td>";
@@ -63,9 +62,9 @@ $(function() {
 	$(document).ready(function() {
 		var type = sessionStorage.getItem("type");
 		if (type == "passenger") {
-			$('#back').attr("href", "test.html");
+			$('#back').attr("href", "passengerNav.html");
 		} else {
-			$('#back').attr("href", 'testp.html');
+			$('#back').attr("href", 'pilotNav.html');
 		}
 	});
 });

@@ -14,7 +14,7 @@ public class FillData {
 		ActionDao passengerDao = FactoryDao.createDAO(FactoryDao.PASSENGER);
 		Passenger[] p = new Passenger[5];
 		p[0] = new Passenger("azerty", "544", "Balde", "mamadou", "mybalde@test.com");
-		p[1] = new Passenger("jhuy7x", "544", "Jules", "cesar", "415447764@qq.com");
+		p[1] = new Passenger("jhuy7x", "544", "Jules", "cesar", "alexandre.dai@live.fr");
 		p[2]=new Passenger("wqe", "32", "curry", "cesar", "aabbcc@a.fr");
 		p[3]=new Passenger("eqw", "3", "stephen", "james", "pass.er@hot.fr");
 		p[4]=new Passenger("all", "9", "kobe", "harden", "lingjiarongaini@gmail.com");

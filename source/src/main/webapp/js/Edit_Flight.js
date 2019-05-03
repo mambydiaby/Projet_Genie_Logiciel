@@ -40,7 +40,6 @@ function reset() {
 		type : "get",
 		url : '/ws/flight/getbyid/' + id,
 		success : function(data) {
-			console.log(data);
 
 			$('#places').attr("placeholder", data.seat);
 			$('#date').attr("placeholder", data.date);
@@ -62,7 +61,7 @@ function reset() {
 /**
  * changes .. only change what users input keep other things as unchanged
  * 
- * @returns redirection to testp.html
+ * @returns redirection to pilotNav.html
  * 
  */
 function modify() {
@@ -98,7 +97,6 @@ function modify() {
 			f_date = data.date;
 			f_trajet = data.trajet;
 			f_infoPrive = data.privateInfo;
-			console.log(data.info + f_seat);
 			if ($('#places').val().trim() != '' && $('#places').val() != null)
 				f_seat = $('#places').val();
 			if ($('#departure').val() != '')
@@ -144,9 +142,8 @@ function modify() {
 				contentType : 'application/json',
 				data : JSON.stringify(newFlight),
 				success : function(data) {
-					console.log(newFlight);
 					alert("successful!");
-					location.replace("testp.html");
+					location.replace("pilotNav.html");
 				}
 
 			})

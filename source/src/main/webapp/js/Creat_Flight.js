@@ -43,7 +43,6 @@ $(function() {
 					privateInfo : $('#descriptionPrivate').val(),
 					trajet : $('#trajet').val()
 				}
-				console.log(newFlight);
 				$.ajax({
 					url : "/ws/flight/add",
 					type : 'put',
@@ -53,7 +52,7 @@ $(function() {
 
 					success : function(data) {
 						alert("successful!");
-						location.replace("testp.html");
+						location.replace("pilotNav.html");
 					}
 
 				})
