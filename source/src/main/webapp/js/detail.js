@@ -29,7 +29,9 @@ $(document).ready(function() {
 			$('#infoPrivate').html("private info: " + data.privateInfo);
 			$('#info').html("more info: " + data.info);
 			$('.departure').html("Departure:" + data.departure);
-			$('.date').html("date: " + data.date);
+			$('.date').html("Date: " + data.date);
+            $('.time').html("Time: " + data.time);
+            $('.seat').html("Seat available: " + data.seat);
 			$('.duration').html("Duration: " + data.duration);
 			$('.price').html(data.price);
 			var des = data.arrival + "";
