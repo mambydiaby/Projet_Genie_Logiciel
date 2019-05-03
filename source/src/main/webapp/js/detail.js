@@ -25,12 +25,12 @@ $(document).ready(function() {
 
 			}
 			$('.arrival').html(data.arrival);
-			$('#trajet').html("trajet: " + data.trajet);
-			$('#infoPrivate').html("private info: " + data.privateInfo);
-			$('#info').html("more info: " + data.info);
-			$('.departure').html("Departure:" + data.departure);
-			$('.date').html("Date: " + data.date);
-            $('.time').html("Time: " + data.time);
+			$('#trajet').html("Trajet: " + data.trajet);
+			$('#infoPrivate').html("Private info: " + data.privateInfo);
+			$('#info').html("More info: " + data.info);
+			$('.departure').html("Departure: " + data.departure);
+			$('.date').html("Departure Date: " + data.date);
+            $('.time').html(" Departure Time: " + data.time);
             $('.seat').html("Seat available: " + data.seat);
 			$('.duration').html("Duration: " + data.duration);
 			$('.price').html(data.price);
@@ -189,5 +189,6 @@ $(function(){
 	$('#pilot_info').hide();
 $('#show_pilot').hover(function (){
 	$('#pilot_info').toggle();
-})
+});
+
 })
