@@ -1,5 +1,16 @@
 # Projet_Genie_Logiciel
 
+## Introduction 
+
+As part of the "Génie Logiciel Avancé" course, we plan to carry out the development of a flight sharing web-based platform. This platform will connect certified pilots with passengers wishing to book one of their flight. The purpose of this website, and therefore the outcome of the project, is to allow clients to book seats for a flight of their choice.
+
+The purpose of the project is to create a performing platform that is easy to use, both for the pilots and the aspiring passengers. We will make all information about the available flights and their details accessible for anyone to browse through. Once logged, a passenger will be able to book a flight. The pilot will then be able to accept or refuse their request through an email. In case of acceptance by the pilot, the passengers will have access to all the private information of the flight.
+
+
+
+
+
+
 ## How to run this project 
 
 ### Important ! Check ElasticSearch version first!  it has to be elastic search version 5.x.x 
@@ -34,9 +45,38 @@
  
 
   
-## Program Delay
+## Delay
    
    - There is a little bit delay when log in / book a flight /aprouve a flight /disapprove a flight (Because of sending email/binding database.. ) , if it doesn't work , wait and click again!!!<b> Deleting a flight can cause one minute.</b>
+
+## Details of this project
+
+### Search flight policy
+
+  - It's a flight-sharing platform. At first, withou login, users can search flights with a departure and/or a date or nothing (all flights). In the departure field, user can type a short version of a city (like p/pa/par/pari/paris for paris and it's not case sensetive)
+  
+  - The system will show all the flights available with their basic information and users can filter the result with other fields.Also, Users can sort the results by all the fields.
+  
+  - Users can read more informations (public informations/pilot ..etc ) without login. But once a user login as passenger/pilot, he can book the filght.
+  
+ ### Reservation policy
+ 
+  - Once you login (as pilot or passenger), you can book any flight you want if there is a seat available. But the pilot has the right to accpet or deny the reservation.
+
+  
+### Private information policy
+
+ - Each flight has its own private information (meeting day/place defined by the pilot), only the pilot and the passengers of the flight can read it.
+
+### Email policy
+
+ - Once user books a flight, the pilot will receive an email 
+ 
+ - Once Pilot comfirms/denies a reservation, the passsenger will receive an email
+ 
+ - Once Pilot cancels a flight, passengers who book this flight will receive an email
+ 
+
 
 
 
