@@ -82,6 +82,7 @@ a:visited {
 	overflow: auto; /* Enable scroll if needed */
 	background-color: #FF7F50; /* Fallback color */
 	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+	bottom:5%;
 }
 
 .modal-content {
