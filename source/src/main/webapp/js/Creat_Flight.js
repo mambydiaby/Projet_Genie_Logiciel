@@ -36,7 +36,7 @@ $(function() {
 					departure : $('#departure').val(),
 					arrival : $('#arrival').val(),
 					date : $('#date').val(),
-					time : "00:00",
+					time : $('#time').val(),
 					duration : $('#duration').val(),
 					price : $('#price').val(),
 					info : $('#description').val(),
