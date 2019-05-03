@@ -26,7 +26,7 @@ The purpose of the project is to create a performing platform that is easy to us
     <li>lunch elastic search version 5.x.x </li>
     <li>import the project as maven project in IDE</li>
     <li>run FillData.java in dao</li>
-    <li> run JettyMain.java</li>
+    <li>run JettyMain.java</li>
     <li>browser localhost:8081 or localhost:8081/index.html </li>
   </ol>
   
@@ -51,9 +51,9 @@ The purpose of the project is to create a performing platform that is easy to us
 
 ## Details of this project
 
- ### fillData.java
+### fillData.java
  
-  - Some prefill data just to test. If you don't want it, you can run Jettymaim.java directly.
+  - Some prefill data just to test. If you don't want it, you can run Jettymain.java directly.
 
 
 ### Search flight policy
@@ -82,6 +82,11 @@ The purpose of the project is to create a performing platform that is easy to us
  - Once Pilot cancels a flight, passengers who book this flight will receive an email
  
 
+### Changes FLight policy
+
+ - Pilot can change anything of his flight, he just need to click on edit.
+ 
+ - Piolt can delete his flight, if he does this , all the reservations on this flight will be canceled.
 
 
 
