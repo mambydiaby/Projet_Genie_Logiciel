@@ -25,11 +25,14 @@ public class Service {
 	}
 
 	protected boolean isPilot() {
-
+		if(request.getSession().getAttribute("type")==null)
+			return false;
 		return request.getSession().getAttribute("type").equals("pilot");
 	}
 
 	protected boolean isPassenger() {
+		if(request.getSession().getAttribute("type")==null)
+			return false;
 		return request.getSession().getAttribute("type").equals("passenger");
 	}
 

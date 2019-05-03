@@ -35,13 +35,11 @@ public class ReservationService extends Service {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/new")
 	public String add(Reservation r) throws Exception {
-		System.out.println(r.getFlightId()+r.getId()+r.getPassengerId()+r.getSeat());
 		if (!IsLogged())
 			return "{\"result\":\"Please Login !\"}";
 		Flight flight = (Flight) ConvertObject.jsonToObject(flightDao.getById(r.getFlightId()), ConvertObject.FLIGHT);
 		if (flight == null)
 			return "{\"result\":\"error\"}";
-		System.out.println(flight.getId() + " " + flight.getPilotId());
 		Pilot pilot = (Pilot) ConvertObject.jsonToObject(pilotDao.getById(flight.getPilotId()), ConvertObject.PILOT);
 		if (pilot == null)
 			return "{\"result\":\"error\"}";
@@ -216,7 +214,7 @@ public class ReservationService extends Service {
 						ConvertObject.FLIGHT);
 				if (flight != null && !flight.getPilotId().equals(piloteId))
 					rtList.remove(i);
-
+				
 			}
 
 		return rtList;

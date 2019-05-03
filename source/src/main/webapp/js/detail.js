@@ -52,10 +52,17 @@ $(document).ready(function() {
  * @returns change the pilot name after finished
  */
 function updatePilot(data) {
-	$.get("/ws/user/profile/" + data, function(id) {
+	console.log('PilotId '+data);
+	$.get("/ws/user/profile2/" + data, function(id) {
+		alert(id.result);
+		alert("Pilot : " + id.firstName + " " + id.lastName);
 		$(".pilot").html("Pilot : " + id.firstName + " " + id.lastName);
 	});
 }
+
+
+
+
 
 /**
  * 

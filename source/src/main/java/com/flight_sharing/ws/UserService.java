@@ -142,7 +142,7 @@ public class UserService extends Service {
 				user = passengerDao.getById(userId);
 			else if (isPilot())
 				user = pilotDao.getById(userId);
-			if (!user.isEmpty()) {
+			if (user!=null&&!user.isEmpty()) {
 				JSONObject json = new JSONObject(user);
 				json.remove("pwd");
 				return json.toString();
@@ -153,6 +153,25 @@ public class UserService extends Service {
 		return "{\"result\":\"error\"}";
 	}
 
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes("application/x-www-form-urlencoded")
+	@Path("profile2/{id}")
+	public String publicProfile(@PathParam("id") String userId) {
+		String user = null;
+		try {
+			
+			if (isPassenger())
+				user = passengerDao.getById(userId);
+			else if (isPilot())
+				user = pilotDao.getById(userId);
+			
+		} catch (Exception e) {
+			registerException(e);
+		}
+		return user;
+	}
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes("application/x-www-form-urlencoded")
