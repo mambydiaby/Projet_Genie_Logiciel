@@ -57,9 +57,9 @@ function updatePilot(data) {
 	console.log('PilotId '+data);
 	$.get("/ws/user/profile/" + data, function(id) {
 		$(".pilot").html("Pilot : " + id.firstName + " " + id.lastName);
-		$("#p_email").html("Email address: " + id.email);
-		$("#p_experience").html("Experience: " + id.experience);
-		$("#p_qualification").html("Email address: " + id.qualification);
+		$("#p_email").html("Email address : " + id.email);
+		$("#p_experience").html("Experience : " + id.experience);
+		$("#p_qualification").html("Qulification : " + id.qualification);
 	});
 }
 
