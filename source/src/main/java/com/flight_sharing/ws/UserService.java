@@ -171,6 +171,7 @@ public class UserService extends Service {
 		}
 		return user;
 	}
+	
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes("application/x-www-form-urlencoded")

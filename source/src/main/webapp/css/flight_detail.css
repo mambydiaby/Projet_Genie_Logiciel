@@ -111,3 +111,19 @@ aside {
 h2 {
 	font-size: 40px;
 }
+
+
+#pilot_info{
+	position : absolute;
+	top:85% ;
+	left:23%;
+	border: 2px solid ;
+	background:#fff;
+	padding: 10px 10px;
+	margin: 10px 10px;
+	
+}
+
+#show_pilot{
+	color:red
+}

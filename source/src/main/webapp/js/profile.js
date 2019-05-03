@@ -33,13 +33,15 @@ $(function() {
 				document.getElementById('exp').innerText = data.experience;
 			else{
 				document.getElementById('exp').innerText = "---------";
-				document.getElementById('exp').style.display = 'none';
+				$('.exp').hide();
+				
 			}
 			if (data.qualification != null)
 				document.getElementById('qual').innerText = data.qualification;
 			else{
 				document.getElementById('qual').innerText = "---------";
-				document.getElementById('qual').style.display = 'none';
+				$('.qual').hide();
+
 			}
 
 			document.getElementById('name').innerText = data.firstName + ' '

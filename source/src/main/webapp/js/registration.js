@@ -20,7 +20,7 @@ $('#register').click(function() {
 		success : function(data) {
 			if (data.result == 'ok') {
 
-				// location.replace("search.html");
+			 location.replace("login.html");
 			} else {
 				// alert(data.result);
 				$('#loginerror').show();
