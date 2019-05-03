@@ -20,13 +20,23 @@ body {
 	margin: 30px;
 }
 
-#login, .a a {
+#login a {
 	font-size: 15px;
 	color: #6e644b;
 	text-decoration: underline;
 }
 
-#login, .a a: hover {
+.a a {
+	font-size: 15px;
+	color: #6e644b;
+	text-decoration: underline;
+}
+
+#login a: hover {
+	cursor: pointer;
+}
+
+.a a: hover {
 	cursor: pointer;
 }
 

@@ -1,47 +1,49 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <head>
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 
-<title>Home Page</title>
-<meta charset="UTF-8">
-<link href="css/index.css" rel="stylesheet">
-</head>
+        <title>Home Page</title>
+        <meta charset="UTF-8">
+        <link href="css/index.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    </head>
 
-<body id="body_index">
-	<div id="container">
-		<div id="login" class='a'>
-			<a href="login.html">Log In / Sign Up</a>
-		</div>
-		<div id="test" class='a'>
-			<a href="passengerNav.html">My profile</a>
-		</div>
-		<div id="testp" class='a'>
-			<a href="pilotNav.html">My profile</a>
-		</div>
-		<h1>FLIGHT SHARING PLATFORM</h1>
-		<div id="btn_find_flight">
-			<button type="button" class="btn btn-primary btn-lg btn-block"
-				onclick="location.replace('search.html')">Find a flight</button>
-		</div>
-	</div>
-</body>
-<script>
-	var type = sessionStorage.getItem('type');
+    <body id="body_index">
+        <div id="container">
+            <div id="login">
+                <a href="login.html">Log In / Sign Up</a>
+            </div>
+            <div id="test" class='a'>
+                <a href="test.html">My profile</a>
+            </div>
+            <div id="testp" class='a'>
+                <a href="testp.html">My profile</a>
+            </div>
+            <h1>FLIGHT SHARING PLATFORM</h1>
+            <div id="btn_find_flight">
+                <button type="button" class="btn btn-primary btn-lg btn-block"
+                        onclick="location.replace('search.html')">Find a flight</button>
+            </div>
+        </div>
+    </body>
+    <script>
+        var type = sessionStorage.getItem('type');
 
-	if (type == null) {
-		$('#login').show();
-		$('#testp').hide();
-		$('#test').hide();
-	} else if (type == 'passenger') {
-		$('#login').hide();
-		$('#testp').hide();
-		$('#test').show();
-	} else if (type == 'pilot') {
-		$('#login').hide();
-		$('#testp').show();
-		$('#test').hide();
-	}
-</script>
+
+        if (type == null) {
+            $('#login').show();
+            $('#testp').hide();
+            $('#test').hide();
+        } else if (type == 'passenger') {
+            $('#login').hide();
+            $('#testp').hide();
+            $('#test').show();
+        } else if (type == 'pilot') {
+            $('#login').hide();
+            $('#testp').show();
+            $('#test').hide();
+        }
+    </script>
 </html>
