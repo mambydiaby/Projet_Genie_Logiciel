@@ -50,7 +50,7 @@ function login() {
 				}
 				// location.replace("http://localhost:8081/testp.html");
 			} else {
-				console.log(data.result);
+				alert(data.result);
 				$('#loginerror').show();
 				$('#loginerror').html(data.result);
 				$("#loginerror").css("display", "block");
