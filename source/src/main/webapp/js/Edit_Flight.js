@@ -20,6 +20,7 @@ $(document).ready(function() {
 			$('#description').attr("placeholder", data.info);
 			$('#trajet').attr("placeholder", data.trajet);
 			$('#descriptionPrivate').attr("placeholder", data.privateInfo);
+            $('#time').attr("placeholder", data.time);
 		},
 		error : function() {
 			alert("can't find coresponding flights");
@@ -50,7 +51,7 @@ function reset() {
 			$('#description').attr("placeholder", data.info);
 			$('#trajet').attr("placeholder", data.trajet);
 			$('#descriptionPrivate').attr("placeholder", data.privateInfo);
-
+            $('#time').attr("time",data.time);
 		},
 		error : function() {
 			alert("can't find coresponding flights");
@@ -114,6 +115,8 @@ function modify() {
 				f_date = $('#date').val();
 			if ($('#trajet').val() != '')
 				f_trajet = $('#trajet').val();
+            if ($('#time').val() !='')
+                f_time =$('#time').val();
 			if ($('#descriptionPrivate').val() != '')
 				f_infoPrive = $('#descriptionPrivate').val();
 
