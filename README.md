@@ -81,6 +81,8 @@ The purpose of the project is to create a performing platform that is easy to us
  
  - Once Pilot cancels a flight, passengers who book this flight will receive an email
  
+ - 24 hours before a flight, the pilot and the passengers receive a reminder for the flight
+ 
 
 ### Changes FLight policy
 
