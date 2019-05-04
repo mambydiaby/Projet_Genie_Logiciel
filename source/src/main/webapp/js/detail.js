@@ -126,7 +126,7 @@ function checkSeat(id_flight) {
 										data : JSON.stringify(regi),
 										success : function(data) {
 											if (data.result == 'success !') {
-												location.href = 'http://localhost:8081/congratuation.html';
+												location.href = 'http://localhost:8081/congratulation.html';
 											} else {
 
 											}
@@ -137,9 +137,9 @@ function checkSeat(id_flight) {
 }
 
 /**
- * book function
- * 
+ * book function,if not login ->login page
  * @returns redirection to congratulation page
+ * 
  * 
  */
 function bookFlight() {
