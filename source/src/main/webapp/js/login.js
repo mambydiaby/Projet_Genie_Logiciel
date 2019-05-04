@@ -28,7 +28,9 @@ function login() {
 				} else {
 					if (prevLink.indexOf('detail') != -1) {
 						location.href = '../flight_detail.html';
-					} else {
+					} else if (prevLink.indexOf('search') != -1) {
+						location.href = '../search.html';
+					} else{
 						location.href = '../passengerNav.html';
 					}
 				}
@@ -43,7 +45,9 @@ function login() {
 				} else {
 					if (prevLink.indexOf('detail') != -1) {
 						location.href = '../flight_detail.html';
-					} else {
+					}  else if (prevLink.indexOf('search') != -1) {
+						location.href = '../search.html';
+					}else {
 						location.href = '../pilotNav.html';
 					}
 

@@ -78,6 +78,15 @@ function mysubmit() {
  * @returns
  */
 $(function() {
+	var user=sessionStorage.getItem("user");
+	if (user != null) {
+		$('.login_ref').html("Log Out");
+		$('.login_ref').click(function(){
+			sessionStorage.removeItem("type");
+			sessionStorage.removeItem("user");
+			alert("Log out successfully");
+		})
+	}
 	var today = moment().format("YYYY-MM-DD");
 	document.getElementById('date').setAttribute("min", today);
 });

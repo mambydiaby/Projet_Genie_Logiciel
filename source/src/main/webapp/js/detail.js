@@ -10,7 +10,12 @@ $(document).ready(function() {
 	var user = sessionStorage.getItem("user");
 	$(".lds-hourglass").css("display", "none");
 	if (user != null) {
-		$('#login_ref').hide();
+		$('.login_ref').html("Log Out");
+		$('.login_ref').click(function(){
+			sessionStorage.removeItem("type");
+			sessionStorage.removeItem("user");
+			alert("Log out successfully");
+		})
 	}
 	$.ajax({
 		type : "get",

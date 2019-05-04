@@ -1,12 +1,11 @@
-/target/
-/src/main/java/com/flight_sharing/dao/InsertData.java
+.classpath
 target/
 *.class
 *.jar
 *.war
-*.ear
 *.logs
-*.iml
-.idea/
-.eclips
+*.ear
 .DS_Store
+.eclips
+.idea/
+*.iml

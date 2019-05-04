@@ -128,3 +128,11 @@ h2 {
 #show_pilot{
 	color:red
 }
+
+.nav_link {
+    display: inline-block;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-size: 19px;
+}
