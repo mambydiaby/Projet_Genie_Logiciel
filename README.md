@@ -84,11 +84,47 @@ The purpose of the project is to create a performing platform that is easy to us
  - 24 hours before a flight, the pilot and the passengers receive a reminder for the flight
  
 
-### Changes FLight policy
+### Changes Flight policy
 
  - Pilot can change anything of his flight, he just need to click on edit.
  
  - Piolt can delete his flight, if he does this , all the reservations on this flight will be canceled.
+
+## UX Design ( *except for these policies, our design also considerate user experience design*)
+
+ * Users can go back to previous pages or other pages by a navigation bar or the button Back.
+ 
+ * If a user chooses to log in on one page, he will be redirected to the same page after his login.
+ 
+ * Users can easily log in/log out
+ 
+ * Users can filter/sort the search result
+ 
+ * Only available flight(seats>=1) could be seen by users when searching a flight 
+ 
+ * If users enter an empty field to search/filter a flight, that means no restristion in that field
+ 
+ * Pilots can book a flight except for his own flights
+ 
+ * A pilot can only enter changes(not necessarily all the informations) when editing his flight
+ 
+ * A pilot can check his flight list and the to-approve-reservation list (sorting and searching keywords are available )
+  
+ * A user can check his reservation list (sorting and searching keywords are available )
+ 
+ * A destination photo will show up when a user want to see more detail of the flight
+ 
+ * A comfirmation box containing key information will show up if a user want to book a flight and if a pilot wants to approve/disapprove a flight
+ 
+ 
+ ## Design Pattern
+ 
+  * DAO - Factory method pattern: 
+  
+    * FactoryDao.java -> The factory : We create Dao objects only from this class. 
+    
+    * ActionDao.java -> Implements database related functions with elastic search methods.
+    
 
 
 
