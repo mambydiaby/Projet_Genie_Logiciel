@@ -33,10 +33,11 @@ $(document).ready(function() {
             $('.time').html(" Departure Time: " + data.time);
             $('.seat').html("Seat available: " + data.seat);
 			$('.duration').html("Duration: " + data.duration);
-			$('.price').html(data.price);
+			$('#price').html(data.price);
 			var des = data.arrival + "";
 			var url1 = "../img/" + des.toLowerCase() + ".jpg";
-			$('body').css('background-image', "url(\"" + url1 + "\")");
+			$('body').css('background-image', "url"+"\'(\'" + url1 + "\')\'");
+			//document.body.style.backgroundImage = "url(\'+url1+\')";
 			updatePilot(data.pilotId);
 			privateInfo(id, user);
 		},

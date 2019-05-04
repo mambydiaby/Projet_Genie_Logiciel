@@ -19,13 +19,14 @@ import com.flight_sharing.entities.Flight;
 import com.flight_sharing.entities.Passenger;
 import com.flight_sharing.entities.Pilot;
 import com.flight_sharing.entities.Reservation;
-import com.flight_sharing.json.ConvertObject;
 import com.flight_sharing.mail.Email;
+import com.flight_sharing.mapping.ConvertObject;
 
 @Path("reservation")
 public class ReservationService extends Service {
 	/**
-	 *  web service to create a new reservation
+	 * web service to create a new reservation
+	 * 
 	 * @param r
 	 * @return
 	 * @throws Exception
@@ -51,7 +52,7 @@ public class ReservationService extends Service {
 
 		String result = reservationDao.add(ConvertObject.objectToByte(r), r.getId());
 
-		if (result.equals("OK")||result.equals("CREATED")) {
+		if (result.equals("OK") || result.equals("CREATED")) {
 			return "{\"result\":\"success !\"}";
 		} else {
 			return "{\"result\":\"error \"}";
@@ -60,6 +61,7 @@ public class ReservationService extends Service {
 
 	/**
 	 * web service to approve a reservation
+	 * 
 	 * @param id
 	 * @return
 	 * @throws Exception
@@ -69,8 +71,6 @@ public class ReservationService extends Service {
 	@Consumes("application/x-www-form-urlencoded")
 	@Path("/approve/{id}")
 	public String approve(@PathParam("id") String id) throws Exception {
-		System.out.println("approve");
-
 		if (!(IsLogged() && isPilot()))
 			return "{\"result\":\"Please Login !\"}";
 		Reservation rt = (Reservation) ConvertObject.jsonToObject(reservationDao.getById(id),
@@ -81,21 +81,18 @@ public class ReservationService extends Service {
 		if (flight == null)
 			return "{\"result\":\"error\"}";
 		flight.setSeat(flight.getSeat() - rt.getSeat());
-		System.out.println("pass"+flight.getPassengerId()+",id"+rt.getPassengerId());
-		if(flight.getPassengerId()==null)
+		if (flight.getPassengerId() == null)
 			flight.getPassengerId();
 		flight.getPassengerId().add(rt.getPassengerId());
 		flightDao.add(ConvertObject.objectToByte(flight), flight.getId());
 		reservationDao.update(id, "approved", "true");
-		Passenger pa=null;
+		Passenger pa = null;
 		try {
 			pa = (Passenger) ConvertObject.jsonToObject(passengerDao.getById(rt.getPassengerId()),
 					ConvertObject.PASSENGER);
-		}catch(Exception e) {
-			pa=(Passenger) ConvertObject.jsonToObject(pilotDao.getById(rt.getPassengerId()),
-					ConvertObject.PILOT);
+		} catch (Exception e) {
+			pa = (Passenger) ConvertObject.jsonToObject(pilotDao.getById(rt.getPassengerId()), ConvertObject.PILOT);
 		}
-
 
 		String body = "Hello Mr/Mrs/Ms " + pa.getLastName() + ",<br/><br/>Your booking for the flight "
 				+ rt.getFlightId()
@@ -105,8 +102,10 @@ public class ReservationService extends Service {
 		reservationDao.delete(id);
 		return "{\"result\":\"ok\"}";
 	}
+
 	/**
 	 * disapprove a reservation
+	 * 
 	 * @param id
 	 * @return
 	 * @throws Exception
@@ -124,13 +123,12 @@ public class ReservationService extends Service {
 				ConvertObject.RESERVATION);
 		if (rt == null || rt.isApproved())
 			return "{\"result\":\"error\"}";
-		Passenger pa=null;
+		Passenger pa = null;
 		try {
 			pa = (Passenger) ConvertObject.jsonToObject(passengerDao.getById(rt.getPassengerId()),
 					ConvertObject.PASSENGER);
-		}catch(Exception e) {
-			pa=(Passenger) ConvertObject.jsonToObject(pilotDao.getById(rt.getPassengerId()),
-					ConvertObject.PILOT);
+		} catch (Exception e) {
+			pa = (Passenger) ConvertObject.jsonToObject(pilotDao.getById(rt.getPassengerId()), ConvertObject.PILOT);
 		}
 
 		String body = "Hello Mr/Mrs/Ms " + pa.getLastName() + ",<br/><br/>Your booking for the flight "
@@ -141,7 +139,8 @@ public class ReservationService extends Service {
 	}
 
 	/**
-	 * get my reservations 
+	 * get my reservations
+	 * 
 	 * @param id
 	 * @return
 	 */
@@ -150,13 +149,13 @@ public class ReservationService extends Service {
 	@Consumes("application/x-www-form-urlencoded")
 	@Path("/myreservations/{id}")
 	public List<String> searchMyReservations(@PathParam("id") String id) {
-		if (!(IsLogged() ))
+		if (!(IsLogged()))
 			return null;
 		List<String> result = null;
 		try {
 			BoolQueryBuilder searchBuilder = QueryBuilders.boolQuery();
 			if (!id.isEmpty()) {
-				searchBuilder.must(QueryBuilders.termQuery("passengerId",id));
+				searchBuilder.must(QueryBuilders.termQuery("passengerId", id));
 			}
 			result = reservationDao.search(searchBuilder);
 			return result;
@@ -168,6 +167,7 @@ public class ReservationService extends Service {
 
 	/**
 	 * get a reservation by its id
+	 * 
 	 * @param id
 	 * @return
 	 */
@@ -178,9 +178,9 @@ public class ReservationService extends Service {
 	public String getById(@PathParam("id") String id) {
 		if (!(IsLogged()))
 			return null;
-		String result=null;
+		String result = null;
 		try {
-			result = reservationDao.getById(id);	
+			result = reservationDao.getById(id);
 		} catch (Exception e) {
 			registerException(e);
 		}
@@ -188,8 +188,9 @@ public class ReservationService extends Service {
 	}
 
 	/**
-	 *  
-	 *  get all the reservations to be approved
+	 * 
+	 * get all the reservations to be approved
+	 * 
 	 * @param piloteId
 	 * @return
 	 * @throws Exception
@@ -205,8 +206,8 @@ public class ReservationService extends Service {
 				.search(QueryBuilders.boolQuery().must(QueryBuilders.termQuery("approved", "false"))
 						.mustNot(QueryBuilders.termQuery("approved", "true")));
 
-		if (rtList!=null&&!rtList.isEmpty())
-			for (int i =rtList.size()-1; i >=0; i--) {
+		if (rtList != null && !rtList.isEmpty())
+			for (int i = rtList.size() - 1; i >= 0; i--) {
 				Reservation rt = (Reservation) ConvertObject.jsonToObject(rtList.get(i), ConvertObject.RESERVATION);
 				if (rt == null)
 					return null;
@@ -214,7 +215,7 @@ public class ReservationService extends Service {
 						ConvertObject.FLIGHT);
 				if (flight != null && !flight.getPilotId().equals(piloteId))
 					rtList.remove(i);
-				
+
 			}
 
 		return rtList;

@@ -22,7 +22,7 @@ $('#register').click(function() {
 
 			 location.replace("login.html");
 			} else {
-				// alert(data.result);
+				 alert(data.result);
 				$('#loginerror').show();
 				$('#loginerror').html(data.result);
 				$("#loginerror").css("display", "block");

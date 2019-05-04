@@ -29,6 +29,8 @@
 		$(document).ready(function() {
 
 			var user = sessionStorage.getItem("user");
+			if(user == null)
+				location.replace('login.html');
 			$.get('/ws/user/profile/' + user, function(result) {
 				var name = result.firstName;
 				$("#welcome").html("Welcome " + name);

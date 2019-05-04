@@ -3,7 +3,6 @@ package com.flight_sharing.dao;
 import static org.elasticsearch.common.xcontent.XContentFactory.jsonBuilder;
 import static org.elasticsearch.index.query.QueryBuilders.matchAllQuery;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -22,15 +21,14 @@ import org.elasticsearch.search.SearchHit;
 public class ActionDao extends BasicDao {
 	/** entity's type */
 	private String mainType;
-	private final TransportClient client ;
+	private final TransportClient client;
 
-	public ActionDao(String mainType,TransportClient client) {
+	public ActionDao(String mainType, TransportClient client) {
 		this.mainType = mainType;
-		this.client=client;
+		this.client = client;
 
 	}
 
-	
 	public List<String> getAll() throws Exception {
 		SearchResponse response = client.prepareSearch(BasicDao.index).setTypes(mainType)
 				.setSearchType(SearchType.DFS_QUERY_THEN_FETCH).setQuery(matchAllQuery()).get();
@@ -40,12 +38,12 @@ public class ActionDao extends BasicDao {
 		}
 		return results;
 	}
-	
+
 	public String getById(String id) throws Exception {
-		GetResponse response=client.prepareGet(BasicDao.index, mainType, id).get();
+		GetResponse response = client.prepareGet(BasicDao.index, mainType, id).get();
 		return response.getSourceAsString();
 	}
-	
+
 	public String delete(String id) throws Exception {
 		DeleteResponse response = client.prepareDelete(BasicDao.index, mainType, id).get();
 		return response.status().toString();
@@ -53,7 +51,6 @@ public class ActionDao extends BasicDao {
 
 	public String add(byte[] json, String id) throws Exception {
 		IndexResponse response = client.prepareIndex(BasicDao.index, mainType, id).setSource(json).get();
-		System.out.println(response.status().toString());
 		return response.status().toString();
 	}
 
@@ -67,8 +64,8 @@ public class ActionDao extends BasicDao {
 		List<String> results = new ArrayList<String>();
 		try {
 			SearchResponse response = client.prepareSearch(BasicDao.index).setTypes(mainType)
-					.setSearchType(SearchType.DFS_QUERY_THEN_FETCH).setQuery(queryBuilder)
-					.setExplain(true).setSize(100).setFrom(0).get();
+					.setSearchType(SearchType.DFS_QUERY_THEN_FETCH).setQuery(queryBuilder).setExplain(true).setSize(100)
+					.setFrom(0).get();
 			for (SearchHit searchHit : response.getHits().getHits()) {
 				results.add(searchHit.getSourceAsString());
 			}
@@ -79,15 +76,14 @@ public class ActionDao extends BasicDao {
 	}
 
 	/**
-	 *  Extra param from and size for
-	 *   elasticsearch configuration
+	 * Extra param from and size for elasticsearch configuration
 	 */
-	public List<String> search(QueryBuilder queryBuilder,int from,int size) throws Exception {
+	public List<String> search(QueryBuilder queryBuilder, int from, int size) throws Exception {
 		List<String> results = new ArrayList<String>();
 		try {
 			SearchResponse response = client.prepareSearch(BasicDao.index).setTypes(mainType)
-					.setSearchType(SearchType.DFS_QUERY_THEN_FETCH).setQuery(queryBuilder)
-					.setExplain(true).setSize(size).setFrom(from).get();
+					.setSearchType(SearchType.DFS_QUERY_THEN_FETCH).setQuery(queryBuilder).setExplain(true)
+					.setSize(size).setFrom(from).get();
 			for (SearchHit searchHit : response.getHits().getHits()) {
 				results.add(searchHit.getSourceAsString());
 			}

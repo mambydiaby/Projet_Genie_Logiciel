@@ -19,17 +19,16 @@ public abstract class BasicDao implements Dao {
 			if (index == null || index.length() == 0) {
 				index = "flight_shring";
 			}
-			//sometimes happens 
+			// sometimes happens
 
-		} catch(NullPointerException e1) {
+		} catch (NullPointerException e1) {
 			index = "flight_sharing";
-			serverAddr="localhost";
-		}catch (Exception e) {
-			
+			serverAddr = "localhost";
+		} catch (Exception e) {
+
 			registerException(e);
 		}
 	}
-
 
 	private static void registerException(Exception e) {
 		Logger.getLogger(BasicDao.class.getName()).log(Level.SEVERE, null, e);

@@ -56,8 +56,8 @@ public class FactoryDao {
 	}
 
 	/**
-	 * Create Action Dao 
-	 * Same client to prevent too many sockets
+	 * Create Action Dao Same client to prevent too many sockets
+	 * 
 	 * @param id : index
 	 * @return
 	 */

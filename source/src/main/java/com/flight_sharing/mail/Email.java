@@ -137,7 +137,7 @@ public class Email {
 		}
 
 	}
-	
+
 	private static void registerException(Exception e) {
 		Logger.getLogger(Email.class.getName()).log(Level.SEVERE, null, e);
 	}

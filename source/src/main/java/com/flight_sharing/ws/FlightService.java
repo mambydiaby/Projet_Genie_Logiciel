@@ -1,5 +1,6 @@
 package com.flight_sharing.ws;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -19,8 +20,8 @@ import org.elasticsearch.index.query.QueryBuilders;
 import com.flight_sharing.entities.Flight;
 import com.flight_sharing.entities.Passenger;
 import com.flight_sharing.entities.Reservation;
-import com.flight_sharing.json.ConvertObject;
 import com.flight_sharing.mail.Email;
+import com.flight_sharing.mapping.ConvertObject;
 
 @Path("flight")
 public class FlightService extends Service {
@@ -39,7 +40,7 @@ public class FlightService extends Service {
 				searchBuilder.must(QueryBuilders.wildcardQuery("departure", "*" + departure.toLowerCase() + "*"));
 			}
 			if (!date.isEmpty()) {
-				searchBuilder.must(QueryBuilders.rangeQuery("date").from(date));
+				searchBuilder.must(QueryBuilders.rangeQuery("date").from(LocalDateTime.now()).to(date));
 			}
 			if (seat != 0)
 				searchBuilder.must(QueryBuilders.rangeQuery("seat").from(seat));
@@ -74,7 +75,7 @@ public class FlightService extends Service {
 				searchBuilder.must(QueryBuilders.wildcardQuery("departure", "*" + departure.toLowerCase() + "*"));
 			}
 			if (!date.isEmpty()) {
-				searchBuilder.must(QueryBuilders.rangeQuery("date").from(date));
+				searchBuilder.must(QueryBuilders.rangeQuery("date").from(LocalDateTime.now().toString()).to(date));
 			}
 			searchBuilder.must(QueryBuilders.rangeQuery("seat").from(1));
 			result = flightDao.search(searchBuilder);
@@ -97,13 +98,13 @@ public class FlightService extends Service {
 	@Consumes("application/x-www-form-urlencoded")
 	@Path("/myflights")
 	public List<String> searchMyFlights(@FormParam("id") String id) {
-		
+
 		List<String> result = null;
 		try {
 			BoolQueryBuilder searchBuilder = QueryBuilders.boolQuery();
-			if (!id.isEmpty()) 
+			if (!id.isEmpty())
 				searchBuilder.must(QueryBuilders.termQuery("pilotId", id));
-	
+
 			result = flightDao.search(searchBuilder);
 			return result;
 		} catch (Exception e) {
@@ -156,7 +157,6 @@ public class FlightService extends Service {
 			for (int i = res.size() - 1; i >= 0; i--) {
 				Reservation rt = (Reservation) ConvertObject.jsonToObject(res.get(i), ConvertObject.RESERVATION);
 				if (rt.getFlightId().equals(id)) {
-					System.out.println("delete reservation" + rt.getId());
 					reservationDao.delete(rt.getId());
 					Passenger pa = null;
 					try {
@@ -191,7 +191,6 @@ public class FlightService extends Service {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/add")
 	public String addFlight(Flight flight) throws Exception {
-		System.out.println(flight);
 		if (!IsLogged())
 			return "{\"result: \":\"Please Login !\"}";
 		String result = "";

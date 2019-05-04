@@ -10,7 +10,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.flight_sharing.entities.Airplane;
-import com.flight_sharing.json.ConvertObject;
+import com.flight_sharing.mapping.ConvertObject;
 
 @Path("airplane")
 public class AirplaneService extends Service {
@@ -36,7 +36,7 @@ public class AirplaneService extends Service {
 	@Path("/getbyid/{id}")
 	public String getById(@PathParam("id") String id) {
 		String result = null;
-	
+
 		try {
 			result = airplaneDao.getById(id);
 		} catch (Exception e) {
@@ -56,7 +56,7 @@ public class AirplaneService extends Service {
 		if (!(IsLogged() && isPilot()))
 			return "{\"result\":\"Please Login as Pilot!\"}";
 		String result = null;
-		
+
 		try {
 			result = airplaneDao.delete(id);
 		} catch (Exception e) {

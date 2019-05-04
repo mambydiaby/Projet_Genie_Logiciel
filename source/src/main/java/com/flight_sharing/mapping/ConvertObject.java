@@ -1,4 +1,4 @@
-package com.flight_sharing.json;
+package com.flight_sharing.mapping;
 
 import java.io.IOException;
 

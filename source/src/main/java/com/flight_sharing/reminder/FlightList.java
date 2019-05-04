@@ -10,7 +10,7 @@ import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
 import com.flight_sharing.entities.Flight;
-import com.flight_sharing.json.ConvertObject;
+import com.flight_sharing.mapping.ConvertObject;
 
 public class FlightList extends Common implements Job {
 
@@ -22,7 +22,7 @@ public class FlightList extends Common implements Job {
 			// get the next day's flights list
 			List<String> nextDayFlights = flightDao.search(QueryBuilders.matchPhraseQuery("date",
 					LocalDateTime.now().plusDays(1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString()));
-			
+
 			for (String string : nextDayFlights) {
 				flight.add((Flight) ConvertObject.jsonToObject(string, ConvertObject.FLIGHT));
 			}
@@ -35,5 +35,5 @@ public class FlightList extends Common implements Job {
 	public void execute(JobExecutionContext context) throws JobExecutionException {
 		this.initialize();
 	}
-	
+
 }

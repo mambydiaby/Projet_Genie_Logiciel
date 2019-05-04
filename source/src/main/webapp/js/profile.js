@@ -10,8 +10,10 @@ $(function() {
 	var type = sessionStorage.getItem("type");
 	if (type == "passenger") {
 		$('#back1').attr("href", "passengerNav.html");
-	} else {
+	} else if (type == "pilot") {
 		$('#back1').attr("href", 'pilotNav.html');
+	} else {
+		location.replace('login.html');
 	}
 
 	$('#profile-image1').on('click', function() {
@@ -31,14 +33,14 @@ $(function() {
 			document.getElementById('email').innerText = data.email;
 			if (data.experience != null)
 				document.getElementById('exp').innerText = data.experience;
-			else{
+			else {
 				document.getElementById('exp').innerText = "---------";
 				$('.exp').hide();
-				
+
 			}
 			if (data.qualification != null)
 				document.getElementById('qual').innerText = data.qualification;
-			else{
+			else {
 				document.getElementById('qual').innerText = "---------";
 				$('.qual').hide();
 

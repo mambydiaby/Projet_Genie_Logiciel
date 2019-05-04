@@ -12,8 +12,8 @@ import org.quartz.JobExecutionException;
 import com.flight_sharing.entities.Flight;
 import com.flight_sharing.entities.Passenger;
 import com.flight_sharing.entities.Pilot;
-import com.flight_sharing.json.ConvertObject;
 import com.flight_sharing.mail.Email;
+import com.flight_sharing.mapping.ConvertObject;
 
 public class SendEmail extends Common implements Job {
 
@@ -52,6 +52,5 @@ public class SendEmail extends Common implements Job {
 			registerException(e);
 		}
 	}
-
 
 }
