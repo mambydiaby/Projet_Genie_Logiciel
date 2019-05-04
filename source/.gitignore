@@ -9,3 +9,4 @@ target/
 .eclips
 .idea/
 *.iml
+.gitignore

@@ -53,6 +53,10 @@ $(function() {
 		} else {
 			$('#back1').attr("href", 'pilotNav.html');
 		}
+		if(type==null)
+			location.replace("login.html");
+			
+			
 	});
 
 });

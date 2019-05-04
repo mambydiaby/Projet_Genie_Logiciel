@@ -66,6 +66,11 @@ $(function() {
 		} else {
 			$('#back').attr("href", 'pilotNav.html');
 		}
+		if(type==null)
+		
+				location.replace("login.html");
+			
+			
 	});
 });
 
