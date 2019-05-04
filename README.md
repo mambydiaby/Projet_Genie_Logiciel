@@ -90,7 +90,7 @@ The purpose of the project is to create a performing platform that is easy to us
  
  - Piolt can delete his flight, if he does this , all the reservations on this flight will be canceled.
 
-## UX Design ( *except for these policies, our design also considerate user experience design*)
+## UX Design ( *except for these policies, we also considerate user experience design*)
 
  * Users can go back to previous pages or other pages by a navigation bar or the button Back.
  
