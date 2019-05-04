@@ -17,7 +17,12 @@ import org.elasticsearch.action.update.UpdateRequest;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.search.SearchHit;
-
+/**
+ * 
+ * Implements Actions with elastic search methods.
+ * Associate each Dao object with a type(flight,airplane,pilot...)
+ *
+ */
 public class ActionDao extends BasicDao {
 	/** entity's type */
 	private String mainType;

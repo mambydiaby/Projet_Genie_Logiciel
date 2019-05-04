@@ -6,7 +6,7 @@ import com.flight_sharing.mapping.ConvertObject;
 
 /**
  * 
- * add Data to database
+ * add Data to database(for test .)
  *
  */
 public class FillData {

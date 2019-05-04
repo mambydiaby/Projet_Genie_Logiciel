@@ -3,7 +3,10 @@ package com.flight_sharing.dao;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+/**
+ * Give Dao object an index 
+ *
+ */
 public abstract class BasicDao implements Dao {
 	/* index of tables */
 	public static String index;
@@ -19,7 +22,7 @@ public abstract class BasicDao implements Dao {
 			if (index == null || index.length() == 0) {
 				index = "flight_shring";
 			}
-			// sometimes happens
+			// can't open/read file
 
 		} catch (NullPointerException e1) {
 			index = "flight_sharing";

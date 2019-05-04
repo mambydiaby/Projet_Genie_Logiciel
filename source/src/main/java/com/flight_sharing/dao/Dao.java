@@ -3,7 +3,11 @@ package com.flight_sharing.dao;
 import java.util.List;
 
 import org.elasticsearch.index.query.QueryBuilder;
-
+/**
+ * 
+ * Define Basic methods of actions related to the database
+ *
+ */
 public interface Dao {
 
 	/**
