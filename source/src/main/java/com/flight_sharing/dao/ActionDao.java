@@ -35,7 +35,7 @@ public class ActionDao extends BasicDao {
 	}
 
 	public List<String> getAll() throws Exception {
-		SearchResponse response = client.prepareSearch(BasicDao.index).setTypes(mainType)
+		SearchResponse response = client.prepareSearch(BasicDao.index).setTypes(mainType).setSize(100)
 				.setSearchType(SearchType.DFS_QUERY_THEN_FETCH).setQuery(matchAllQuery()).get();
 		List<String> results = new ArrayList<String>();
 		for (SearchHit searchHit : response.getHits().getHits()) {
