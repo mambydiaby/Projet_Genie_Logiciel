@@ -42,7 +42,7 @@ a:visited {
 	margin-top: 30%;
 	display: flex;
 	justify-content: space-around;
-	word-wrap: break-word;
+	flex-wrap: wrap;
 }
 
 .lds-hourglass {
