@@ -6,6 +6,7 @@
  * @returns
  */
 $(document).ready(function() {
+	setTimeout(affiche_map, 1000);
 	var id = sessionStorage.getItem('flight_info');
 	var user = sessionStorage.getItem("user");
 	$(".lds-hourglass").css("display", "none");
@@ -51,6 +52,50 @@ $(document).ready(function() {
 		}
 	})
 });
+
+function affiche_map() {
+    var dep1 = document.getElementById("dep").firstChild.data;
+    var arr1 = document.getElementById("arr").firstChild.data;
+
+    var coord = {
+        Paris:{lt:48.8534, ln:2.3488},
+        Lyon: {lt:45.75, ln:4.85},
+        Toulouse: {lt:43.6, ln:1.4333},
+        Nancy: {lt:48.6833, ln:6.2},
+        Limoges: {lt:45.85, ln:1.25},
+        Strasbourg: {lt:48.5833, ln:7.75},
+        Marseille: {lt:43.2961, ln:5.3699},
+        Bordeaux: {lt:44.8333, ln:-0.5666},
+        Nice: {lt: 43.7,ln: 7.25},
+        Lille: {lt: 50.6333,ln: 3.0666},
+        Nantes: {lt: 47.2166,ln:-1.55},
+        Montpellier: {lt: 43.6, ln: 3.8833},
+    };
+
+    var x = (coord[dep1].lt + coord[arr1].lt) / 2.0;
+    var y = (coord[dep1].ln + coord[dep1].ln) / 2.0;
+
+    var dep=[coord[dep1].lt,coord[dep1].ln];
+    var arr=[coord[arr1].lt,coord[arr1].ln];
+
+
+    const myMap = L.map('map').setView([x,y], 6);
+
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox.streets',
+        accessToken: 'pk.eyJ1Ijoia3lsZXZpbGxlbmV1dmUiLCJhIjoiY2puOTZ0eXkyMDM3eDNzcHVzeGJhZmMxYyJ9.7oIopPnX7qwOmOkL7dsSCQ' }).
+    addTo(myMap);
+    var marker1 = L.marker(dep).addTo(myMap);
+    marker1.bindPopup('<h3> ' + dep1 + ', FRA </h3>');
+    var marker2 = L.marker(arr).addTo(myMap);
+    marker2.bindPopup('<h3> ' + arr1 + ', FRA </h3>');
+    L.polyline([dep,arr], {
+        color: 'orange'
+    }).addTo(myMap);
+
+}
 
 /**
  * 
