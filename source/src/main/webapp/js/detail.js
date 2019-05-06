@@ -42,7 +42,7 @@ $(document).ready(function() {
             $('.time').html(" Departure Time: " + data.time);
             $('.seat').html("Seat available: " + data.seat);
 			$('.duration').html("Duration: " + data.duration);
-			$('#price').html(data.price+"€");
+			$('#price').html(data.price+'€');
 			window.arrival=data.arrival;
 			window.departure=data.departure;
 			var des = data.arrival + "";
@@ -59,9 +59,11 @@ $(document).ready(function() {
 });
 
 function affiche_map() {
-   var dep1 = document.getElementById("dep").firstChild.data;
-   var arr1 = document.getElementById("arr").firstChild.data;
+  //  var dep1 = document.getElementById("dep").firstChild.data;
+    ///var arr1 = document.getElementById("arr").firstChild.data;
 
+    dep1=window.departure;
+    arr1=window.arrival;
     var coord = {
         Paris:{lt:48.8534, ln:2.3488},
         Lyon: {lt:45.75, ln:4.85},
