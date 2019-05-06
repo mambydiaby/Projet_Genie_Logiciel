@@ -128,3 +128,15 @@ h2 {
 #show_pilot{
 	color:red
 }
+
+#map {
+    width: 70%;
+    height: 400px;
+    margin: auto auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border: 10px solid orange;
+    border-radius: 5px;
+}
+
+
