@@ -1,3 +1,6 @@
+
+
+
 /**
  * this function updates this page according to flightId and userId 1. hide
  * login button when already login 2. update background img and all info 3. get
@@ -39,7 +42,9 @@ $(document).ready(function() {
             $('.time').html(" Departure Time: " + data.time);
             $('.seat').html("Seat available: " + data.seat);
 			$('.duration').html("Duration: " + data.duration);
-			$('#price').html(data.price);
+			$('#price').html(data.price+"€");
+			window.arrival=data.arrival;
+			window.departure=data.departure;
 			var des = data.arrival + "";
 			var url1 = "../img/" + des.toLowerCase() + ".jpg";
 			$('body').css('background-image', "url"+"\'(\'" + url1 + "\')\'");
@@ -54,8 +59,8 @@ $(document).ready(function() {
 });
 
 function affiche_map() {
-    var dep1 = document.getElementById("dep").firstChild.data;
-    var arr1 = document.getElementById("arr").firstChild.data;
+   var dep1 = document.getElementById("dep").firstChild.data;
+   var arr1 = document.getElementById("arr").firstChild.data;
 
     var coord = {
         Paris:{lt:48.8534, ln:2.3488},
