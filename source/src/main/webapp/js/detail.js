@@ -5,6 +5,7 @@
  * this function updates this page according to flightId and userId 1. hide
  * login button when already login 2. update background img and all info 3. get
  * pilot info according to his Id(get from flightId) 4. hide/show private info
+ *
  * @returns
  */
 	$(document).ready(function() {
