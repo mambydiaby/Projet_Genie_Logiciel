@@ -126,7 +126,6 @@ function filter() {
 				+ "               </thead>"
 
 				for (var i = 0; i < data.length; i++) {
-					console.log(data[i]);
 					var obj = JSON.parse(data[i]);
 					var td0 = "<tr><td>" + obj.id + "</td>";
 					var td1 = "<td>" + obj.departure + "</td>";

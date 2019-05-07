@@ -80,7 +80,9 @@ The purpose of the project is to create a performing platform that is easy to us
  - Once Pilot comfirms/denies a reservation, the passsenger will receive an email
  
  - Once Pilot cancels a flight, passengers who book this flight will receive an email
- 
+
+ - Users will receive a welcome email once they sign up
+
  - 24 hours before a flight, the pilot and the passengers receive a reminder for the flight
  
 
