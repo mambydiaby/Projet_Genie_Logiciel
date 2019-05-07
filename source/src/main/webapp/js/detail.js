@@ -145,6 +145,12 @@ function privateInfo(id, user) {
  * @returns check if there are enough seats
  */
 function checkSeat(id_flight) {
+	if( $('#seats').val()<=0|| $('#seats').val().trim()==''){
+	
+		alert('invalide field (seats booked: '+$('#seats').val()+')');
+		return;
+	}
+		
 	var user = sessionStorage.getItem("user");
 	var regiId = id_flight + user + $('#seats').val()+ Math.floor(Math.random() * 55);
 	$.get(

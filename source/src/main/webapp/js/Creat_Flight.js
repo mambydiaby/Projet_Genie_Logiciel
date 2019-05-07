@@ -18,8 +18,18 @@ $(function() {
 						empty = 1;
 					}
 				});
+			
 				if (empty == 1)
 					return;
+				if( $('#price').val()<0|| $('#price').val().trim()==''){		
+					alert('invalide field (price: '+$('#price').val()+')');
+					return;
+				}
+				
+				if( $('#places').val()<=0|| $('#places').val().trim()==''){		
+					alert('invalide field (Seats: '+$('#places').val()+')');
+					return;
+				}
 				var n1 = Math.ceil(Math.random() * 100)
 						+ Math.ceil(Math.random() * 100);
 				var n2 = Math.ceil(Math.random() * 100)

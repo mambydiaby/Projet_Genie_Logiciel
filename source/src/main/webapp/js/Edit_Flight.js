@@ -118,6 +118,15 @@ function modify() {
 			if ($('#descriptionPrivate').val() != '')
 				f_infoPrive = $('#descriptionPrivate').val();
 
+			if( $('#price').val()<0){		
+				alert('invalide field (price: '+$('#price').val()+')');
+				return;
+			}
+			
+			if( $('#places').val()<=0|| $('#places').val().trim()==''){		
+				alert('invalide field (Seats: '+$('#places').val()+')');
+				return;
+			}
 			var newFlight = {
 				id : flight_id,
 				pilotId : user_id,
