@@ -119,7 +119,8 @@ public class UserService extends Service {
 			// register in the database
 			String body = "Hello Mr/Mrs/Ms " + p.getLastName() + " ,<br/><br/>You have created an account with id = <b> "
 					+ p.getId() + "</b> " 
-					+ ". <br/>Your account is available now.<br/><br/>Best regards.";
+					+ ". <br/>Your account is available now.<br/><br/>We hope that you enjoy your stay with us! :-) \r\n" + 
+					"<br/>Best regards.<br/>";
 			Email.send(p.getEmail(), "Flight booking", body);
 			passengerDao.add(ConvertObject.objectToByte(p), id);
 			return "{\"result\":\"ok\"}";
@@ -156,7 +157,8 @@ public class UserService extends Service {
 			pilotDao.add(ConvertObject.objectToByte(p), id);
 			String body = "Hello Mr/Mrs/Ms " + p.getLastName() + " ,<br/><br/>You have created an account with id = <b> "
 					+ p.getId() + "</b> " 
-					+ ". <br/>Your account is available now.<br/><br/>Best regards.";
+					+ ". <br/>Your account is available now.<br/><br/>We hope that you enjoy your stay with us! :-) \r\n" + 
+					"<br/>Best regards.<br/>";
 			Email.send(p.getEmail(), "Flight booking", body);
 			return "{\"result\":\"ok\"}";
 
