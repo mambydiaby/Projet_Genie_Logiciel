@@ -76,7 +76,7 @@ function affiche_map() {
 	};
 
 	var x = (coord[dep1].lt + coord[arr1].lt) / 2.0;
-	var y = (coord[dep1].ln + coord[dep1].ln) / 2.0;
+	var y = (coord[dep1].ln + coord[arr1].ln) / 2.0;
 
 	var dep=[coord[dep1].lt,coord[dep1].ln];
 	var arr=[coord[arr1].lt,coord[arr1].ln];
