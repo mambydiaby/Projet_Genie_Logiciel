@@ -5,22 +5,22 @@
  */
 $(function() {
 	$
-			.ajax({
-				type : "get",
-				url : '/ws/reservation/myreservations/'
-						+ sessionStorage.getItem("user"),
-				success : function(data) {
-					// alert(data);
-					var tbl = "<table id=\"itable\" class=\"table table-striped custab\">\r\n"
-							+ "               <thead>\r\n"
-							+ "                  <tr>\r\n"
-							+ "                     <th>ID</th>\r\n"
-							+ "                     <th>Flight</th>\r\n"
-							+ "                     <th>Seat Booked</th>\r\n"
-							+ "                     <th>State</th>\r\n"
-							+ "                     <th class=\"text-center\">Action</th>\r\n"
-							+ "                  </tr>\r\n"
-							+ "               </thead>"
+	.ajax({
+		type : "get",
+		url : '/ws/reservation/myreservations/'
+			+ sessionStorage.getItem("user"),
+			success : function(data) {
+				// alert(data);
+				var tbl = "<table id=\"itable\" class=\"table table-striped custab\">\r\n"
+					+ "               <thead>\r\n"
+					+ "                  <tr>\r\n"
+					+ "                     <th>ID</th>\r\n"
+					+ "                     <th>Flight</th>\r\n"
+					+ "                     <th>Seat Booked</th>\r\n"
+					+ "                     <th>State</th>\r\n"
+					+ "                     <th class=\"text-center\">Action</th>\r\n"
+					+ "                  </tr>\r\n"
+					+ "               </thead>"
 
 					for (var i = 0; i < data.length; i++) {
 						var obj = JSON.parse(data[i]);
@@ -29,22 +29,22 @@ $(function() {
 						var td3 = "<td>" + obj.seat + "</td>";
 
 						var td3_5 = "<td>"
-								+ (obj.approved == "true" ? "approved"
-										: "waiting") + "</td>";
+							+ (obj.approved == "true" ? "approved"
+									: "waiting") + "</td>";
 						var td4 = "<td class=\"text-center\"><a  onclick=\"show(\'"
-								+ obj.id
-								+ "\');\"  	class='btn btn-info btn-xs' ><span class=\"glyphicon glyphicon-ok\" ></span> View</a>"
+							+ obj.id
+							+ "\');\"  	class='btn btn-info btn-xs' ><span class=\"glyphicon glyphicon-ok\" ></span> View</a>"
 
-						tbl += td0 + td1 + td3 + td3_5 + td4;
+							tbl += td0 + td1 + td3 + td3_5 + td4;
 
 					}
-					tbl += "</table>";
-					document.getElementById("div1").innerHTML = "";
-					$("#div1").append(tbl);
-					$("#itable").DataTable();
+				tbl += "</table>";
+				document.getElementById("div1").innerHTML = "";
+				$("#div1").append(tbl);
+				$("#itable").DataTable();
 
-				}
-			});
+			}
+	});
 
 	$(document).ready(function() {
 		var type = sessionStorage.getItem("type");
@@ -55,8 +55,8 @@ $(function() {
 		}
 		if(type==null)
 			location.replace("login.html");
-			
-			
+
+
 	});
 
 });
@@ -75,7 +75,7 @@ function cancel(id) {
 			$('#name').html("");
 			$('#seat_wanted').html("");
 			$('#vec').html(
-					"success, the reservation has been disapproved/canceled!");
+			"success, the reservation has been disapproved/canceled!");
 			$('#seat_left').html("");
 			$('#date').html("");
 			$('#arrival').html("");
@@ -89,7 +89,7 @@ function cancel(id) {
 		},
 	});
 }
-// When the user clicks the button, open the modal
+//When the user clicks the button, open the modal
 function show(id) {
 	$.get("/ws/reservation/getbyid/" + id, function(data) {
 		var seat = data.seat;

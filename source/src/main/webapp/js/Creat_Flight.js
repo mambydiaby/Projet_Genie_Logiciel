@@ -18,40 +18,40 @@ $(function() {
 						empty = 1;
 					}
 				});
-			
+
 				if (empty == 1)
 					return;
 				if( $('#price').val()<0|| $('#price').val().trim()==''){		
 					alert('invalide field (price: '+$('#price').val()+')');
 					return;
 				}
-				
+
 				if( $('#places').val()<=0|| $('#places').val().trim()==''){		
 					alert('invalide field (Seats: '+$('#places').val()+')');
 					return;
 				}
 				var n1 = Math.ceil(Math.random() * 100)
-						+ Math.ceil(Math.random() * 100);
+				+ Math.ceil(Math.random() * 100);
 				var n2 = Math.ceil(Math.random() * 100)
-						+ Math.ceil(Math.random() * 100)
-						+ Math.ceil(Math.random() * 100);
+				+ Math.ceil(Math.random() * 100)
+				+ Math.ceil(Math.random() * 100);
 				var n3 = Math.ceil(Math.random() * 100);
 				var rand_id = "GG" + (n1 * n2) % 300 + "" + n3;
 				var user_id = sessionStorage.getItem("user");
 				var newFlight = {
-					id : rand_id,
-					pilotId : user_id,
-					seat : $('#places').val(),
-					passengerId : [],
-					departure : $('#departure').val(),
-					arrival : $('#arrival').val(),
-					date : $('#date').val(),
-					time : $('#time').val(),
-					duration : $('#duration').val(),
-					price : $('#price').val(),
-					info : $('#description').val(),
-					privateInfo : $('#descriptionPrivate').val(),
-					trajet : $('#trajet').val()
+						id : rand_id,
+						pilotId : user_id,
+						seat : $('#places').val(),
+						passengerId : [],
+						departure : $('#departure').val(),
+						arrival : $('#arrival').val(),
+						date : $('#date').val(),
+						time : $('#time').val(),
+						duration : $('#duration').val(),
+						price : $('#price').val(),
+						info : $('#description').val(),
+						privateInfo : $('#descriptionPrivate').val(),
+						trajet : $('#trajet').val()
 				}
 				$.ajax({
 					url : "/ws/flight/add",

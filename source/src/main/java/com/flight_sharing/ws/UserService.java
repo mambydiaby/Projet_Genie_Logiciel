@@ -15,7 +15,9 @@ import org.json.JSONObject;
 
 import com.flight_sharing.entities.Passenger;
 import com.flight_sharing.entities.Pilot;
+import com.flight_sharing.mail.Email;
 import com.flight_sharing.mapping.ConvertObject;
+import com.flight_sharing.reminder.SendEmail;
 
 /**
  * this class contains all web services related to users which are login,
@@ -31,7 +33,7 @@ public class UserService extends Service {
 	 * @throws Exception
 	 */
 	boolean userExists(String id) throws Exception {
-		return pilotDao.getById(id) != null && passengerDao.getById(id) != null;
+		return pilotDao.getById(id) != null || passengerDao.getById(id) != null;
 	}
 
 	/**
@@ -115,6 +117,10 @@ public class UserService extends Service {
 			if (userExists(id))
 				return "{\"result\":\"username not available\"}";
 			// register in the database
+			String body = "Hello Mr/Mrs/Ms " + p.getLastName() + " ,<br/><br/>You have created an account with id = <b> "
+					+ p.getId() + "</b> " 
+					+ ". <br/>Your account is available now.<br/><br/>Best regards.";
+			Email.send(p.getEmail(), "Flight booking", body);
 			passengerDao.add(ConvertObject.objectToByte(p), id);
 			return "{\"result\":\"ok\"}";
 
@@ -146,7 +152,12 @@ public class UserService extends Service {
 			if (userExists(id))
 				return "{\"result\":\"username not available\"}";
 			// register in the database
+
 			pilotDao.add(ConvertObject.objectToByte(p), id);
+			String body = "Hello Mr/Mrs/Ms " + p.getLastName() + " ,<br/><br/>You have created an account with id = <b> "
+					+ p.getId() + "</b> " 
+					+ ". <br/>Your account is available now.<br/><br/>Best regards.";
+			Email.send(p.getEmail(), "Flight booking", body);
 			return "{\"result\":\"ok\"}";
 
 		} catch (Exception e) {

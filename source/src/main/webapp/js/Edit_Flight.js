@@ -20,7 +20,7 @@ $(document).ready(function() {
 			$('#description').attr("placeholder", data.info);
 			$('#trajet').attr("placeholder", data.trajet);
 			$('#descriptionPrivate').attr("placeholder", data.privateInfo);
-            $('#time').attr("placeholder", data.time);
+			$('#time').attr("placeholder", data.time);
 		},
 		error : function() {
 			alert("can't find coresponding flights");
@@ -50,7 +50,7 @@ function reset() {
 			$('#description').attr("placeholder", data.info);
 			$('#trajet').attr("placeholder", data.trajet);
 			$('#descriptionPrivate').attr("placeholder", data.privateInfo);
-            $('#time').attr("time",data.time);
+			$('#time').attr("time",data.time);
 		},
 		error : function() {
 			alert("can't find coresponding flights");
@@ -113,8 +113,8 @@ function modify() {
 				f_date = $('#date').val();
 			if ($('#trajet').val() != '')
 				f_trajet = $('#trajet').val();
-            if ($('#time').val() !='')
-                f_time =$('#time').val();
+			if ($('#time').val() !='')
+				f_time =$('#time').val();
 			if ($('#descriptionPrivate').val() != '')
 				f_infoPrive = $('#descriptionPrivate').val();
 
@@ -122,27 +122,27 @@ function modify() {
 				alert('invalide field (price: '+$('#price').val()+')');
 				return;
 			}
-			
+
 			if( $('#places').val()<=0|| $('#places').val().trim()==''){		
 				alert('invalide field (Seats: '+$('#places').val()+')');
 				return;
 			}
 			var newFlight = {
-				id : flight_id,
-				pilotId : user_id,
-				seat : f_seat,
-				passengerId : f_passengerId,
-				departure : f_departure,
-				arrival : f_arrival,
-				date : f_date,
-				time : f_time,
-				duration : f_duration,
-				price : f_price,
-				info : f_info,
-				time : f_time,
-				date : f_date,
-				trajet : f_trajet,
-				privateInfo : f_infoPrive
+					id : flight_id,
+					pilotId : user_id,
+					seat : f_seat,
+					passengerId : f_passengerId,
+					departure : f_departure,
+					arrival : f_arrival,
+					date : f_date,
+					time : f_time,
+					duration : f_duration,
+					price : f_price,
+					info : f_info,
+					time : f_time,
+					date : f_date,
+					trajet : f_trajet,
+					privateInfo : f_infoPrive
 			}
 			$.ajax({
 				url : "/ws/flight/add",

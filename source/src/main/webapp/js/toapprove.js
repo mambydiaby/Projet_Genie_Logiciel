@@ -54,7 +54,7 @@ function disapprove(id) {
 			$('#name').html("");
 			$('#seat_wanted').html("");
 			$('#vec').html(
-					"success, the reservation has been disapproved/canceled!");
+			"success, the reservation has been disapproved/canceled!");
 			$('#seat_left').html("");
 			$('#date').html("");
 			$('#arrival').html("");
@@ -77,7 +77,7 @@ function disapprove(id) {
  * @param id
  * @returns
  */
-// When the user clicks the button, open the modal
+//When the user clicks the button, open the modal
 function show(id) {
 	$.get("/ws/reservation/getbyid/" + id, function(data) {
 		var seat = data.seat;
@@ -110,7 +110,7 @@ function show(id) {
 
 }
 /**
-  * little message box to comfirm,
+ * little message box to comfirm,
  * show when click deny
  * @param id
  * @returns
@@ -146,7 +146,7 @@ function show2(id) {
 	$('#accept').attr("value", 'Disapprove');
 
 
-	
+
 }
 
 /**
@@ -155,21 +155,21 @@ function show2(id) {
  */
 $(function() {
 	$
-			.ajax({
-				type : "get",
-				url : '/ws/reservation/toapprove/'
-						+ sessionStorage.getItem("user"),
-				success : function(data) {
-					var tbl = "<table id=\"itable\" class=\"table table-striped custab\">\r\n"
-							+ "               <thead>\r\n"
-							+ "                  <tr>\r\n"
-							+ "                     <th>ID</th>\r\n"
-							+ "                     <th>Flight</th>\r\n"
-							+ "                     <th>Passenger</th>\r\n"
-							+ "                     <th>Seat</th>\r\n"
-							+ "                     <th class=\"text-center\">Action</th>\r\n"
-							+ "                  </tr>\r\n"
-							+ "               </thead>"
+	.ajax({
+		type : "get",
+		url : '/ws/reservation/toapprove/'
+			+ sessionStorage.getItem("user"),
+			success : function(data) {
+				var tbl = "<table id=\"itable\" class=\"table table-striped custab\">\r\n"
+					+ "               <thead>\r\n"
+					+ "                  <tr>\r\n"
+					+ "                     <th>ID</th>\r\n"
+					+ "                     <th>Flight</th>\r\n"
+					+ "                     <th>Passenger</th>\r\n"
+					+ "                     <th>Seat</th>\r\n"
+					+ "                     <th class=\"text-center\">Action</th>\r\n"
+					+ "                  </tr>\r\n"
+					+ "               </thead>"
 					for (var i = 0; i < data.length; i++) {
 						var obj = JSON.parse(data[i]);
 						var td0 = "<tr><td>" + obj.id + "</td>";
@@ -177,21 +177,21 @@ $(function() {
 						var td2 = "<td>" + obj.passengerId + "</td>";
 						var td3 = "<td>" + obj.seat + "</td>";
 						var td4 = "<td class=\"text-center\"><a class='btn btn-info btn-xs okbtn'  onclick=\"show(\'"
-								+ obj.id
-								+ "\');\"><span class=\"glyphicon glyphicon-ok\"></span> Accept</a> <a  onclick=\"show2(\'"
-								+ obj.id
-								+ "\');\" class=\"btn btn-danger btn-xs delbtn\"><span class=\"glyphicon glyphicon-remove\"></span> Disapprove</a></td></tr>"
+							+ obj.id
+							+ "\');\"><span class=\"glyphicon glyphicon-ok\"></span> Accept</a> <a  onclick=\"show2(\'"
+							+ obj.id
+							+ "\');\" class=\"btn btn-danger btn-xs delbtn\"><span class=\"glyphicon glyphicon-remove\"></span> Disapprove</a></td></tr>"
 
-						tbl += td0 + td1 + td2 + td3 + td4;
+							tbl += td0 + td1 + td2 + td3 + td4;
 
 					}
-					tbl += "</table>";
-					document.getElementById("div1").innerHTML = "";
-					$("#div1").append(tbl);
-					$("#itable").DataTable();
+				tbl += "</table>";
+				document.getElementById("div1").innerHTML = "";
+				$("#div1").append(tbl);
+				$("#itable").DataTable();
 
-				}
-			});
+			}
+	});
 });
 
 
@@ -207,8 +207,8 @@ $(document).ready(function() {
 		$('#back1').attr("href", 'pilotNav.html');
 	}
 	if(type==null)
-		
-			location.replace("login.html");
-		
-		
+
+		location.replace("login.html");
+
+
 });

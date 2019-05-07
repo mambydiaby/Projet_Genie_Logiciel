@@ -47,7 +47,7 @@ $(function() {
 			}
 
 			document.getElementById('name').innerText = data.firstName + ' '
-					+ data.lastName;
+			+ data.lastName;
 		}
 	})
 

@@ -88,7 +88,8 @@ public class FillData {
 				"more infos", "rdv at 3:00", "Paris->Lyon->Lille->Lyon");
 		flight[1] = new Flight("WE666", "009", 2, null, "Lyon", "Paris", "2019-05-08", "20:30", "3h", "200",
 				"welcome 2 my flight", "rdv at 3:00 12/04/2019", "Lyon->Lille->Paris");
-		flight[2] = new Flight("PWO996", "032", 12, null, "Toulouse", "Lyon", "2019-12-22", "13:30", "4h", "166");
+		flight[2] = new Flight("PWO996", "032", 12, null, "Toulouse", "Lyon", "2019-12-22", "13:30", "4h", "166",
+				"WELcome to my flight", "meeting at 9:00", "Toulouse->Lyon");
 		flight[3] = new Flight("GP902", "032", 19, null, "Nancy", "Lyon", "2020-03-31", "23:30", "3h", "166");
 		flight[4] = new Flight("GW999", "032", 29, null, "Paris", "Limoges", "2019-05-01", "23:30", "2.5h", "160");
 		flight[5] = new Flight("GW908", "032", 45, null, "Limoges", "Lyon", "2029-07-01", "21:30", "3h", "196");
