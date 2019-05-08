@@ -4,16 +4,15 @@ body {
 }
 
 a {
-    color: orange;
+    color: #183e67;
     font-family: 'Righteous', sans-serif;
     font-size: 20px;
     padding: 10px 10px 10px 90px;
-    
     text-decoration: none;
 }
 
 a:hover {
-    color: black;
+    color: orange;
     font-weight: bold;
     text-decoration: underline;
     cursor: pointer;
@@ -27,19 +26,11 @@ a:visited {
     text-decoration: none;
 }
 
-h1 {
-    font: 50px "Comic Sans MS";
-    color: black;
-    text-align: center;
-    padding: 10px;
-}
-
 #disconnect {
     color: red;
 }
 
 #liens_welcome{
-    opacity: 0.9;
     width: 60%;
     margin: auto auto;
     margin-top: 75px;
