@@ -1,10 +1,10 @@
 body {
-    background: url("../img/gate.jpg") no-repeat fixed;
+    background: url("../img/aeroplanes-aircrafts-airplanes-163771.jpg") no-repeat fixed;
     background-size: 100% 100%;
 }
 
 a {
-    color: #183e67;
+    color: orange;
     font-family: 'Righteous', sans-serif;
     font-size: 20px;
     padding: 10px 10px 10px 90px;
@@ -13,7 +13,7 @@ a {
 }
 
 a:hover {
-    color: orange;
+    color: black;
     font-weight: bold;
     text-decoration: underline;
     cursor: pointer;
