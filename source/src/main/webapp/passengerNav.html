@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 <title>Welcome</title>
-<link rel="stylesheet" href="css/flight_detail.css" />
+<link rel="stylesheet" href="css/passengerNav.css" />
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 <script type="text/javascript"
@@ -11,23 +10,23 @@
 </head>
 <body>
 
-	<h1 id='welcome'>Welcome</h1>
-	<a href="profile.html">My profile</a>
-	<br />
-	<br />
+	<div id="contient">
+		<h1 id='welcome'>Welcome</h1>
+		<a href="profile.html">My profile</a>
+		<br />
+		<br />
 
-	<a href="myReservation.html">My Reservations</a>
-	<br />
-	<br />
-	<a href="search.html">Search flights</a>
-	<br />
-	<br />
-	<a id='disconnect' onclick="disconnect();">Disconnect</a>
-
+		<a href="myReservation.html">My Reservations</a>
+		<br />
+		<br />
+		<a href="search.html">Search flights</a>
+		<br />
+		<br />
+		<a id='disconnect' onclick="disconnect();">Disconnect</a>
+	</div>	
 
 	<script>
 		$(document).ready(function() {
-
 			var user = sessionStorage.getItem("user");
 			if(user == null)
 				location.replace('login.html');
@@ -41,37 +40,7 @@
 			sessionStorage.removeItem('type');
 			sessionStorage.removeItem('userId');
 			location.replace('index.html');
-
 		}
 	</script>
 </body>
-<style>
-h1 {
-	font: 50px "Comic Sans MS";
-	color: black;
-	text-shadow: 0 0 20px #fdec84, 10px -10px 30px #ffae35;
-	text-align: center;
-	padding: 10px;
-}
-
-body {
-	background: url("../img/haha.jpg") no-repeat fixed;
-	background-size: 100% 100%;
-	text-align: center;
-}
-
-a {
-	font-size: 20px;
-	padding: 10px 10px;
-	font-weight: 900;
-}
-
-a:hover {
-	background-color: white;
-}
-
-#disconnect {
-	color: green
-}
-</style>
 </html>
