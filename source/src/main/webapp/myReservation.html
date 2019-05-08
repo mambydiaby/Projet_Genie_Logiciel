@@ -31,54 +31,54 @@
 
 </head>
 <body>
-	<a id="back1" href="#"> Back </a>
+		<a id="back1" href="#"> Back </a>
 
-	<div class="container">
-		<div id="div1" class="row col-md-5 col-md-offset-2 custyle"></div>
-	</div>
-
-	<!-- The Modal -->
-	<div id="myModal" class="modal">
-
-		<!-- Modal content -->
-		<div class="modal-content">
-			<div class="modal-header">
-				<span class="close">&times;</span>
-				<p>
-					<b>Verification</b>
-				</p>
-			</div>
-			<div class="modal-body">
-				<p>
-					<b id='vec'>Accepting this reservations?</b>
-				</p>
-				<p id='name'></p>
-				<p id='seat_wanted'>1</p>
-				<p id='seat_left'>1</p>
-				<p id='date'>1</p>
-				<p id='departure'>1</p>
-				<p id='arrival'>1</p>
-				<a id='more' href="#" target="_blank"> </a>
-
-
-			</div>
-			<div class="modal-footer">
-				<input id="accept" onclick="approve()" type="button" value="accept">
-			</div>
+		<div class="container">
+			<div id="div1" class="row col-md-5 col-md-offset-2 custyle"></div>
 		</div>
 
-	</div>
+		<!-- The Modal -->
+		<div id="myModal" class="modal">
+
+			<!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="close">&times;</span>
+					<p>
+						<b>Verification</b>
+					</p>
+				</div>
+				<div class="modal-body">
+					<p>
+						<b id='vec'>Accepting this reservations?</b>
+					</p>
+					<p id='name'></p>
+					<p id='seat_wanted'>1</p>
+					<p id='seat_left'>1</p>
+					<p id='date'>1</p>
+					<p id='departure'>1</p>
+					<p id='arrival'>1</p>
+					<a id='more' href="#" target="_blank"> </a>
+
+
+				</div>
+				<div class="modal-footer">
+					<input id="accept" onclick="approve()" type="button" value="accept">
+				</div>
+			</div>
+
+		</div>
 </body>
 <script>
-	// Get the modal
-	var modal = document.getElementById('myModal');
+		// Get the modal
+		var modal = document.getElementById('myModal');
 
-	// Get the <span> element that closes the modal
-	var span = document.getElementsByClassName("close")[0];
-	// When the user clicks on <span> (x), close the modal
-	span.onclick = function() {
-		modal.style.display = "none";
-	}
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function() {
+			modal.style.display = "none";
+		}
 </script>
 
 </html>
