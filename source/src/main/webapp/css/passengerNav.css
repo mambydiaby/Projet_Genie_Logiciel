@@ -1,0 +1,33 @@
+body {
+	background: url("../img/aeroplanes-aircrafts-airplanes-163771.jpg") no-repeat fixed;
+	background-size:100% 100%;
+}
+#contient{
+	opacity: 0.9;
+	border:2px;
+	background: white;
+	margin-left: 200px;
+	margin-right: 200px;
+	margin-top: 20%;
+	text-align: center;
+
+}
+
+h1 {
+	font: 50px "Comic Sans MS";
+	color: black;
+	text-shadow: 0 0 20px #fdec84, 10px -10px 30px #ffae35;
+	text-align: center;
+	padding: 10px;
+}
+
+a {
+	font-size: 20px;
+	padding: 10px 10px;
+	font-weight: 900;
+	color:orange;
+}
+
+#disconnect {
+	color: red
+}
