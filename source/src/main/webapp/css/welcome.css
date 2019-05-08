@@ -39,6 +39,7 @@ h1 {
 }
 
 #liens_welcome{
+    opacity: 0.9;
     width: 60%;
     margin: auto auto;
     margin-top: 75px;
