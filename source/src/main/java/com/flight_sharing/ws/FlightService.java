@@ -40,7 +40,7 @@ public class FlightService extends Service {
 				searchBuilder.must(QueryBuilders.wildcardQuery("departure", "*" + departure.toLowerCase() + "*"));
 			}
 			if (!date.isEmpty()) {
-				searchBuilder.must(QueryBuilders.rangeQuery("date").from(LocalDateTime.now()).to(date));
+				searchBuilder.must(QueryBuilders.rangeQuery("date").from(LocalDateTime.now().toString()).to(date));
 			}
 			if (seat != 0)
 				searchBuilder.must(QueryBuilders.rangeQuery("seat").from(seat));
