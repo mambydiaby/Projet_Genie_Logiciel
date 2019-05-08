@@ -1,0 +1,57 @@
+body {
+    background: url("../img/gate.jpg") no-repeat fixed;
+    background-size: 100% 100%;
+}
+
+a {
+    color: #183e67;
+    font-family: 'Righteous', sans-serif;
+    font-size: 20px;
+    padding: 10px 10px 10px 90px;
+    
+    text-decoration: none;
+}
+
+a:hover {
+    color: orange;
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+a:visited {
+    color: #183e67;
+    font-size: 20px;
+    padding: 10px 10px 10px 90px;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+h1 {
+    font: 50px "Comic Sans MS";
+    color: black;
+    text-align: center;
+    padding: 10px;
+}
+
+#disconnect {
+    color: red;
+}
+
+#liens_welcome{
+    width: 60%;
+    margin: auto auto;
+    margin-top: 75px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 50px;
+    border-radius: 5px;
+}
+
+#liens_welcome a{
+    margin-left: 170px;
+}
+
+#titre{
+    text-align: center;
+    padding: 0px 0px 50px 0px;
+}
