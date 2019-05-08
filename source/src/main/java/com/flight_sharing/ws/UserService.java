@@ -189,7 +189,7 @@ public class UserService extends Service {
 			if (user == null)
 				user = pilotDao.getById(userId);
 			// remove the password
-			if (!user.isEmpty()) {
+			if (user!=null&&!user.isEmpty()) {
 				JSONObject json = new JSONObject(user);
 				json.remove("pwd");
 				return json.toString();
